@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Memories</string>
+    <string name="getting_started">立即登录看看</string>
+    <string name="u_should_login_right_now">别看了，必须先登录才能进入</string>
+    <string name="u_should_agree">使用本高级的爱屁屁，你踏🐎马必须遵守我的\n服务条款与隐私策略</string>
+    <string name="login_description">对你的手机号并不感冒。没错，就是这么土。\n如果你是老主顾，我们会认得你的。</string>
+    <string name="placeholder_email">your@email.com</string>
+    <string name="register_description">需要你输入长度至少6位的密码。如果你担心\n密码的秘密被我们知晓，那就滚出克 👎</string>
+    <string name="login_password_description">还记得你，但你还是你吗？为了保障该账号\n的安全，请再输入一次密码。</string>
+    <string name="login_directly_description">前不久你刚登录过，允许你这次免密登录。\n务必要感谢我的大恩大德。</string>
+    <string name="transition_search_bar">anim_search_bar</string>
+    <string name="search_bar">寻找大家创建的公开回忆</string>
+    <string name="appbar_spring_behavior">com.google.android.material.appbar.AppBarLayoutSpringBehavior</string>
+    <string name="test_story">我要挣钱，然后换个房子，房间有阳台、飘窗。天晴时候，会有太阳照进来，空气都是橘子的颜色。可以躺在窗边惬意，睡午觉，打电玩，怎样都好。独独忘记赶跑孤独，什么事情都缺少意义。</string>
+    <string name="title_timeline">我的时间线</string>
+</resources>

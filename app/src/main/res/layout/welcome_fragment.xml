@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".page.welcome.WelcomeFragment"
+    android:orientation="vertical">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pagerWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:letterSpacing="0.05"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="@string/getting_started"
+        android:textStyle="bold"
+        app:cornerRadius="30dp"
+        app:rippleColor="@color/white16" />
+
+    <TextView
+        android:id="@+id/tvTrick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:letterSpacing="0.05"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/u_should_login_right_now"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvAgree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:letterSpacing="0.05"
+        android:lineSpacingExtra="2dp"
+        android:text="@string/u_should_agree"
+        android:textAlignment="center"
+        android:textColor="@color/textColorCaption"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

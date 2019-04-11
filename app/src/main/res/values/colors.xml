@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/windowBackgroundColor</color>
+    <color name="colorPrimaryDark">@color/windowBackgroundColor</color>
+    <color name="colorAccent">#FF2952</color>
+
+    <color name="white80">#CDFFFFFF</color>
+    <color name="white70">#B3FFFFFF</color>
+    <color name="white50">#80FFFFFF</color>
+    <color name="white30">#4DFFFFFF</color>
+    <color name="white25">#41FFFFFF</color>
+    <color name="white16">#29FFFFFF</color>
+    <color name="white10">#1AFFFFFF</color>
+
+    <color name="black87">#DE000000</color>
+    <color name="black70">#B3000000</color>
+    <color name="black54">#8A000000</color>
+    <color name="black38">#61000000</color>
+    <color name="black26">#42000000</color>
+    <color name="black20">#33000000</color>
+    <color name="black12">#1f000000</color>
+
+    <color name="textColorPrimary">@android:color/white</color>
+    <color name="textColorPrimaryReverse">@color/black87</color>
+    <color name="textColorSecondary">@color/white70</color>
+    <color name="textColorSecondaryReverse">@color/black54</color>
+    <color name="textColorCaption">@color/white50</color>
+    <color name="textColorCaptionReverse">@color/black38</color>
+    <color name="textColorDisable">@color/white25</color>
+    <color name="textDisableReverse">@color/black20</color>
+
+
+    <color name="windowBackgroundColor">#181818</color>
+
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_trophy_toast"
+    android:orientation="vertical"
+    android:paddingStart="24dp"
+    android:paddingTop="7dp"
+    android:paddingEnd="36dp"
+    android:paddingBottom="7dp"
+    tools:layout_gravity="center_horizontal"
+    tools:layout_marginTop="24dp">
+
+    <ImageView
+        android:id="@+id/imgTrophy"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_trophy_golden" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="47dp"
+        android:layout_marginBottom="11dp"
+        android:alpha="0.8"
+        android:letterSpacing="0.04"
+        android:text="获得奖杯"
+        android:textColor="@color/textColorPrimaryReverse"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTrophyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="6dp"
+        android:letterSpacing="0.03"
+        android:textColor="@color/textColorPrimaryReverse"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        tools:text="另辟蹊径" />
+
+</FrameLayout>

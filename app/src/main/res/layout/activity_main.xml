@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".page.main.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="52dp" />
+
+    <com.arch.jonnyhsia.ui.navigation.BottomNavigationBar
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_gravity="bottom"
+        app:x_defaultTab="0">
+
+        <com.arch.jonnyhsia.ui.navigation.BottomTab
+            style="@style/BottomTab"
+            app:x_drawableTop="@drawable/ic_nav_timeline" />
+
+        <com.arch.jonnyhsia.ui.navigation.BottomTab
+            style="@style/BottomTab"
+            app:x_drawableTop="@drawable/ic_nav_discover" />
+
+        <com.arch.jonnyhsia.ui.navigation.BottomTab
+            style="@style/BottomTab"
+            app:x_drawableTop="@drawable/ic_nav_post" />
+
+        <com.arch.jonnyhsia.ui.navigation.BottomTab
+            style="@style/BottomTab"
+            app:x_drawableTop="@drawable/ic_nav_inbox" />
+
+        <com.arch.jonnyhsia.ui.navigation.BottomTab
+            style="@style/BottomTab"
+            app:x_drawableTop="@drawable/ic_nav_account" />
+
+    </com.arch.jonnyhsia.ui.navigation.BottomNavigationBar>
+
+</FrameLayout>

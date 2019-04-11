@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="93dp"
+    android:layout_height="124dp"
+    android:layout_marginEnd="10dp">
+
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/text_safe_mask" />
+
+    <TextView
+        android:id="@+id/tvFriendName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="bottom"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="1dp"
+        android:maxLines="3"
+        android:shadowColor="@color/black38"
+        android:shadowDy="3"
+        android:shadowRadius="8"
+        android:textSize="13sp"
+        tools:text="高能的土豆" />
+
+</FrameLayout>

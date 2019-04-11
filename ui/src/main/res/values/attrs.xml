@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="XImageView">
+        <attr name="x_aspectRatio" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="TextLabel">
+        <attr name="x_primaryColor" format="color|reference" />
+        <attr name="x_highlightColor" format="color|reference" />
+        <attr name="x_disabledColor" format="color|reference" />
+        <attr name="x_placeholder" format="string|reference" />
+        <attr name="x_placeholderStrategy" format="enum">
+            <enum name="custom" value="0" />
+            <enum name="text" value="1" />
+            <enum name="numeric" value="2" />
+        </attr>
+        <attr name="x_drawableTopScale" format="float" />
+        <attr name="x_drawableStartScale" format="float" />
+        <attr name="x_drawableEndScale" format="float" />
+        <attr name="x_drawableBottomScale" format="float" />
+        <attr name="x_drawableTop" format="reference" />
+        <attr name="x_drawableStart" format="reference" />
+        <attr name="x_drawableEnd" format="reference" />
+        <attr name="x_drawableBottom" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomNavigationBar">
+        <attr name="x_defaultTab" format="integer" />
+        <attr name="x_selectEffect" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomNavigationBar_Layout">
+        <attr name="x_elementType" format="enum">
+            <enum name="custom" value="0" />
+            <enum name="tab" value="1" />
+        </attr>
+        <attr name="x_anchor" format="reference" />
+        <attr name="x_anchorGravity" format="flags">
+            <flag name="left" value="1" />
+            <flag name="top" value="2" />
+            <flag name="right" value="4" />
+            <flag name="bottom" value="8" />
+            <flag name="center" value="15" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="RatioFrameLayout">
+        <attr name="x_ratio" format="float" />
+    </declare-styleable>
+
+</resources>
