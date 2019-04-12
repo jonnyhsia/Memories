@@ -30,6 +30,7 @@
     <color name="textDisableReverse">@color/black20</color>
 
 
-    <color name="windowBackgroundColor">#181818</color>
+    <color name="windowBackgroundColor">#18191B</color>
+    <color name="navigationBarColor">#282828</color>
 
 </resources>

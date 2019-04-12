@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="79dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/placeholder" />
+        tools:src="@drawable/placeholder_dark" />
 
     <TextView
         android:id="@+id/tvDiscussTitle"

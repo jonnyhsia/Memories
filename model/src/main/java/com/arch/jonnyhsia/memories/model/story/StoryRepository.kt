@@ -10,13 +10,13 @@ object StoryRepository : Repository(), StoryDataSource {
         return Single.just(listOf(
                 FeaturedStoriesModel(title = "特别推荐", list = listOf(
                         StoryDisplayModel(id = 0, title = "不可知的未来", summary = "我要挣钱，然后换个房子，房间有阳台、飘窗。天晴的时候", image = "https://i.loli.net/2019/04/09/5cacbfc38e410.jpg", tags = listOf("土豆碎碎念"), dateText = "11:29AM, 4月8日"),
-                        StoryDisplayModel(id = 0, title = "万塘路300号的午夜声响", summary = "偶尔是会失眠，比如今天。外面下着小雨，水落到棚子的声音。这么晚了，还能听", image = "https://i.loli.net/2019/04/09/5cacbfc37416b.jpg", tags = listOf("失眠症候群"), dateText = "11:29AM, 4月8日"),
+                        StoryDisplayModel(id = 0, title = "#只狼 影逝二度#", summary = "可算是白金啦 ✌️👍", image = "https://i.loli.net/2019/04/13/5cb0b71cb9e76.jpg", tags = listOf("围观大佬"), dateText = "11:29AM, 4月8日"),
+                        StoryDisplayModel(id = 0, title = "万塘路300号的午夜声响", summary = "偶尔是会失眠，比如今天。外面下着小雨，水落到棚子的声音。这么晚了，还能听", image = "https://i.loli.net/2019/04/09/5cacbfc38e410.jpg", tags = listOf("失眠症候群"), dateText = "11:29AM, 4月8日"),
                         StoryDisplayModel(id = 0, title = "遥遥无期的家。", summary = "", image = "https://i.loli.net/2019/04/09/5cacba1792054.jpg", tags = listOf("土豆碎碎念"), dateText = "11:29AM, 4月8日"),
-                        StoryDisplayModel(id = 0, title = "", summary = "原来雅雅是鸡。千真万确的全宇宙最野的鸡。", image = "https://i.loli.net/2019/04/09/5cacbca17d946.jpg", tags = listOf("土豆碎碎念"), dateText = "11:29AM, 4月8日"),
-                        StoryDisplayModel(id = 0, title = "万塘路300号的午夜声响", summary = "偶尔是会失眠，比如今天。外面下着小雨，水落到棚子的声音。这么晚了，还能听", image = "https://i.loli.net/2019/04/09/5cacbfc38e410.jpg", tags = listOf("失眠症候群"), dateText = "11:29AM, 4月8日")
+                        StoryDisplayModel(id = 0, title = "", summary = "原来雅雅是鸡。千真万确的全宇宙最野的鸡。", image = "https://i.loli.net/2019/04/09/5cacbca17d946.jpg", tags = listOf("土豆碎碎念"), dateText = "11:29AM, 4月8日")
                 )),
                 DiscussListModel(title = "圆桌会谈", list = listOf(
-                        DiscussDisplayModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc39c3e4.jpg", title = "只狼受难者联盟", description = "誓要宫崎英高跌落神坛", meta = "13,000 用户发言"),
+                        DiscussDisplayModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc39c3e4.jpg", title = "只狼受难者联盟", description = "誓要宫崎英高跌落神坛", meta = "1,300 用户发言"),
                         DiscussDisplayModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc33fdfb.jpg", title = "你的职业都有哪些不为人知的辛酸", description = "", meta = ""),
                         DiscussDisplayModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc35ae94.jpg", title = "为孩子们征集「未来生活100问」", description = "", meta = ""),
                         DiscussDisplayModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc358c1a.jpg", title = "土豆🥔家好玩吗，还想再去吗~", description = "", meta = ""),

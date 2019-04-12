@@ -16,6 +16,7 @@ class StoryTagBinder : ItemBinder<TagModel>() {
     override fun onBindViewHolder(holder: ExtViewHolder, item: TagModel) {
         with(holder) {
             imgTag.load(item.icon) {
+                placeholder(R.drawable.placeholder_dark)
                 asRounded(10.dp)
             }
             tvTagName.text = item.text

@@ -1,6 +1,7 @@
 package com.jonnyhsia.memories.page.main.timeline.binder
 
 import android.view.Gravity
+import android.view.MotionEvent
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -9,11 +10,14 @@ import com.arch.jonnyhsia.foundation.component.ItemBinder
 import com.arch.jonnyhsia.foundation.ext.*
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
 import com.jonnyhsia.memories.R
+import com.jonnyhsia.memories.application
 import kotlinx.android.synthetic.main.item_story_with_image.*
 
 class StoryWithImageBinder : ItemBinder<StoryDisplayModel>() {
     override val itemViewRes: Int
         get() = R.layout.item_story_with_image
+
+    private var touchDownTime = 0L
 
     override fun onBindViewHolder(holder: ExtViewHolder, item: StoryDisplayModel) {
         with(holder) {
@@ -26,6 +30,7 @@ class StoryWithImageBinder : ItemBinder<StoryDisplayModel>() {
                 height = ((displayWidth - 40.dp) / item.imageRatio).toInt()
             }
             imgStory.load(item.image) {
+                placeholder(R.drawable.placeholder_top_card)
                 asRounded(leftTop = 10f.dp, rightTop = 10f.dp)
             }
 
@@ -53,6 +58,24 @@ class StoryWithImageBinder : ItemBinder<StoryDisplayModel>() {
 
             itemView.setOnClickListener {
 
+            }
+
+
+            itemView.setOnTouchListener { _, event ->
+                when {
+                    event.action == MotionEvent.ACTION_DOWN -> {
+                        touchDownTime = System.currentTimeMillis()
+                    }
+                    event.action == MotionEvent.ACTION_UP && touchDownTime != 0L -> {
+                        val downTime = System.currentTimeMillis() - touchDownTime
+                        if (downTime > 3000L) {
+                            // TODO: 改到 vm 中
+                            application.checkTrophy(id = 2)
+                        }
+                        touchDownTime = 0L
+                    }
+                }
+                false
             }
         }
     }

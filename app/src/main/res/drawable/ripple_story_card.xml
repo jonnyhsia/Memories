@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/black20">
+<?xml version="1.0" encoding="utf-8"?><!--<ripple --><!--android:color="@color/black20">-->
 
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@android:color/white" />
-            <corners android:radius="10dp" />
-        </shape>
-    </item>
+<!--<item>-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/white" />
+    <corners android:radius="10dp" />
+</shape><!--</item>-->
 
-</ripple>
+    <!--</ripple>-->

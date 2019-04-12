@@ -18,6 +18,7 @@ class DiscussSmallBinder : ItemBinder<DiscussDisplayModel>() {
     override fun onBindViewHolder(holder: ExtViewHolder, item: DiscussDisplayModel) {
         with(holder) {
             imgDiscussImage.load(item.image) {
+                placeholder(R.drawable.placeholder_dark)
                 asRounded(10.dp)
             }
             tvDiscussTitle.text = item.title

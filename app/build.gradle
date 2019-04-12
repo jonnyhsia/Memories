@@ -13,8 +13,9 @@ android {
         applicationId "com.jonnyhsia.memories"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "0.1.3"
+        versionCode rootProject.version_code
+        versionName rootProject.version_name
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

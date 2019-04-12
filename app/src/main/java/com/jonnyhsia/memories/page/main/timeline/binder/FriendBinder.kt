@@ -17,6 +17,7 @@ class FriendBinder : ItemBinder<SimpleUserDisplayModel>() {
         with(holder) {
             tvFriendName.text = item.nickname
             imgAvatar.load(item.avatar) {
+                placeholder(R.drawable.placeholder_dark)
                 asRounded(10.dp)
             }
         }

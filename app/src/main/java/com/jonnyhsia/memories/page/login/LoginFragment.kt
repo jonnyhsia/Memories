@@ -13,7 +13,6 @@ import com.arch.jonnyhsia.foundation.ext.Colors
 import com.arch.jonnyhsia.foundation.ext.dp
 import com.arch.jonnyhsia.memories.model.passport.bean.LoginType
 import com.jakewharton.rxbinding2.widget.textChanges
-import com.jonnyhsia.memories.App
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.kit.KeyboardWatcher
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -36,13 +35,6 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        keyboardWatcher = KeyboardWatcher(requireActivity())
-        keyboardWatcher.setListener(object : KeyboardWatcher.SimpleKeyboardToggleListener() {
-            override fun onKeyboardVisibilityChanged(isVisible: Boolean) {
-                imgLoginHeader.isVisible = !isVisible
-            }
-        })
-
         textLoginTitle.setFactory {
             TextView(context).apply {
                 textSize = 24f
@@ -59,13 +51,19 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
                 textAlignment = View.TEXT_ALIGNMENT_CENTER
                 gravity = Gravity.CENTER
                 includeFontPadding = false
-                typeface = App.NotoSansMedium
                 setLineSpacing(2f.dp, 1f)
                 setTextColor(Colors(R.color.textColorSecondary))
             }
         }
         textLoginTitle.setText("输入你的电子邮箱")
         textLoginDescription.setText(getString(R.string.login_description))
+
+        keyboardWatcher = KeyboardWatcher(requireActivity())
+        keyboardWatcher.setListener(object : KeyboardWatcher.SimpleKeyboardToggleListener() {
+            override fun onKeyboardVisibilityChanged(isVisible: Boolean) {
+                imgLoginHeader.isVisible = !isVisible
+            }
+        })
 
         fieldEmail.textChanges()
                 .throttleLatest(600L, TimeUnit.MILLISECONDS)

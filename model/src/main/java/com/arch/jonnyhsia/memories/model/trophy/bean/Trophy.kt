@@ -14,6 +14,7 @@ sealed class Trophy(
         fun of(id: Int): Trophy? {
             return when (id) {
                 1 -> FoundADifferentWay()
+                2 -> HoldOn()
                 else -> null
             }
         }
@@ -22,3 +23,9 @@ sealed class Trophy(
 
 class FoundADifferentWay :
         Trophy(id = 1, name = "另辟蹊径", description = "发现传说中能直接进入应用首页的隐藏入口，但切记一定要及时补票，否则……", difficulty = RARE)
+
+class HoldOn :
+        Trophy(id = 2, name = "坚持不懈", description = "你还蛮持久的嘛~ (各种含义", difficulty = USUAL)
+
+//class Courage :
+//        Trophy(id = 2, name = "不可为而为之", description = "", difficulty = RARE)

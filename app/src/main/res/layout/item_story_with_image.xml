@@ -8,7 +8,8 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="20dp"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/ripple_story_card">
+    android:background="@drawable/ripple_story_card"
+    android:foreground="?selectableItemBackground">
 
     <ImageView
         android:id="@+id/imgStory"
@@ -18,17 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_height="200dp"
-        tools:src="@drawable/placeholder" />
+        tools:src="@drawable/placeholder_top_card" />
 
     <TextView
         android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_pill_like"
-        android:drawablePadding="8dp"
-        android:gravity="center"
+        android:drawableStart="@drawable/placeholder_avatar_small"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
         android:letterSpacing="0.04"
         android:paddingStart="4dp"
         android:paddingTop="4dp"
@@ -99,7 +101,8 @@
         android:id="@+id/imgMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="12dp"
+        android:padding="8dp"
         android:src="@drawable/ic_more"
         app:layout_constraintBottom_toBottomOf="@id/tvDate"
         app:layout_constraintEnd_toEndOf="parent"

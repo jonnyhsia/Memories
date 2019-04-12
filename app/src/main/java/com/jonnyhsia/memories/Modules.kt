@@ -17,7 +17,7 @@ val appModule = module {
 
 val mvvmModule = module {
     viewModel { MainViewModel(get()) }
-    viewModel { WelcomeViewModel(get(), get()) }
+    viewModel { WelcomeViewModel(get()) }
     viewModel { (id: String) -> LoginViewModel(id, get()) }
     viewModel { TimelineViewModel() }
     viewModel { DiscoverViewModel() }

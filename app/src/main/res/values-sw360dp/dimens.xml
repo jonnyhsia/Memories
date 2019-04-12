@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="timeline_grid_cell_width">196dp</dimen>
+    <dimen name="timeline_grid_cell_width">220dp</dimen>
+    <dimen name="discuss_large_cell_width">196dp</dimen>
     <dimen name="discuss_small_cell_width">137dp</dimen>
 
 </resources>

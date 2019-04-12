@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:paddingTop="16dp"
     android:paddingBottom="16dp">
@@ -26,7 +28,7 @@
         android:clipToPadding="false"
         android:nestedScrollingEnabled="false"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp" />
+        android:paddingEnd="0dp" />
 
 
 </LinearLayout>

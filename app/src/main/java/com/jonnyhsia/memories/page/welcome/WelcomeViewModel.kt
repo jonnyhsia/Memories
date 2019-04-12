@@ -1,24 +1,20 @@
 package com.jonnyhsia.memories.page.welcome
 
 import com.arch.jonnyhsia.foundation.component.BaseViewModel
-import com.arch.jonnyhsia.foundation.component.SingleLiveEvent
 import com.arch.jonnyhsia.memories.model.msic.MiscDataSource
-import com.arch.jonnyhsia.memories.model.trophy.TrophyDataSource
-import com.arch.jonnyhsia.memories.model.trophy.bean.Trophy
 import com.jonnyhsia.memories.R
+import com.jonnyhsia.memories.application
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
 class WelcomeViewModel(
-        private val miscDataSource: MiscDataSource,
-        private val trophyDataSource: TrophyDataSource
+        private val miscDataSource: MiscDataSource
 ) : BaseViewModel() {
 
     private var trickClickCount = 0
     private var countDownDisposable: Disposable? = null
-    val trophySignal = SingleLiveEvent<Trophy>()
 
     val bannerList = listOf(R.drawable.img_welcome_01)
 
@@ -45,16 +41,15 @@ class WelcomeViewModel(
             trickClickCount = -1
             countDownDisposable?.dispose()
             miscDataSource.letWelcomePageEntered()
-            checkTrophy()
+            application.checkTrophy(id = 1)
             navigate(url = "memo://Main", close = true)
         }
     }
 
-    private fun checkTrophy() {
-        // fixme: ugly code
-        val trophy = trophyDataSource.earnTrophy(id = 1) ?: return
-        trophySignal.value = trophy
-    }
+//    private fun checkTrophy() {
+//        val trophy = trophyDataSource.earnTrophy(id = 1) ?: return
+//        trophySignal.value = trophy
+//    }
 
     fun onClickTrick() {
         if (trickClickCount == -1) {

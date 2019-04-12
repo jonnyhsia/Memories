@@ -16,6 +16,7 @@ class SmallStoryBinder : ItemBinder<StoryDisplayModel>() {
     override fun onBindViewHolder(holder: ExtViewHolder, item: StoryDisplayModel) {
         with(holder) {
             imgStory.load(item.image) {
+                placeholder(R.drawable.placeholder_dark)
                 asRounded(10.dp)
             }
             tvStoryTag.text = item.tags.firstOrNull()

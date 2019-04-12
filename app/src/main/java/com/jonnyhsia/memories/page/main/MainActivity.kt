@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
 import com.arch.jonnyhsia.compass.api.Route
-import com.arch.jonnyhsia.compass.navigate
+import com.arch.jonnyhsia.memories.model.Repository
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.discover.DiscoverFragment
 import com.jonnyhsia.memories.page.main.timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import qiu.niorgai.StatusBarCompat
 
 @Route(name = "Main")
 class MainActivity : AppCompatActivity() {
@@ -28,14 +27,16 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        StatusBarCompat.translucentStatusBar(this, true)
-
         // 进入首页
         setContentView(R.layout.activity_main)
 
         bottomNavigation.setOnTabSelectListener { oldPos, pos ->
             changeHomeFragment(oldPos, pos)
             return@setOnTabSelectListener false
+        }
+        bottomNavigation.setOnTabReselectListener {
+            val currentFragment = supportFragmentManager.findFragmentByTag(getFragmentTagAt(index = it))
+            (currentFragment as? TabDoubleTap)?.onTabDoubleTapped()
         }
     }
 
@@ -58,7 +59,11 @@ class MainActivity : AppCompatActivity() {
             1 -> DiscoverFragment()
             2 -> Fragment()
             3 -> Fragment()
-            4 -> Fragment()
+            4 -> {
+                Repository.getMiscDataSource().letWelcomePageEntered(entered = false)
+                Repository.getPassportDataSource().logout()
+                Fragment()
+            }
             else -> throw RuntimeException("错误的索引")
         }
     }

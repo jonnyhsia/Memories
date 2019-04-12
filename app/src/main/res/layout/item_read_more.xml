@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="match_parent"
+    tools:layout_height="180dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableTop="@drawable/ic_read_more"
+        android:drawablePadding="8dp"
+        android:scaleType="centerInside"
+        android:text="查看更多"
+        android:letterSpacing="0.05"
+        android:textAlignment="center"
+        android:textSize="11sp" />
+
+</FrameLayout>

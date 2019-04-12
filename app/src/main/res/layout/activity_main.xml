@@ -17,7 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_gravity="bottom"
+        android:background="@drawable/bg_bottom_navigation"
         app:x_defaultTab="0">
+
+        <!--TODO: 图标需要修改, 不够直白-->
 
         <com.arch.jonnyhsia.ui.navigation.BottomTab
             style="@style/BottomTab"

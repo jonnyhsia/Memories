@@ -12,16 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:src="@drawable/placeholder"
-        app:x_aspectRatio="1.333"
-        tools:src="@drawable/placeholder" />
+        app:x_aspectRatio="1.5"
+        tools:src="@drawable/placeholder_dark" />
 
     <TextView
         android:id="@+id/tvStoryTag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="8dp"
         android:letterSpacing="0.03"
         android:textColor="@color/textColorDisable"
         android:textSize="10sp"
@@ -37,7 +36,7 @@
         android:ellipsize="end"
         android:letterSpacing="0.04"
         android:lineSpacingExtra="2dp"
-        android:maxLines="3"
+        android:lines="3"
         android:textColor="@color/textColorPrimary"
         android:textSize="13sp"
         android:textStyle="bold"

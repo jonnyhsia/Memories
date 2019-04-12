@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.appbar.AppBarLayout
 
 fun RecyclerView.asVerticalList() {
     setHasFixedSize(true)
@@ -94,4 +95,19 @@ fun RecyclerView.scrollToPositionWithOffset(position: Int, offset: Int = 0) {
         }
         else -> throw RuntimeException("不支持的 Layout Manager")
     }
+}
+
+var AppBarLayout.isFullyExpanded: Boolean
+    get() {
+        return height - bottom == 0
+    }
+    set(value) {
+        setExpanded(value)
+    }
+
+/**
+ * @param offset AppBarLayout 完全收拢仍然露出的大小 (例TabLayout)
+ */
+fun AppBarLayout.isExpanded(offset: Int): Boolean {
+    return (bottom - offset) > 0
 }
