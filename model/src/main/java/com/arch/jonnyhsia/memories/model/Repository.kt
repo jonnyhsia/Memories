@@ -3,6 +3,8 @@ package com.arch.jonnyhsia.memories.model
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
+import com.arch.jonnyhsia.memories.model.group.GroupDataSource
+import com.arch.jonnyhsia.memories.model.group.GroupRepository
 import com.arch.jonnyhsia.memories.model.msic.MiscDataSource
 import com.arch.jonnyhsia.memories.model.msic.MiscRepository
 import com.arch.jonnyhsia.memories.model.passport.PassportDataSource
@@ -145,6 +147,10 @@ abstract class Repository {
 
         fun getTrophyDataSource(): TrophyDataSource {
             return TrophyRepository
+        }
+
+        fun getGroupDataSource(): GroupDataSource {
+            return GroupRepository
         }
 
         internal fun appVersion(): String {

@@ -27,15 +27,35 @@ data class FeaturedStoriesModel(
         val list: List<StoryDisplayModel>
 )
 
-data class DiscussListModel(
+data class TopDiscussListModel(
         val title: String,
-        val list: List<DiscussDisplayModel>
+        val list: List<TopDiscussModel>
 )
+
+data class TopDiscussModel(
+        val id: Int,
+        val title: String,
+        val description: String,
+        val image: String,
+        val meta: String
+)
+
 
 data class DiscussDisplayModel(
         val id: Int,
         val title: String,
         val description: String,
-        val image:String,
-        val meta: String
+        val image: String?,
+        val tint: String?,
+        val group: GroupDisplayModel,
+        val comments: Int,
+        val updateTime: String
 )
+
+data class GroupDisplayModel(
+        val id: Int,
+        val avatar: String,
+        val name: String,
+        val description: String
+)
+

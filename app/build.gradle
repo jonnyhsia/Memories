@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.jonnyhsia.memories"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode rootProject.version_code
         versionName rootProject.version_name

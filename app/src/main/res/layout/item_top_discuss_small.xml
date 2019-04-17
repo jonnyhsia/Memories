@@ -10,6 +10,7 @@
         android:id="@+id/imgDiscussImage"
         android:layout_width="match_parent"
         android:layout_height="79dp"
+        android:foreground="@drawable/ripple_story_card_foreground"
         android:scaleType="centerCrop"
         tools:src="@drawable/placeholder_dark" />
 

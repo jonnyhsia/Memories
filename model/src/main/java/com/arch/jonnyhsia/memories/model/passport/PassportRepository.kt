@@ -2,11 +2,13 @@ package com.arch.jonnyhsia.memories.model.passport
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import com.arch.jonnyhsia.foundation.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.memories.model.passport.bean.LoginType
 import com.arch.jonnyhsia.memories.model.passport.bean.UserModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import org.greenrobot.eventbus.EventBus
 
 object PassportRepository : Repository(), PassportDataSource {
 
@@ -91,6 +93,7 @@ object PassportRepository : Repository(), PassportDataSource {
             putString("avatar", user.avatar)
         }
 
+        EventBus.getDefault().post(LoginEvent())
         Repository.getMiscDataSource().run {
             letWelcomePageEntered()
             saveLatestUserInfo(user)

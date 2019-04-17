@@ -49,4 +49,12 @@
         <attr name="x_ratio" format="float" />
     </declare-styleable>
 
+    <declare-styleable name="TextTabLayout">
+        <attr name="x_tabSpacing" format="dimension"/>
+        <attr name="x_tabTextSize" format="dimension"/>
+        <attr name="x_tabTextSelectedSize" format="dimension"/>
+        <attr name="x_tabTextColor" format="color|reference"/>
+        <attr name="x_tabTextSelectedColor" format="color|reference"/>
+    </declare-styleable>
+
 </resources>

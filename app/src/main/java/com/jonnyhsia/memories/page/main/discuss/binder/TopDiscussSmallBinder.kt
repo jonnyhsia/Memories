@@ -1,4 +1,4 @@
-package com.jonnyhsia.memories.page.main.timeline.binder
+package com.jonnyhsia.memories.page.main.discuss.binder
 
 import android.widget.FrameLayout
 import androidx.core.view.updateLayoutParams
@@ -7,15 +7,15 @@ import com.arch.jonnyhsia.foundation.component.ItemBinder
 import com.arch.jonnyhsia.foundation.ext.asRounded
 import com.arch.jonnyhsia.foundation.ext.dp
 import com.arch.jonnyhsia.foundation.ext.load
-import com.arch.jonnyhsia.memories.model.story.bean.DiscussDisplayModel
+import com.arch.jonnyhsia.memories.model.story.bean.TopDiscussModel
 import com.jonnyhsia.memories.R
-import kotlinx.android.synthetic.main.item_discuss_small.*
+import kotlinx.android.synthetic.main.item_top_discuss_small.*
 
-class DiscussSmallBinder : ItemBinder<DiscussDisplayModel>() {
+class TopDiscussSmallBinder : ItemBinder<TopDiscussModel>() {
     override val itemViewRes: Int
-        get() = R.layout.item_discuss_small
+        get() = R.layout.item_top_discuss_small
 
-    override fun onBindViewHolder(holder: ExtViewHolder, item: DiscussDisplayModel) {
+    override fun onBindViewHolder(holder: ExtViewHolder, item: TopDiscussModel) {
         with(holder) {
             imgDiscussImage.load(item.image) {
                 placeholder(R.drawable.placeholder_dark)

@@ -32,6 +32,7 @@
         android:shadowColor="@color/black38"
         android:shadowDy="3"
         android:shadowRadius="8"
+        android:textColor="@color/textColorPrimaryReverse"
         android:textSize="13sp"
         tools:text="高能的土豆" />
 

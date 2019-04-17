@@ -28,6 +28,7 @@
         android:shadowColor="@color/black38"
         android:shadowDy="3"
         android:shadowRadius="8"
+        android:textColor="@color/textColorPrimaryReverse"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="幻想" />

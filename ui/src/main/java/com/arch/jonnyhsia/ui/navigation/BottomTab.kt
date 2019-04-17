@@ -29,6 +29,11 @@ class BottomTab @JvmOverloads constructor(
         return true
     }
 
+    override fun setChecked(checked: Boolean) {
+        super.setChecked(checked)
+        alpha = if (checked) 1f else 0.38f
+    }
+
 //    data class BottomTabModel(
 //            val text: String,
 //            val icon: Any

@@ -11,6 +11,7 @@ import com.arch.jonnyhsia.ui.ext.isExpanded
 import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.TabDoubleTap
+import com.jonnyhsia.memories.page.main.discuss.binder.TopDiscussListBinder
 import com.jonnyhsia.memories.page.main.timeline.binder.*
 import kotlinx.android.synthetic.main.timeline_fragment.*
 import me.drakeet.multitype.register
@@ -31,7 +32,7 @@ class TimelineFragment : BaseFragment<TimelineViewModel>(), TabDoubleTap {
         // collapsingToolbar.setPadding(0, statusBarHeight, 0, 0)
         adapter = XMultiAdapter().apply {
             register(FeaturedBinder())
-            register(DiscussListBinder())
+            register(TopDiscussListBinder())
             register(StoryHeaderBinder())
             register(UpdateFriendsBinder())
             register(StoryDisplayModel::class)

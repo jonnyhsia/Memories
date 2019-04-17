@@ -1,7 +1,6 @@
 package com.arch.jonnyhsia.ui.navigation
 
 import android.content.Context
-import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -48,14 +47,14 @@ class BottomNavigationBar @JvmOverloads constructor(
         val a = context.obtainStyledAttributes(attrs, R.styleable.BottomNavigationBar)
         // 默认选中的 tab 索引
         selectedIndex = a.getInt(R.styleable.BottomNavigationBar_x_defaultTab, -1)
-        selectEffectEnabled = a.getBoolean(R.styleable.BottomNavigationBar_x_selectEffect, true)
+        selectEffectEnabled = a.getBoolean(R.styleable.BottomNavigationBar_x_selectEffect, false)
         a.recycle()
         setWillNotDraw(!selectEffectEnabled)
     }
 
-    override fun onDrawForeground(canvas: Canvas?) {
-        super.onDrawForeground(canvas)
-    }
+//    override fun onDrawForeground(canvas: Canvas?) {
+//        super.onDrawForeground(canvas)
+//    }
 
     /**
      * 设置 tab 选中监听
@@ -91,7 +90,10 @@ class BottomNavigationBar @JvmOverloads constructor(
                 return
             }
 
-            bottomTabs[selectedIndex].isChecked = false
+            val lastTab = bottomTabs[selectedIndex]
+            tab.isChecked = true
+            lastTab.isChecked = false
+
             // 更新 index
             selectedIndex = index
         } else {

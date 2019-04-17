@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Checkable
+import androidx.annotation.CallSuper
 import androidx.appcompat.widget.AppCompatTextView
 
 typealias PlaceholderStrategy = (CharSequence?) -> Boolean
@@ -135,6 +136,7 @@ open class TextLabel @JvmOverloads constructor(
         isChecked = !_checked
     }
 
+    @CallSuper
     override fun setChecked(checked: Boolean) {
         _checked = checked
         refreshDrawableState()

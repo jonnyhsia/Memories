@@ -13,4 +13,6 @@
     <string name="appbar_spring_behavior">com.google.android.material.appbar.AppBarLayoutSpringBehavior</string>
     <string name="test_story">我要挣钱，然后换个房子，房间有阳台、飘窗。天晴时候，会有太阳照进来，空气都是橘子的颜色。可以躺在窗边惬意，睡午觉，打电玩，怎样都好。独独忘记赶跑孤独，什么事情都缺少意义。</string>
     <string name="title_timeline">我的时间线</string>
+    <string name="title_discuss">和这个世界谈谈</string>
+    <string name="search_bar_discuss">寻找讨论与志同道合的小组</string>
 </resources>

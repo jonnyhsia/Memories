@@ -20,17 +20,19 @@
     <color name="black20">#33000000</color>
     <color name="black12">#1f000000</color>
 
-    <color name="textColorPrimary">@android:color/white</color>
-    <color name="textColorPrimaryReverse">@color/black87</color>
-    <color name="textColorSecondary">@color/white70</color>
-    <color name="textColorSecondaryReverse">@color/black54</color>
-    <color name="textColorCaption">@color/white50</color>
-    <color name="textColorCaptionReverse">@color/black38</color>
-    <color name="textColorDisable">@color/white25</color>
-    <color name="textDisableReverse">@color/black20</color>
+    <color name="textColorPrimary">@color/black87</color>
+    <color name="textColorPrimaryReverse">@android:color/white</color>
+    <color name="textColorSecondary">@color/black54</color>
+    <color name="textColorSecondaryReverse">@color/white70</color>
+    <color name="textColorCaption">@color/black38</color>
+    <color name="textColorCaptionReverse">@color/white50</color>
+    <color name="textColorDisable">@color/black20</color>
+    <color name="textColorDisableReverse">@color/white25</color>
 
 
-    <color name="windowBackgroundColor">#18191B</color>
-    <color name="navigationBarColor">#282828</color>
+    <color name="windowBackgroundColor">@android:color/white</color>
+    <color name="windowBackgroundColorNight">#18191B</color>
+    <color name="navigationBarColor">@color/windowBackgroundColor</color>
+    <color name="divider">#F2F2F2</color>
 
 </resources>

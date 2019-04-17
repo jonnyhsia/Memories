@@ -18,28 +18,29 @@
         android:layout_height="52dp"
         android:layout_gravity="bottom"
         android:background="@drawable/bg_bottom_navigation"
+        android:elevation="8dp"
         app:x_defaultTab="0">
 
         <!--TODO: 图标需要修改, 不够直白-->
 
         <com.arch.jonnyhsia.ui.navigation.BottomTab
             style="@style/BottomTab"
+            android:text="时间线"
             app:x_drawableTop="@drawable/ic_nav_timeline" />
 
         <com.arch.jonnyhsia.ui.navigation.BottomTab
             style="@style/BottomTab"
-            app:x_drawableTop="@drawable/ic_nav_discover" />
+            android:text="讨论"
+            app:x_drawableTop="@drawable/ic_nav_discuss" />
 
         <com.arch.jonnyhsia.ui.navigation.BottomTab
             style="@style/BottomTab"
-            app:x_drawableTop="@drawable/ic_nav_post" />
+            android:text="消息"
+            app:x_drawableTop="@drawable/ic_nav_msg" />
 
         <com.arch.jonnyhsia.ui.navigation.BottomTab
             style="@style/BottomTab"
-            app:x_drawableTop="@drawable/ic_nav_inbox" />
-
-        <com.arch.jonnyhsia.ui.navigation.BottomTab
-            style="@style/BottomTab"
+            android:text="我"
             app:x_drawableTop="@drawable/ic_nav_account" />
 
     </com.arch.jonnyhsia.ui.navigation.BottomNavigationBar>

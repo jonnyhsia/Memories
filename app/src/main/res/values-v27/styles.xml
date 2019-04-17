@@ -2,10 +2,10 @@
 <resources>
 
     <style name="CompatAppTheme.Common">
-        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!--<item name="android:navigationBarDividerColor">@color/colorPrimaryDark</item>-->
         <item name="android:navigationBarColor">@color/navigationBarColor</item>
-        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
 </resources>

@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 
 private const val INVALID_POINTER = -1
 
+private const val FLING_SPEED_FACTOR = 0.8f
+
 open class BetterRecyclerView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyle: Int = 0
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyle: Int = 0
 ) : RecyclerView(context, attrs, defStyle) {
 
     private var scrollPointerId = INVALID_POINTER
@@ -78,5 +80,13 @@ open class BetterRecyclerView @JvmOverloads constructor(
             }
             else -> return super.onInterceptTouchEvent(e)
         }
+    }
+
+    override fun fling(velocityX: Int, velocityY: Int): Boolean {
+        var vy = velocityY
+
+        // if  between [0, 1[ => slowdown
+
+        return super.fling(velocityX, (velocityY * FLING_SPEED_FACTOR).toInt())
     }
 }

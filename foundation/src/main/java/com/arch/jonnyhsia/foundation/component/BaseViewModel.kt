@@ -43,10 +43,10 @@ abstract class BaseViewModel : ViewModel(), Corgi, DisposableContainer {
             close: Boolean = false,
             block: RouteIntent.() -> Unit = {}
     ) {
-        superNavigator.value = Compass.navigate(url).apply(block)
         if (close) {
             closeSignal.call()
         }
+        superNavigator.value = Compass.navigate(url).apply(block)
     }
 
     protected fun toast(text: String?) {

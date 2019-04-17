@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="10dp">
+
+    <ImageView
+        android:id="@+id/imgDiscussImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foreground="@drawable/discuss_img_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgGroupAvatar"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/placeholder_oval" />
+
+    <TextView
+        android:id="@+id/tvGroupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:letterSpacing="0.03"
+        android:textColor="@color/textColorSecondaryReverse"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/imgGroupAvatar"
+        app:layout_constraintStart_toEndOf="@id/imgGroupAvatar"
+        app:layout_constraintTop_toTopOf="@id/imgGroupAvatar"
+        tools:text="DC观影小组" />
+
+    <TextView
+        android:id="@+id/tvDiscussTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:letterSpacing="0.05"
+        android:lineSpacingExtra="1dp"
+        android:shadowColor="@color/black20"
+        android:shadowDy="3"
+        android:shadowRadius="12"
+        android:textColor="@color/textColorPrimaryReverse"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgGroupAvatar"
+        tools:text="雷霆沙赞票房彻底扑街了，连调音师都打不过了" />
+
+    <TextView
+        android:id="@+id/tvDiscussContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:letterSpacing="0.05"
+        android:lineSpacingExtra="2dp"
+        android:shadowColor="@color/black20"
+        android:shadowDy="3"
+        android:shadowRadius="8"
+        android:textColor="@color/textColorPrimaryReverse"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDiscussTitle"
+        tools:text="真的没想到，才第五天票房就连一千万都达不到了，DC的宣发真的烂透了，请我去做宣发都比DC的宣发好。" />
+
+    <TextView
+        android:id="@+id/tvDiscussInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="20dp"
+        android:letterSpacing="0.04"
+        android:textColor="@color/textColorSecondaryReverse"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvDiscussTitle"
+        app:layout_constraintStart_toStartOf="@id/tvDiscussTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvDiscussContent"
+        tools:text="16人讨论 · 刚刚更新" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

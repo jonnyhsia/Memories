@@ -2,7 +2,7 @@
 <resources>
 
     <style name="CompatAppTheme.Common">
-        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
 </resources>

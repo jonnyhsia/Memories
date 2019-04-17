@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_section_one_ui_style"
+    android:orientation="vertical"
+    tools:layout_marginTop="20dp">
+
+    <com.arch.jonnyhsia.ui.TextTabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:x_tabSpacing="16dp"
+        app:x_tabTextSelectedSize="13sp"
+        app:x_tabTextSize="13sp" />
+
+    <com.arch.jonnyhsia.ui.recyclerview.BounceRecyclerView
+        android:id="@+id/recyclerGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:clipToPadding="false"
+        android:nestedScrollingEnabled="false"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        tools:layoutManager="LinearLayoutManager"
+        tools:orientation="horizontal"
+        tools:listitem="@layout/item_simple_group" />
+
+</LinearLayout>

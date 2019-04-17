@@ -8,8 +8,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="20dp"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/ripple_story_card"
-    android:foreground="?selectableItemBackground">
+    android:foreground="@drawable/ripple_story_card_foreground">
 
     <TextView
         android:id="@+id/tvAuthor"
@@ -24,7 +23,7 @@
         android:letterSpacing="0.05"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:textColor="@color/textColorPrimaryReverse"
+        android:textColor="@color/textColorPrimary"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +41,7 @@
         android:ellipsize="end"
         android:letterSpacing="0.05"
         android:maxLines="3"
-        android:textColor="@color/textColorPrimaryReverse"
+        android:textColor="@color/textColorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +61,7 @@
         android:letterSpacing="0.05"
         android:lineSpacingExtra="3dp"
         android:maxLines="10"
-        android:textColor="@color/textColorPrimaryReverse"
+        android:textColor="@color/textColorPrimary"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +80,7 @@
         android:fontFamily="@font/noto_sans_medium"
         android:includeFontPadding="false"
         android:letterSpacing="0.03"
-        android:textColor="@color/textColorCaptionReverse"
+        android:textColor="@color/textColorCaption"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

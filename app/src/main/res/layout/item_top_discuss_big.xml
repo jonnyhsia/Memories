@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/discuss_large_cell_width"
     android:layout_height="252dp"
-    android:layout_marginEnd="4dp">
+    android:layout_marginEnd="4dp"
+    android:foreground="@drawable/ripple_story_card_foreground">
 
     <ImageView
         android:id="@+id/imgDiscuss"
@@ -35,7 +36,7 @@
         android:layout_marginStart="14dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
-        android:textColor="@color/textColorSecondary"
+        android:textColor="@color/textColorSecondaryReverse"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +53,7 @@
         android:layout_marginBottom="6dp"
         android:letterSpacing="0.04"
         android:lineSpacingExtra="4dp"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/textColorPrimaryReverse"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/tvDiscussMeta"

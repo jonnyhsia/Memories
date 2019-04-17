@@ -47,8 +47,6 @@
                     android:layout_marginEnd="20dp"
                     android:letterSpacing="0.05"
                     android:orientation="vertical"
-                    android:shadowColor="@color/black38"
-                    android:shadowRadius="16"
                     android:text="@string/title_timeline"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="32sp"
@@ -69,6 +67,7 @@
                     android:cursorVisible="false"
                     android:drawableStart="@drawable/ic_search_gray"
                     android:drawablePadding="8dp"
+                    android:drawableTint="#000"
                     android:focusableInTouchMode="false"
                     android:fontFamily="@font/noto_sans"
                     android:gravity="center_vertical"
@@ -92,7 +91,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.arch.jonnyhsia.ui.recyclerview.BetterRecyclerView
         android:id="@+id/recyclerTimeline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -109,6 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_marginEnd="20dp"
+        app:layout_behavior="com.jonnyhsia.memories.ui.FabScrollAwareBehavior"
         android:layout_marginBottom="16dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

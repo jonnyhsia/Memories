@@ -5,12 +5,12 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.view.Gravity
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import com.arch.jonnyhsia.foundation.Foundation
-import com.arch.jonnyhsia.foundation.R
 import com.arch.jonnyhsia.foundation.helper.RoundCorner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -42,6 +42,21 @@ fun ImageView.load(source: Any?) {
             .load(source)
             .into(this)
 }
+
+var TextView.displayText: CharSequence?
+    get() = this.text
+    set(value) {
+        if (value.isNullOrEmpty()) {
+            if (visibility != View.GONE) {
+                visibility = View.GONE
+            }
+        } else {
+            text = value
+            if (visibility != View.VISIBLE) {
+                visibility = View.VISIBLE
+            }
+        }
+    }
 
 fun ImageView.load(source: Any?, option: RequestOptions.() -> Unit) {
     if (source == null) {

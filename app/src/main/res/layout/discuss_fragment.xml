@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".page.main.discuss.DiscussFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+        <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/CompatAppTheme.AppBarOverlay"
+            app:contentScrim="@color/windowBackgroundColor"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:scrimAnimationDuration="240">
+            <!--app:layout_behavior="com.google.android.material.appbar.AppBarLayoutSpringBehavior"-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="10dp"
+                app:layout_collapseMode="pin">
+
+                <ImageView
+                    android:id="@+id/imgLoginUser"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvTitle"
+                    tools:src="@drawable/placeholder_oval" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:letterSpacing="0.05"
+                    android:orientation="vertical"
+                    android:text="@string/title_discuss"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/imgLoginUser"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/searchBar"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/selector_search_bar"
+                    android:cursorVisible="false"
+                    android:drawableStart="@drawable/ic_search_gray"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="#000"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search_bar_discuss"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="0.05"
+                    android:longClickable="false"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textAllCaps="true"
+                    android:textColorHint="@color/textColorDisable"
+                    android:textSize="14sp"
+                    android:transitionName="@string/transition_search_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.arch.jonnyhsia.ui.recyclerview.BetterRecyclerView
+        android:id="@+id/recyclerDiscuss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/item_discuss_with_image"
+        tools:orientation="vertical" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

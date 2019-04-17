@@ -7,7 +7,7 @@ import androidx.fragment.app.transaction
 import com.arch.jonnyhsia.compass.api.Route
 import com.arch.jonnyhsia.memories.model.Repository
 import com.jonnyhsia.memories.R
-import com.jonnyhsia.memories.page.main.discover.DiscoverFragment
+import com.jonnyhsia.memories.page.main.discuss.DiscussFragment
 import com.jonnyhsia.memories.page.main.timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -56,10 +56,9 @@ class MainActivity : AppCompatActivity() {
     private fun createFragmentAt(index: Int): Fragment {
         return when (index) {
             0 -> TimelineFragment()
-            1 -> DiscoverFragment()
+            1 -> DiscussFragment()
             2 -> Fragment()
-            3 -> Fragment()
-            4 -> {
+            3 -> {
                 Repository.getMiscDataSource().letWelcomePageEntered(entered = false)
                 Repository.getPassportDataSource().logout()
                 Fragment()
