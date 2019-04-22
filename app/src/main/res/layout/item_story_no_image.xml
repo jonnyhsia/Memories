@@ -50,7 +50,7 @@
         tools:text="不可知的未来"
         tools:visibility="gone" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvStoryContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

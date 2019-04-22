@@ -8,7 +8,8 @@
     android:layout_marginTop="10dp"
     android:layout_marginEnd="20dp"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/placeholder">
+    android:background="@drawable/ripple_gray_rounded"
+    tools:context=".page.main.discuss.binder.DiscussWithoutImageBinder">
 
     <ImageView
         android:id="@+id/imgGroupAvatar"
@@ -18,7 +19,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/placeholder_oval" />
+        tools:src="@drawable/placeholder_dark" />
 
     <TextView
         android:id="@+id/tvGroupName"
@@ -26,14 +27,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:letterSpacing="0.03"
-        android:textSize="12sp"
         android:textColor="@color/textColorSecondary"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/imgGroupAvatar"
         app:layout_constraintStart_toEndOf="@id/imgGroupAvatar"
         app:layout_constraintTop_toTopOf="@id/imgGroupAvatar"
         tools:text="Memories 意见反馈小组" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDiscussTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@id/imgGroupAvatar"
         tools:text="Memories 还没有推出会员服务吗！？强烈要求下一版本添加！" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDiscussContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

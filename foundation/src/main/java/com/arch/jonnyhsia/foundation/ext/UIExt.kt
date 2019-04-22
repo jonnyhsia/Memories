@@ -9,7 +9,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.core.text.PrecomputedTextCompat
+import androidx.core.widget.TextViewCompat
 import com.arch.jonnyhsia.foundation.Foundation
 import com.arch.jonnyhsia.foundation.helper.RoundCorner
 import com.bumptech.glide.Glide
@@ -57,6 +60,29 @@ var TextView.displayText: CharSequence?
             }
         }
     }
+
+fun AppCompatTextView.setTextFuture(charSequence: CharSequence, autoHide: Boolean = true) {
+    if (charSequence.isEmpty() && visibility == View.VISIBLE) {
+        visibility = View.GONE
+        return
+    }
+
+    if (visibility != View.VISIBLE) {
+        visibility = View.VISIBLE
+    }
+
+    // 如果字数少于 20, 直接使用 setText()
+    if (charSequence.length < 20) {
+        text = charSequence
+        return
+    }
+
+    setTextFuture(PrecomputedTextCompat.getTextFuture(
+            charSequence,
+            TextViewCompat.getTextMetricsParams(this),
+            null
+    ))
+}
 
 fun ImageView.load(source: Any?, option: RequestOptions.() -> Unit) {
     if (source == null) {

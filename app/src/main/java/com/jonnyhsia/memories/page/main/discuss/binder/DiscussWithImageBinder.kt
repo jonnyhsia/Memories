@@ -26,7 +26,7 @@ class DiscussWithImageBinder : ItemBinder<DiscussDisplayModel>() {
             }
             tvGroupName.text = item.group.name
             tvDiscussTitle.text = item.title
-            tvDiscussContent.displayText = item.description
+            tvDiscussContent.setTextFuture(item.description)
             tvDiscussInfo.text = "${item.comments}人讨论 · ${item.updateTime}"
 
             itemView.setOnClickListener {

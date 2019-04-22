@@ -7,7 +7,6 @@ import com.arch.jonnyhsia.foundation.component.ItemBinder
 import com.arch.jonnyhsia.memories.model.story.bean.FeaturedStoriesModel
 import com.arch.jonnyhsia.ui.ext.asHorizontalList
 import com.jonnyhsia.memories.R
-import com.jonnyhsia.memories.ui.recyclerview.ReadMoreBinder
 import kotlinx.android.synthetic.main.item_featured.*
 import me.drakeet.multitype.MultiTypeAdapter
 import me.drakeet.multitype.register
@@ -21,7 +20,7 @@ class FeaturedBinder : ItemBinder<FeaturedStoriesModel>() {
         val holder = super.onCreateViewHolder(inflater, parent)
         val adapterOfHolder = MultiTypeAdapter()
         adapterOfHolder.register(SmallStoryBinder())
-        adapterOfHolder.register(ReadMoreBinder())
+        // adapterOfHolder.register(ReadMoreBinder())
         holder.recyclerFeatured.adapter = adapterOfHolder
 
         return holder

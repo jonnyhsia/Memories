@@ -27,7 +27,7 @@
         android:textStyle="bold"
         tools:text="土豆的碎碎念" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvStoryContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -7,6 +7,7 @@ import com.arch.jonnyhsia.foundation.component.ExtViewHolder
 import com.arch.jonnyhsia.foundation.component.ItemBinder
 import com.arch.jonnyhsia.foundation.ext.asAvatar
 import com.arch.jonnyhsia.foundation.ext.loadDrawable
+import com.arch.jonnyhsia.foundation.ext.setTextFuture
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
@@ -43,7 +44,7 @@ class StoryWithoutImageBinder : ItemBinder<StoryDisplayModel>() {
             }
 
             if (!summaryIsDone && item.summary.isNotBlank()) {
-                tvStoryContent.text = item.summary
+                tvStoryContent.setTextFuture(item.summary)
             } else {
                 tvStoryContent.isVisible = false
             }

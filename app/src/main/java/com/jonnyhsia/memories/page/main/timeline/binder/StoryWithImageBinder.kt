@@ -51,7 +51,7 @@ class StoryWithImageBinder : ItemBinder<StoryDisplayModel>() {
             }
 
             if (!summaryIsDone && item.summary.isNotBlank()) {
-                tvStoryContent.text = item.summary
+                tvStoryContent.setTextFuture(item.summary)
             } else {
                 tvStoryContent.isVisible = false
             }

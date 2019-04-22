@@ -5,6 +5,7 @@ import com.arch.jonnyhsia.foundation.component.ItemBinder
 import com.arch.jonnyhsia.foundation.ext.asRounded
 import com.arch.jonnyhsia.foundation.ext.dp
 import com.arch.jonnyhsia.foundation.ext.load
+import com.arch.jonnyhsia.foundation.ext.setTextFuture
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.item_small_story.*
@@ -20,13 +21,13 @@ class SmallStoryBinder : ItemBinder<StoryDisplayModel>() {
                 asRounded(10.dp)
             }
             tvStoryTag.text = item.tags.firstOrNull()
-            if (item.title.isBlank()) {
-                tvStoryContent.text = item.summary
-            } else if (item.summary.isBlank()) {
-                tvStoryContent.text = item.title
-            } else {
-                tvStoryContent.text = "${item.title}\n${item.summary}"
+
+            val text = when {
+                item.title.isBlank() -> item.summary
+                item.summary.isBlank() -> item.title
+                else -> "${item.title}\n${item.summary}"
             }
+            tvStoryContent.setTextFuture(text)
         }
     }
 }
