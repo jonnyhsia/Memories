@@ -3,6 +3,9 @@ package com.arch.jonnyhsia.memories.model.story
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.memories.model.story.bean.*
 import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 object StoryRepository : Repository(), StoryDataSource {
 
@@ -15,13 +18,6 @@ object StoryRepository : Repository(), StoryDataSource {
                         StoryDisplayModel(id = 0, title = "遥遥无期的家。", summary = "", image = "https://i.loli.net/2019/04/09/5cacba1792054.jpg", tags = listOf("土豆碎碎念"), dateText = "11:29AM, 4月8日"),
                         StoryDisplayModel(id = 0, title = "", summary = "原来雅雅是鸡。千真万确的全宇宙最野的鸡。", image = "https://i.loli.net/2019/04/09/5cacbca17d946.jpg", tags = listOf("土豆碎碎念"), dateText = "11:29AM, 4月8日")
                 )),
-//                TopDiscussListModel(title = "圆桌会谈", list = listOf(
-//                        TopDiscussModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc39c3e4.jpg", title = "只狼受难者联盟", description = "誓要宫崎英高跌落神坛", meta = "1,300 用户发言"),
-//                        TopDiscussModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc33fdfb.jpg", title = "你的职业都有哪些不为人知的辛酸", description = "", meta = ""),
-//                        TopDiscussModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc35ae94.jpg", title = "为孩子们征集「未来生活100问」", description = "", meta = ""),
-//                        TopDiscussModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc358c1a.jpg", title = "土豆🥔家好玩吗，还想再去吗~", description = "", meta = ""),
-//                        TopDiscussModel(id = 0, image = "https://i.loli.net/2019/04/09/5cacbfc35414c.jpg", title = "相册里的只有你知道的故事", description = "", meta = "")
-//                )),
                 StoryHeaderModel(title = "Memories", tags = listOf(
                         TagModel(id = 0, text = "日常", icon = "https://i.loli.net/2019/04/09/5cacc06a6c622.jpg"),
                         TagModel(id = 0, text = "情绪", icon = "https://i.loli.net/2019/04/09/5cacbfc32e308.jpg"),
@@ -56,6 +52,9 @@ object StoryRepository : Repository(), StoryDataSource {
                         "每个人的路都不尽相同，我也不知道我在强求什么。\n" +
                         "习惯了和大家一起跑，一转眼跑道上就我一个人。有点沮丧。很不恰当的比喻。…", tags = listOf(), dateText = "1:08AM, 11月22日", image = "", author = AuthorModel(id = 0, nickname = "高能的土豆", avatar = "https://i.loli.net/2019/04/09/5cacb02b09412.png"))
         ))
+                .delay(2500, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
 
 }

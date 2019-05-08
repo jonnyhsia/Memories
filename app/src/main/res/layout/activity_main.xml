@@ -19,6 +19,8 @@
         android:layout_gravity="bottom"
         android:background="@drawable/bg_bottom_navigation"
         android:elevation="8dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         app:x_defaultTab="0">
 
         <!--TODO: 图标需要修改, 不够直白-->

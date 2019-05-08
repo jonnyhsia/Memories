@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.arch.jonnyhsia.compass.Compass
 import com.arch.jonnyhsia.compass.RouteIntent
+import com.arch.jonnyhsia.foundation.rx.OkObserver
+import com.arch.jonnyhsia.foundation.rx.okSubscribe
 import com.arch.jonnyhsia.mirror.logger.Corgi
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -18,6 +20,16 @@ abstract class BaseViewModel : ViewModel(), Corgi, DisposableContainer {
 
     internal val toaster = SingleLiveEvent<String>()
     val closeSignal = SingleLiveEvent<Unit>()
+
+    val emptyView: MutableLiveData<Unit?> by lazy {
+        MutableLiveData<Unit?>()
+    }
+    val refreshLayout: MutableLiveData<Unit?> by lazy {
+        MutableLiveData<Unit?>()
+    }
+    val progressDialog: MutableLiveData<Unit?> by lazy {
+        MutableLiveData<Unit?>()
+    }
 
     val status = MutableLiveData<PageStatus>()
 
@@ -90,10 +102,26 @@ fun <T> Observable<T>.xsubscribe(
     disposable.add(subscribe(onNext, onError, onComplete))
 }
 
-fun <T> Single<T>.xsubscribe(
+inline fun <T> Single<T>.xsubscribe(
         disposable: DisposableContainer,
-        onSuccess: (T) -> Unit,
-        onError: (Throwable) -> Unit = {}
+        crossinline onSuccess: (T) -> Unit,
+        crossinline onError: (Throwable) -> Unit = {}
 ) {
-    disposable.add(subscribe(onSuccess, onError))
+    val okObserver = object : OkObserver<T>() {
+        override fun onSubscribe(d: Disposable) {
+            super.onSubscribe(d)
+            disposable.add(d)
+        }
+
+        override fun onSuccess(t: T) {
+            super.onSuccess(t)
+            onSuccess(t)
+        }
+
+        override fun onError(e: Throwable) {
+            super.onError(e)
+            onError(e)
+        }
+    }
+    this.okSubscribe(okObserver)
 }

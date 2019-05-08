@@ -86,6 +86,8 @@ abstract class Repository {
                     .retryOnConnectionFailure(true)
                     .addNetworkInterceptor(StethoInterceptor())
                     .addInterceptor(customQueryStringInterceptor)
+                    //.record(2000) {
+                    //}
                     .build()
 
             retrofit = Retrofit.Builder()

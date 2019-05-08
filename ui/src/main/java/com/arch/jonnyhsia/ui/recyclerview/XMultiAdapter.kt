@@ -4,7 +4,7 @@ import android.os.Handler
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.jonnyhsia.mirror.logger.Corgi
-import com.arch.jonnyhsia.mirror.logger.debugLog
+import com.arch.jonnyhsia.mirror.logger.logd
 import com.arch.jonnyhsia.ui.ext.lastVisibleItemPosition
 import me.drakeet.multitype.*
 
@@ -146,7 +146,7 @@ open class XMultiAdapter @JvmOverloads constructor(
      * 对应 position 是否到了预加载的界限
      */
     private fun Int.shouldPrefetch(): Boolean {
-        debugLog("position:$this\n" +
+        logd("position:$this\n" +
                 "this + prefetchNumber:${this + prefetchNumber}\n" +
                 "itemCount:$itemCount")
         return this + 1 + prefetchNumber >= itemCount
@@ -198,7 +198,7 @@ open class XMultiAdapter @JvmOverloads constructor(
     }
 
     fun checkShouldFetching(position: Int) {
-        debugLog("prefetchEnabled:$prefetchEnabled\n" +
+        logd("prefetchEnabled:$prefetchEnabled\n" +
                 "state=${state::class.java.simpleName}\n" +
                 "shouldPrefetch:${position.shouldPrefetch()}")
         if (prefetchEnabled &&

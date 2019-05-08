@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'android-aspectjx'
 
 def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
@@ -39,6 +40,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 kapt {
@@ -60,7 +66,8 @@ dependencies {
     implementation project(':foundation')
     implementation project(':model')
     implementation project(':ui')
-    implementation 'com.arch.jonnyhsia:mirror:1.0.0-SNAPSHOT'
+
+    implementation 'com.arch.jonnyhsia:mirror:1.0.1-SNAPSHOT'
     implementation 'com.arch.jonnyhsia:compass:1.0.0-SNAPSHOT'
     kapt 'com.arch.jonnyhsia:compass-compiler:1.0.0-SNAPSHOT'
 

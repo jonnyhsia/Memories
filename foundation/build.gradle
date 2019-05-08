@@ -35,7 +35,7 @@ dependencies {
 
     // arch
     implementation 'com.arch.jonnyhsia:compass:1.0.0-SNAPSHOT'
-    implementation 'com.arch.jonnyhsia:mirror:1.0.0-SNAPSHOT'
+    api 'com.arch.jonnyhsia:mirror:1.0.1-SNAPSHOT'
 
     // foundation
     implementation 'androidx.appcompat:appcompat:1.0.2'

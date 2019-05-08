@@ -1,15 +1,20 @@
 package com.arch.jonnyhsia.foundation.component
 
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
+
+    private var progressDialog: Dialog? = null
 
     abstract val layoutRes: Int
 
@@ -50,6 +55,30 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
         vm.closeSignal.observe(this, Observer {
             finish()
+        })
+    }
+
+    fun enableLiveProgressDialog(observer: Observer<Unit?>? = null) {
+        vm.progressDialog.observe(this, observer ?: Observer {
+            if (it == null) {
+                if (progressDialog?.isShowing == true) {
+                    progressDialog?.dismiss()
+                }
+            } else {
+                if (progressDialog == null) {
+                    progressDialog = AlertDialog.Builder(requireContext())
+                            .setTitle("Loading...")
+                            .setMessage("Be patient, the request will be finished.")
+                            .create()
+                }
+                progressDialog?.show()
+            }
+        })
+    }
+
+    fun enableEmptyView(emptyView: View) {
+        vm.emptyView.observe(this, Observer {
+            emptyView.isVisible = it != null
         })
     }
 
