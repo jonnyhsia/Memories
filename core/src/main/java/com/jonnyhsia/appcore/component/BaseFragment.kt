@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.mirror.logger.Corgi
+import com.jonnyhsia.appcore.okrx.OkNotification
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
 
@@ -51,7 +52,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
         })
     }
 
-    fun enableLiveProgressDialog(observer: Observer<Unit?>? = null) {
+    fun enableLiveProgressDialog(observer: Observer<OkNotification?>? = null) {
         vm.progressDialog.observe(this, observer ?: Observer {
             if (it == null) {
                 if (progressDialog?.isShowing == true) {
@@ -75,11 +76,11 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
         })
     }
 
-    fun enableEmptyView(observer: Observer<Unit?>) {
+    fun enableEmptyView(observer: Observer<OkNotification?>) {
         vm.emptyView.observe(this, observer)
     }
 
-    fun enableRefreshLayout(observer: Observer<Unit?>) {
+    fun enableRefreshLayout(observer: Observer<OkNotification?>) {
         vm.refreshLayout.observe(this, observer)
     }
 

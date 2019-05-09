@@ -11,21 +11,11 @@ import com.jonnyhsia.memories.R
 @Route(name = "Welcome")
 class WelcomeActivity : BaseActivity() {
 
-    private val onUserLoginChanged = Observer<UserModel> {
-        finish()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         showFragmentById(R.id.container) {
             WelcomeFragment()
         }
-
-        LiveBus.observeForever(onUserLoginChanged)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        LiveBus.unsubscribe(onUserLoginChanged)
-    }
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.arch.jonnyhsia.compass.Compass
 import com.arch.jonnyhsia.compass.RouteIntent
 import com.arch.jonnyhsia.mirror.logger.Corgi
+import com.jonnyhsia.appcore.okrx.OkNotification
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -17,14 +18,14 @@ abstract class BaseViewModel : ViewModel(), Corgi, DisposableContainer {
     internal val toaster = SingleLiveEvent<String>()
     val closeSignal = SingleLiveEvent<Unit>()
 
-    val emptyView: MutableLiveData<Unit?> by lazy {
-        MutableLiveData<Unit?>()
+    val emptyView: MutableLiveData<OkNotification?> by lazy {
+        MutableLiveData<OkNotification?>()
     }
-    val refreshLayout: MutableLiveData<Unit?> by lazy {
-        MutableLiveData<Unit?>()
+    val refreshLayout: MutableLiveData<OkNotification?> by lazy {
+        MutableLiveData<OkNotification?>()
     }
-    val progressDialog: MutableLiveData<Unit?> by lazy {
-        MutableLiveData<Unit?>()
+    val progressDialog: MutableLiveData<OkNotification?> by lazy {
+        MutableLiveData<OkNotification?>()
     }
 
     private var disposables: CompositeDisposable? = null

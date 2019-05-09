@@ -9,15 +9,15 @@ import io.reactivex.internal.disposables.DisposableContainer
 
 abstract class OkObserver<T> : SingleObserver<T> {
 
-    private var emptyView: MutableLiveData<Unit?>? = null
-    private var refreshLayout: MutableLiveData<Unit?>? = null
-    private var progressDialog: MutableLiveData<Unit?>? = null
+    private var emptyView: MutableLiveData<OkNotification?>? = null
+    private var refreshLayout: MutableLiveData<OkNotification?>? = null
+    private var progressDialog: MutableLiveData<OkNotification?>? = null
 
     @CallSuper
     override fun onSubscribe(d: Disposable) {
         // 显示刷新与进度条
-        refreshLayout.callIfRealChanged(Unit)
-        progressDialog.callIfRealChanged(Unit)
+        refreshLayout.callIfRealChanged(OkNotification)
+        progressDialog.callIfRealChanged(OkNotification)
     }
 
     @CallSuper
@@ -31,7 +31,7 @@ abstract class OkObserver<T> : SingleObserver<T> {
     @CallSuper
     override fun onError(e: Throwable) {
         // 显示空布局, 隐藏刷新与进度条
-        emptyView.callIfRealChanged(Unit)
+        emptyView.callIfRealChanged(OkNotification)
         refreshLayout.callIfRealChanged()
         progressDialog.callIfRealChanged()
     }
