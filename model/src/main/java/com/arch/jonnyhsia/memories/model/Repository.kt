@@ -48,7 +48,7 @@ abstract class Repository {
      * 无法比较时返回 [Int.MIN_VALUE]
      */
     @Throws(NumberFormatException::class)
-    protected fun String.campareVersion(another: String): Int {
+    protected fun String.compareVersion(another: String): Int {
         if ("Unknown".equals(this, true) || "Unknown".equals(another, true)) {
             return Int.MIN_VALUE
         }
@@ -86,8 +86,6 @@ abstract class Repository {
                     .retryOnConnectionFailure(true)
                     .addNetworkInterceptor(StethoInterceptor())
                     .addInterceptor(customQueryStringInterceptor)
-                    //.record(2000) {
-                    //}
                     .build()
 
             retrofit = Retrofit.Builder()

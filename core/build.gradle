@@ -3,11 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion compile_sdk
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion min_sdk
+        targetSdkVersion target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -39,6 +39,7 @@ dependencies {
     // foundation
     implementation "androidx.appcompat:appcompat:$appcompat"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle"
     implementation "org.koin:koin-android:$koin"

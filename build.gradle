@@ -35,6 +35,10 @@ task clean(type: Delete) {
 }
 
 ext {
+    min_sdk = 21
+    target_sdk = 28
+    compile_sdk = 28
+
     mirror = '1.0.1-SNAPSHOT'
     compass = '1.0.0-SNAPSHOT'
 
@@ -58,7 +62,7 @@ ext {
     statusbar = '2.1.4'
     bugly = '2.6.6.1'
 
-    stetho = '1.5.0'
+    stetho = '1.5.1'
     leakcanary = '1.6.3'
     junit = '4.12'
     test_runner = '1.1.1'

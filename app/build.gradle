@@ -8,12 +8,12 @@ def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion compile_sdk
 
     defaultConfig {
         applicationId "com.jonnyhsia.memories"
         minSdkVersion 23
-        targetSdkVersion 28
+        targetSdkVersion target_sdk
         versionCode rootProject.version_code
         versionName rootProject.version_name
 
