@@ -33,25 +33,25 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // arch
-    implementation 'com.arch.jonnyhsia:compass:1.0.0-SNAPSHOT'
-    api 'com.arch.jonnyhsia:mirror:1.0.1-SNAPSHOT'
+    implementation "com.arch.jonnyhsia:compass:$compass"
+    api "com.arch.jonnyhsia:mirror:$mirror"
 
     // foundation
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.fragment:fragment-ktx:1.0.0'
-    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
-    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.0.0'
-    implementation 'org.koin:koin-android:2.0.0-rc-2'
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle"
+    implementation "org.koin:koin-android:$koin"
 
     // glide
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    implementation 'me.drakeet.multitype:multitype:3.5.0'
+    implementation "com.github.bumptech.glide:glide:$glide"
+    implementation "me.drakeet.multitype:multitype:$multitype"
 
     // rx
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test:runner:$test_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressor"
 }
