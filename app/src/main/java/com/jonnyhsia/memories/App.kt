@@ -9,6 +9,7 @@ import com.arch.jonnyhsia.mirror.logger.Corgi
 import com.facebook.stetho.Stetho
 import com.jonnyhsia.appcore.AppCore
 import com.jonnyhsia.appcore.ext.isMainProcess
+import com.jonnyhsia.appcore.livebus.LiveBus
 import com.jonnyhsia.memories.router.LoginInterceptor
 import com.jonnyhsia.memories.router.WebInterceptor
 import com.jonnyhsia.memories.ui.showTrophyToast

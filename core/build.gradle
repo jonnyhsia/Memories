@@ -39,6 +39,7 @@ dependencies {
     // foundation
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.fragment:fragment-ktx:1.0.0'
+    implementation 'androidx.core:core-ktx:1.0.2'
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
     implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.0.0'
     implementation 'org.koin:koin-android:2.0.0-rc-2'

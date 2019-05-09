@@ -1,71 +1,87 @@
 package com.jonnyhsia.appcore.livebus
 
+import android.os.Looper
 import androidx.collection.ArrayMap
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.arch.jonnyhsia.mirror.logger.Corgi
+import com.arch.jonnyhsia.mirror.logger.logw
 
-object LiveBus {
+object LiveBus : Corgi {
 
-    // 使用 LiveBus 前必须先指定 Container Type
-    private val bus: MutableMap<String, LiveEvent<Any>>
+    private val bus = ArrayMap<String, MutableLiveData<Any>>()
 
-    init {
-        bus = when (Config.container) {
-            is BusContainerType.ArrayMap, null -> ArrayMap()
-            is BusContainerType.HashMap -> HashMap()
+    /**
+     * 发送事件
+     */
+    fun dispatch(value: Any) {
+        val branch = value::class.java.canonicalName
+                ?: throw IllegalArgumentException("不支持匿名对象")
+        val liveData = bus[branch]
+        if (liveData == null) {
+            logw("你还没有注册相应的 LiveData")
+            return
+        }
+
+        if (isMainThread()) {
+            liveData.value = value
+        } else {
+            liveData.postValue(value)
         }
     }
 
     inline fun <reified T : Any> observe(owner: LifecycleOwner, observer: Observer<T>) {
-        with<T>(T::class.java.canonicalName!!).observe(owner, observer)
+        val branch = T::class.java.canonicalName
+                ?: throw IllegalArgumentException("不支持匿名对象")
+        val liveData = branchOf<T>(branch)
+        if (liveData == null) {
+            logw("你还没有注册相应的 LiveData")
+            return
+        }
+
+        liveData.observe(owner, observer)
     }
 
+    /**
+     * 无视 Lifecycle 进行观察，需要手动注销监听
+     */
     inline fun <reified T : Any> observeForever(observer: Observer<T>) {
-        with<T>(T::class.java.canonicalName!!).observeForever(observer)
-    }
-
-    inline fun <reified T : Any> dispatch(value: T, delay: Long = 0) {
-        with<T>(T::class.java.canonicalName!!).dispatch(value, delay)
-    }
-
-    inline fun <reified T : Any> unsubscribe(observer: Observer<T>) {
-        with<T>(T::class.java.canonicalName!!).unsubscribe(observer)
-    }
-
-    fun <T : Any> with(key: String): LiveObservable<T> {
-        if (!isKeyRegistered(key)) {
-            return registerKey(key)
+        val branch = T::class.java.canonicalName
+                ?: throw IllegalArgumentException("不支持匿名对象")
+        val liveData = branchOf<T>(branch)
+        if (liveData == null) {
+            logw("你还没有注册相应的 LiveData")
+            return
         }
-        return observableOf(key)
+
+        liveData.observeForever(observer)
     }
 
-    private fun <T : Any> registerKey(key: String): LiveObservable<T> {
-        val liveEvent = LiveEvent<T>(key)
-        bus.put(key, liveEvent as LiveEvent<Any>)
-        return liveEvent
-    }
-
-    private fun <T : Any> observableOf(key: String): LiveObservable<T> {
-        val liveEvent = bus[key]
-        return liveEvent as LiveObservable<T>
-    }
-
-    private fun isKeyRegistered(key: String): Boolean {
-        return bus.containsKey(key)
-    }
-
-    fun unregister(key: String) {
-        bus.remove(key)
-    }
-
-    object Config {
-        var container: BusContainerType? = null
-
-        operator fun invoke(config: Config.() -> Unit) {
-            config(this)
+    /**
+     * 无视 Lifecycle 进行观察，需要手动注销监听
+     */
+    inline fun <reified T : Any> removeObserver(observer: Observer<T>) {
+        val branch = T::class.java.canonicalName
+                ?: throw IllegalArgumentException("不支持匿名对象")
+        val liveData = branchOf<T>(branch)
+        if (liveData == null) {
+            logw("你还没有注册相应的 LiveData")
+            return
         }
+
+        liveData.removeObserver(observer)
     }
+
+    /**
+     * 为 inline function 提供私有 API，别用
+     */
+    fun <T : Any> branchOf(clz: String): MutableLiveData<T>? {
+        return bus[clz] as? MutableLiveData<T>
+    }
+
+    private fun isMainThread(): Boolean {
+        return Looper.myLooper() == Looper.getMainLooper()
+    }
+
 }
-
-val Any.liveBusKey: String
-    get() = this::class.java.canonicalName!!

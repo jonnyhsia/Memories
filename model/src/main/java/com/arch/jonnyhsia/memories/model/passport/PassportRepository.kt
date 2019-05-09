@@ -2,6 +2,7 @@ package com.arch.jonnyhsia.memories.model.passport
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.memories.model.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.passport.bean.LoginType

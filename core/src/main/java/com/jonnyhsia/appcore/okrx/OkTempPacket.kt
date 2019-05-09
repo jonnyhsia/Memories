@@ -8,9 +8,9 @@ import io.reactivex.Single
  * OkObserver 的临时封装信息
  */
 class OkTempPacket {
-    internal var emptyView: MutableLiveData<Unit?>? = null
-    internal var refreshLayout: MutableLiveData<Unit?>? = null
-    internal var progressDialog: MutableLiveData<Unit?>? = null
+    internal var emptyView: MutableLiveData<OkNotification?>? = null
+    internal var refreshLayout: MutableLiveData<OkNotification?>? = null
+    internal var progressDialog: MutableLiveData<OkNotification?>? = null
 }
 
 /**
@@ -35,7 +35,7 @@ internal fun removePacketOf(hash: Int) {
 /**
  * 临时保存 empty view 的引用
  */
-fun <T> Single<T>.attachEmptyView(liveData: MutableLiveData<Unit?>?): Single<T> {
+fun <T> Single<T>.attachEmptyView(liveData: MutableLiveData<OkNotification?>?): Single<T> {
     val packet = okPacketOf(this.hashCode())
     if (packet == null) {
         val newPacket = OkTempPacket()
@@ -51,7 +51,7 @@ fun <T> Single<T>.attachEmptyView(liveData: MutableLiveData<Unit?>?): Single<T> 
 /**
  * 临时保存 refresh layout 的引用
  */
-fun <T> Single<T>.attachRefreshLayout(liveData: MutableLiveData<Unit?>?): Single<T> {
+fun <T> Single<T>.attachRefreshLayout(liveData: MutableLiveData<OkNotification?>?): Single<T> {
     val packet = okPacketOf(this.hashCode())
     if (packet == null) {
         val newPacket = OkTempPacket()
@@ -67,7 +67,7 @@ fun <T> Single<T>.attachRefreshLayout(liveData: MutableLiveData<Unit?>?): Single
 /**
  * 临时保存 progress 的引用
  */
-fun <T> Single<T>.attachProgressDialog(liveData: MutableLiveData<Unit?>?): Single<T> {
+fun <T> Single<T>.attachProgressDialog(liveData: MutableLiveData<OkNotification?>?): Single<T> {
     val packet = okPacketOf(this.hashCode())
     if (packet == null) {
         val newPacket = OkTempPacket()
