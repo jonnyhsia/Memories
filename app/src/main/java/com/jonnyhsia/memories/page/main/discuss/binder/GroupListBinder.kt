@@ -2,11 +2,11 @@ package com.jonnyhsia.memories.page.main.discuss.binder
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
 import com.arch.jonnyhsia.memories.model.group.bean.GroupListModel
 import com.arch.jonnyhsia.ui.ext.asHorizontalList
 import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.item_group_list.*
 import me.drakeet.multitype.register

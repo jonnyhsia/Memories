@@ -1,7 +1,7 @@
 package com.jonnyhsia.memories.page.welcome
 
-import com.arch.jonnyhsia.foundation.component.BaseViewModel
 import com.arch.jonnyhsia.memories.model.msic.MiscDataSource
+import com.jonnyhsia.appcore.component.BaseViewModel
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
 import io.reactivex.Observable

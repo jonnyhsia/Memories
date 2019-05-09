@@ -3,12 +3,12 @@ package com.jonnyhsia.memories
 import android.app.Application
 import android.os.Looper
 import com.arch.jonnyhsia.compass.Compass
-import com.arch.jonnyhsia.foundation.Foundation
-import com.arch.jonnyhsia.foundation.ext.isMainProcess
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.mirror.bugnets.Bugnets
 import com.arch.jonnyhsia.mirror.logger.Corgi
 import com.facebook.stetho.Stetho
+import com.jonnyhsia.appcore.AppCore
+import com.jonnyhsia.appcore.ext.isMainProcess
 import com.jonnyhsia.memories.router.LoginInterceptor
 import com.jonnyhsia.memories.router.WebInterceptor
 import com.jonnyhsia.memories.ui.showTrophyToast
@@ -16,7 +16,6 @@ import com.squareup.leakcanary.LeakCanary
 import com.tencent.bugly.crashreport.CrashReport
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.android.schedulers.AndroidSchedulers
-import org.greenrobot.eventbus.EventBus
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import kotlin.properties.Delegates
@@ -38,13 +37,19 @@ class App : Application() {
         RxAndroidPlugins.setMainThreadSchedulerHandler {
             AndroidSchedulers.from(Looper.getMainLooper(), true)
         }
-        Foundation.attachApplication(this)
+        setupAppCore()
         setupKoin()
         setupModel()
-        EventBus.builder().addIndex(AppEventBusIndex()).installDefaultEventBus()
         setupCompass()
         setupMirror()
         setupDebugUtil()
+    }
+
+    private fun setupAppCore() {
+        AppCore.attachApplication(this)
+        // LiveBus.Config {
+        //     container = BusContainerType.ArrayMap()
+        // }
     }
 
     private fun setupModel() {

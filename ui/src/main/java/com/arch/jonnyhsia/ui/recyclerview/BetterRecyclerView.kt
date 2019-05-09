@@ -83,10 +83,10 @@ open class BetterRecyclerView @JvmOverloads constructor(
     }
 
     override fun fling(velocityX: Int, velocityY: Int): Boolean {
-        var vy = velocityY
+        val vy = velocityY
 
         // if  between [0, 1[ => slowdown
 
-        return super.fling(velocityX, (velocityY * FLING_SPEED_FACTOR).toInt())
+        return super.fling(velocityX, (vy * FLING_SPEED_FACTOR).toInt())
     }
 }

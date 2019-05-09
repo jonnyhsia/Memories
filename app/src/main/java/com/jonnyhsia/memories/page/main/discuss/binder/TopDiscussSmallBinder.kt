@@ -2,12 +2,12 @@ package com.jonnyhsia.memories.page.main.discuss.binder
 
 import android.widget.FrameLayout
 import androidx.core.view.updateLayoutParams
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
-import com.arch.jonnyhsia.foundation.ext.asRounded
-import com.arch.jonnyhsia.foundation.ext.dp
-import com.arch.jonnyhsia.foundation.ext.load
 import com.arch.jonnyhsia.memories.model.story.bean.TopDiscussModel
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
+import com.jonnyhsia.appcore.ext.asRounded
+import com.jonnyhsia.appcore.ext.dp
+import com.jonnyhsia.appcore.ext.load
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.item_top_discuss_small.*
 

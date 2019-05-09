@@ -1,6 +1,6 @@
 package com.arch.jonnyhsia.memories.model.trophy
 
-import com.arch.jonnyhsia.foundation.model.DataSource
+import com.arch.jonnyhsia.memories.model.DataSource
 import com.arch.jonnyhsia.memories.model.trophy.bean.Trophy
 
 interface TrophyDataSource : DataSource {

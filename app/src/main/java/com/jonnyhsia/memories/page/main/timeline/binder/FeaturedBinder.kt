@@ -2,10 +2,10 @@ package com.jonnyhsia.memories.page.main.timeline.binder
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
 import com.arch.jonnyhsia.memories.model.story.bean.FeaturedStoriesModel
 import com.arch.jonnyhsia.ui.ext.asHorizontalList
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.item_featured.*
 import me.drakeet.multitype.MultiTypeAdapter

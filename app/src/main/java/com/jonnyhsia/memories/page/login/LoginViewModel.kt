@@ -1,11 +1,11 @@
 package com.jonnyhsia.memories.page.login
 
 import androidx.lifecycle.MutableLiveData
-import com.arch.jonnyhsia.foundation.component.BaseViewModel
-import com.arch.jonnyhsia.foundation.component.xsubscribe
-import com.arch.jonnyhsia.foundation.ext.isValidEmail
 import com.arch.jonnyhsia.memories.model.passport.PassportDataSource
 import com.arch.jonnyhsia.memories.model.passport.bean.LoginType
+import com.jonnyhsia.appcore.component.BaseViewModel
+import com.jonnyhsia.appcore.ext.isValidEmail
+import com.jonnyhsia.appcore.okrx.okSubscribe
 
 class LoginViewModel(
         private val entry: String,
@@ -30,7 +30,7 @@ class LoginViewModel(
         }
 
         passportDataSource.checkUserLoginEntry(email)
-                .xsubscribe(this, onSuccess = {
+                .okSubscribe(this, onSuccess = {
                     if (loginType.value != it) {
                         loginType.value = it
                     }
@@ -42,7 +42,7 @@ class LoginViewModel(
             is LoginType.LoginDirectly,
             is LoginType.LoginWithPassword -> {
                 passportDataSource.loginWithCode(email, password)
-                        .xsubscribe(this, onSuccess = {
+                        .okSubscribe(this, onSuccess = {
                             navigate(url = "memo://Main", close = true)
                         }, onError = {
                             toast(it.message)
@@ -50,7 +50,7 @@ class LoginViewModel(
             }
             is LoginType.Register -> {
                 passportDataSource.register(email, password)
-                        .xsubscribe(this, onSuccess = {
+                        .okSubscribe(this, onSuccess = {
                             navigate(url = "memo://Main", close = true)
                         }, onError = {
                             toast(it.message)

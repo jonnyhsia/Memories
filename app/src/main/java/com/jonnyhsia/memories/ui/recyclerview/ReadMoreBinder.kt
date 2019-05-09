@@ -2,8 +2,8 @@ package com.jonnyhsia.memories.ui.recyclerview
 
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
 import com.jonnyhsia.memories.R
 
 class ReadMoreModel(

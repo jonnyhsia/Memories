@@ -1,11 +1,11 @@
 package com.jonnyhsia.memories.page.main.discuss.binder
 
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
-import com.arch.jonnyhsia.foundation.ext.asAvatar
-import com.arch.jonnyhsia.foundation.ext.load
-import com.arch.jonnyhsia.foundation.ext.setTextFuture
 import com.arch.jonnyhsia.memories.model.story.bean.DiscussDisplayModel
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
+import com.jonnyhsia.appcore.ext.asAvatar
+import com.jonnyhsia.appcore.ext.load
+import com.jonnyhsia.appcore.ext.setTextFuture
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.item_discuss_without_image.*
 

@@ -5,10 +5,10 @@ import android.view.MotionEvent
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
-import com.arch.jonnyhsia.foundation.ext.*
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
+import com.jonnyhsia.appcore.ext.*
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
 import kotlinx.android.synthetic.main.item_story_with_image.*

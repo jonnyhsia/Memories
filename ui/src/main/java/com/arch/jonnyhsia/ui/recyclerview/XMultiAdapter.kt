@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.jonnyhsia.mirror.logger.Corgi
 import com.arch.jonnyhsia.mirror.logger.logd
+import com.arch.jonnyhsia.mirror.logger.loge
 import com.arch.jonnyhsia.ui.ext.lastVisibleItemPosition
 import me.drakeet.multitype.*
 
@@ -237,7 +238,7 @@ open class XMultiAdapter @JvmOverloads constructor(
 
     fun showLoading() {
         if (!isTypeRegistered<State.Loading>()) {
-            error("没注册Loading的binder")
+            loge(null, "没注册Loading的binder")
             // register(LoadingViewBinder())
             return
         }

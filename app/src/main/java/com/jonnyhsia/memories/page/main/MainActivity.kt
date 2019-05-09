@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
 import com.arch.jonnyhsia.compass.api.Route
-import com.arch.jonnyhsia.memories.model.Repository
 import com.jonnyhsia.memories.R
+import com.jonnyhsia.memories.page.main.account.AccountFragment
 import com.jonnyhsia.memories.page.main.discuss.DiscussFragment
 import com.jonnyhsia.memories.page.main.timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -59,9 +59,9 @@ class MainActivity : AppCompatActivity() {
             1 -> DiscussFragment()
             2 -> Fragment()
             3 -> {
-                Repository.getMiscDataSource().letWelcomePageEntered(entered = false)
-                Repository.getPassportDataSource().logout()
-                Fragment()
+                // Repository.getMiscDataSource().letWelcomePageEntered(entered = false)
+                // Repository.getPassportDataSource().logout()
+                AccountFragment()
             }
             else -> throw RuntimeException("错误的索引")
         }

@@ -3,10 +3,10 @@ package com.jonnyhsia.memories.page.welcome
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import com.arch.jonnyhsia.foundation.component.BaseFragment
-import com.arch.jonnyhsia.foundation.ext.Colors
-import com.arch.jonnyhsia.foundation.ext.setForeground
-import com.arch.jonnyhsia.foundation.ext.spannable
+import com.jonnyhsia.appcore.component.BaseFragment
+import com.jonnyhsia.appcore.ext.Colors
+import com.jonnyhsia.appcore.ext.setForeground
+import com.jonnyhsia.appcore.ext.spannable
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.welcome_fragment.*
 import me.drakeet.multitype.MultiTypeAdapter

@@ -7,12 +7,12 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import com.arch.jonnyhsia.foundation.component.BaseFragment
-import com.arch.jonnyhsia.foundation.component.xsubscribe
-import com.arch.jonnyhsia.foundation.ext.Colors
-import com.arch.jonnyhsia.foundation.ext.dp
 import com.arch.jonnyhsia.memories.model.passport.bean.LoginType
 import com.jakewharton.rxbinding2.widget.textChanges
+import com.jonnyhsia.appcore.component.BaseFragment
+import com.jonnyhsia.appcore.component.xsubscribe
+import com.jonnyhsia.appcore.ext.Colors
+import com.jonnyhsia.appcore.ext.dp
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.kit.KeyboardWatcher
 import io.reactivex.android.schedulers.AndroidSchedulers

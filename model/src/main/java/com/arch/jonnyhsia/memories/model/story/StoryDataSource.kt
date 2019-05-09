@@ -1,6 +1,6 @@
 package com.arch.jonnyhsia.memories.model.story
 
-import com.arch.jonnyhsia.foundation.model.DataSource
+import com.arch.jonnyhsia.memories.model.DataSource
 import io.reactivex.Single
 
 interface StoryDataSource : DataSource {

@@ -1,6 +1,6 @@
 package com.arch.jonnyhsia.memories.model.passport
 
-import com.arch.jonnyhsia.foundation.model.DataSource
+import com.arch.jonnyhsia.memories.model.DataSource
 import com.arch.jonnyhsia.memories.model.passport.bean.LoginType
 import com.arch.jonnyhsia.memories.model.passport.bean.UserModel
 import io.reactivex.Single

@@ -3,9 +3,7 @@ package com.jonnyhsia.memories.page.main
 import androidx.lifecycle.ViewModel
 import com.arch.jonnyhsia.compass.Compass
 import com.arch.jonnyhsia.compass.RouteIntent
-import com.arch.jonnyhsia.foundation.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.msic.MiscDataSource
-import org.greenrobot.eventbus.Subscribe
 
 class MainViewModel(
         private val miscDataSource: MiscDataSource
@@ -21,9 +19,5 @@ class MainViewModel(
         }
 
         return null
-    }
-
-    @Subscribe
-    fun onLoginEvent(event: LoginEvent) {
     }
 }

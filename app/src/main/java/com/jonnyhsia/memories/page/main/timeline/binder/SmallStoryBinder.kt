@@ -1,12 +1,12 @@
 package com.jonnyhsia.memories.page.main.timeline.binder
 
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
-import com.arch.jonnyhsia.foundation.ext.asRounded
-import com.arch.jonnyhsia.foundation.ext.dp
-import com.arch.jonnyhsia.foundation.ext.load
-import com.arch.jonnyhsia.foundation.ext.setTextFuture
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
+import com.jonnyhsia.appcore.ext.asRounded
+import com.jonnyhsia.appcore.ext.dp
+import com.jonnyhsia.appcore.ext.load
+import com.jonnyhsia.appcore.ext.setTextFuture
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.item_small_story.*
 

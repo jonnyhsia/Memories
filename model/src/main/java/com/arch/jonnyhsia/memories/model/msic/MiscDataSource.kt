@@ -1,6 +1,6 @@
 package com.arch.jonnyhsia.memories.model.msic
 
-import com.arch.jonnyhsia.foundation.model.DataSource
+import com.arch.jonnyhsia.memories.model.DataSource
 import com.arch.jonnyhsia.memories.model.passport.bean.UserModel
 
 interface MiscDataSource : DataSource {

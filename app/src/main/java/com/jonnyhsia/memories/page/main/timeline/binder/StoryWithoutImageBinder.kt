@@ -3,12 +3,12 @@ package com.jonnyhsia.memories.page.main.timeline.binder
 import android.view.Gravity
 import android.view.MotionEvent
 import androidx.core.view.isVisible
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
-import com.arch.jonnyhsia.foundation.ext.asAvatar
-import com.arch.jonnyhsia.foundation.ext.loadDrawable
-import com.arch.jonnyhsia.foundation.ext.setTextFuture
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
+import com.jonnyhsia.appcore.ext.asAvatar
+import com.jonnyhsia.appcore.ext.loadDrawable
+import com.jonnyhsia.appcore.ext.setTextFuture
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
 import kotlinx.android.synthetic.main.item_story_no_image.*

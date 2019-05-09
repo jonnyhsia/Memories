@@ -1,9 +1,9 @@
 package com.jonnyhsia.memories.page.main.discuss
 
 import androidx.lifecycle.MutableLiveData
-import com.arch.jonnyhsia.foundation.component.BaseViewModel
-import com.arch.jonnyhsia.foundation.component.xsubscribe
 import com.arch.jonnyhsia.memories.model.group.GroupDataSource
+import com.jonnyhsia.appcore.component.BaseViewModel
+import com.jonnyhsia.appcore.okrx.okSubscribe
 
 class DiscussViewModel(
         private val groupDataSource: GroupDataSource
@@ -13,7 +13,7 @@ class DiscussViewModel(
 
     init {
         groupDataSource.getList()
-                .xsubscribe(this, onSuccess = {
+                .okSubscribe(this, onSuccess = {
                     discussList.value = it
                 })
     }

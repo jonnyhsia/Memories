@@ -2,7 +2,7 @@ package com.jonnyhsia.memories.page.main.account
 
 import android.os.Bundle
 import android.view.View
-import com.arch.jonnyhsia.foundation.component.BaseFragment
+import com.jonnyhsia.appcore.component.BaseFragment
 import com.jonnyhsia.memories.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

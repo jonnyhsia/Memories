@@ -3,12 +3,15 @@ package com.jonnyhsia.memories.page.main.timeline
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.arch.jonnyhsia.foundation.component.BaseFragment
+import com.arch.jonnyhsia.memories.model.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
+import com.arch.jonnyhsia.mirror.logger.logd
 import com.arch.jonnyhsia.ui.ext.asVerticalList
 import com.arch.jonnyhsia.ui.ext.firstVisibleItemPosition
 import com.arch.jonnyhsia.ui.ext.isExpanded
 import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
+import com.jonnyhsia.appcore.component.BaseFragment
+import com.jonnyhsia.appcore.livebus.LiveBus
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.TabDoubleTap
 import com.jonnyhsia.memories.page.main.discuss.binder.TopDiscussListBinder
@@ -29,6 +32,10 @@ class TimelineFragment : BaseFragment<TimelineViewModel>(), TabDoubleTap {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        enableLiveProgressDialog()
+        enableEmptyView(emptyView)
+
         // collapsingToolbar.setPadding(0, statusBarHeight, 0, 0)
         adapter = XMultiAdapter().apply {
             register(FeaturedBinder())
@@ -47,6 +54,14 @@ class TimelineFragment : BaseFragment<TimelineViewModel>(), TabDoubleTap {
 
         vm.timeline.observe(this, Observer {
             adapter.setModels(it)
+        })
+
+        fabPost.setOnClickListener {
+            vm.xxxxxxxx()
+        }
+
+        LiveBus.observe<LoginEvent>(this, Observer {
+            logd("Timeline: 登录登出了")
         })
     }
 

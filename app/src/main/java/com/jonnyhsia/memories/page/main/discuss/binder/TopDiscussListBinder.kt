@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.arch.jonnyhsia.foundation.component.ExtViewHolder
-import com.arch.jonnyhsia.foundation.component.ItemBinder
 import com.arch.jonnyhsia.memories.model.story.bean.TopDiscussListModel
 import com.arch.jonnyhsia.memories.model.story.bean.TopDiscussModel
 import com.arch.jonnyhsia.ui.ext.asGridList
 import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
+import com.jonnyhsia.appcore.component.ExtViewHolder
+import com.jonnyhsia.appcore.component.ItemBinder
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.ui.recyclerview.ReadMoreBinder
 import kotlinx.android.synthetic.main.item_top_discuss_list.*

@@ -3,10 +3,13 @@ package com.jonnyhsia.memories.page.main.discuss
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.arch.jonnyhsia.foundation.component.BaseFragment
+import com.arch.jonnyhsia.memories.model.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.story.bean.DiscussDisplayModel
+import com.arch.jonnyhsia.mirror.logger.logd
 import com.arch.jonnyhsia.ui.ext.asVerticalList
 import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
+import com.jonnyhsia.appcore.component.BaseFragment
+import com.jonnyhsia.appcore.livebus.LiveBus
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.discuss.binder.*
 import kotlinx.android.synthetic.main.discuss_fragment.*
@@ -41,6 +44,10 @@ class DiscussFragment : BaseFragment<DiscussViewModel>() {
 
         vm.discussList.observe(this, Observer {
             adapter.setModels(it)
+        })
+
+        LiveBus.observe<LoginEvent>(this, Observer {
+            logd("Discuss: 登录登出")
         })
     }
 }
