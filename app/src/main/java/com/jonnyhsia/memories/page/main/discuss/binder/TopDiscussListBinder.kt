@@ -19,8 +19,9 @@ class TopDiscussListBinder : ItemBinder<TopDiscussListModel>() {
     override val itemViewRes: Int
         get() = R.layout.item_top_discuss_list
 
-    override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): ExtViewHolder {
-        val holder = super.onCreateViewHolder(inflater, parent)
+    override fun onViewHolderCreated(holder: ExtViewHolder) {
+        super.onViewHolderCreated(holder)
+
         holder.recyclerDiscuss.adapter = XMultiAdapter().apply {
             register(ReadMoreBinder())
             register(TopDiscussModel::class)
@@ -36,7 +37,6 @@ class TopDiscussListBinder : ItemBinder<TopDiscussListModel>() {
                 }
             }
         }
-        return holder
     }
 
     override fun onBindViewHolder(holder: ExtViewHolder, item: TopDiscussListModel) {

@@ -7,12 +7,15 @@
     tools:context=".page.main.account.AccountFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -22,11 +25,11 @@
                     android:id="@+id/imgAvatar"
                     android:layout_width="92dp"
                     android:layout_height="92dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="56dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/placeholder_avatar_small" />
+                    tools:src="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/tvUsername"
@@ -38,17 +41,108 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/product_sans"
                     android:maxLines="1"
+                    android:text="Supotato"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgAvatar"
-                    tools:text="Supotato" />
+                    app:layout_constraintTop_toBottomOf="@id/imgAvatar" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="80dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ripple_circular_stroke"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/product_sans"
+                    android:maxLines="1"
+                    android:paddingStart="16dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="6dp"
+                    android:text="jonnyhsia@gmail.com"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUsername" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="pin"
+                app:title="">
+
+                <ImageButton
+                    android:id="@+id/btnSettings"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="12dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_settings" />
+
+                <ImageButton
+                    android:id="@+id/btnInbox"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="end"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/ic_nav_inbox" />
+
+            </androidx.appcompat.widget.Toolbar>
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/accountTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:tabGravity="fill"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorColor="@color/textColorPrimary"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="@color/divider"
+            app:tabSelectedTextColor="@color/textColorPrimary"
+            app:tabTextAppearance="@style/AccountTabText"
+            app:tabTextColor="@color/textColorSecondary"
+            app:tabUnboundedRipple="true">
+
+            <!--<com.google.android.material.tabs.TabItem-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="07\n原创" />-->
+
+            <!--<com.google.android.material.tabs.TabItem-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="07\n原创" />-->
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pagerAccount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,6 +5,7 @@ import androidx.core.content.edit
 import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.memories.model.event.LoginEvent
+import com.arch.jonnyhsia.memories.model.passport.bean.LevelInfoModel
 import com.arch.jonnyhsia.memories.model.passport.bean.LoginType
 import com.arch.jonnyhsia.memories.model.passport.bean.UserModel
 import com.jonnyhsia.appcore.livebus.LiveBus
@@ -12,7 +13,6 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 
 object PassportRepository : Repository(), PassportDataSource {
-
     // private val passportApi = inflateApi<PassportApi>()
 
     private val passport: SharedPreferences by lazy {
@@ -99,5 +99,10 @@ object PassportRepository : Repository(), PassportDataSource {
             letWelcomePageEntered()
             saveLatestUserInfo(user)
         }
+    }
+
+    override fun getLevelInfo(): Single<LevelInfoModel> {
+        return Single.just(LevelInfoModel(levelQuote = "A memory a day, Keep the Amnesia away.",
+                currentLevel = "LV2", nextLevel = "LV3", levelUpCondition = "再记录<font color='#FF2952'> 3 篇 </font>可升级至 LV3"))
     }
 }

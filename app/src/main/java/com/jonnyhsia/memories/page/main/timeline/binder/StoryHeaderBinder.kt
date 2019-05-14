@@ -16,13 +16,13 @@ class StoryHeaderBinder : ItemBinder<StoryHeaderModel>() {
     override val itemViewRes: Int
         get() = R.layout.item_story_header
 
-    override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): ExtViewHolder {
-        val holder = super.onCreateViewHolder(inflater, parent)
+    override fun onViewHolderCreated(holder: ExtViewHolder) {
+        super.onViewHolderCreated(holder)
+
         val adapter = XMultiAdapter()
         adapter.register(StoryTagBinder())
         holder.recyclerTags.adapter = adapter
         holder.recyclerTags.asHorizontalList()
-        return holder
     }
 
     override fun onBindViewHolder(holder: ExtViewHolder, item: StoryHeaderModel) {

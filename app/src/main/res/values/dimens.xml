@@ -3,4 +3,6 @@
     <dimen name="timeline_grid_cell_width">189dp</dimen>
     <dimen name="discuss_large_cell_width">168dp</dimen>
     <dimen name="discuss_small_cell_width">118dp</dimen>
+    <dimen name="img_flat_story_cover">72dp</dimen>
+    <dimen name="flat_story_cover_safe_spacing">84dp</dimen>
 </resources>

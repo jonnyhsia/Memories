@@ -11,13 +11,13 @@ abstract class OkObserver<T> : SingleObserver<T> {
 
     private var emptyView: MutableLiveData<OkNotification?>? = null
     private var refreshLayout: MutableLiveData<OkNotification?>? = null
-    private var progressDialog: MutableLiveData<OkNotification?>? = null
+    private var loadingView: MutableLiveData<OkNotification?>? = null
 
     @CallSuper
     override fun onSubscribe(d: Disposable) {
         // 显示刷新与进度条
         refreshLayout.callIfRealChanged(OkNotification)
-        progressDialog.callIfRealChanged(OkNotification)
+        loadingView.callIfRealChanged(OkNotification)
     }
 
     @CallSuper
@@ -25,7 +25,7 @@ abstract class OkObserver<T> : SingleObserver<T> {
         // 隐藏空布局, 刷新与进度条
         emptyView.callIfRealChanged()
         refreshLayout.callIfRealChanged()
-        progressDialog.callIfRealChanged()
+        loadingView.callIfRealChanged()
     }
 
     @CallSuper
@@ -33,13 +33,13 @@ abstract class OkObserver<T> : SingleObserver<T> {
         // 显示空布局, 隐藏刷新与进度条
         emptyView.callIfRealChanged(OkNotification)
         refreshLayout.callIfRealChanged()
-        progressDialog.callIfRealChanged()
+        loadingView.callIfRealChanged()
     }
 
     fun attachWithPacket(okPacket: OkTempPacket) {
         emptyView = okPacket.emptyView
         refreshLayout = okPacket.refreshLayout
-        progressDialog = okPacket.progressDialog
+        loadingView = okPacket.loadingView
     }
 
     private fun <T> MutableLiveData<T>?.callIfRealChanged(newValue: T? = null) {

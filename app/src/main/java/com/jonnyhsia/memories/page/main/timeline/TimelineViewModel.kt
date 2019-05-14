@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.arch.jonnyhsia.memories.model.Repository
 import com.jonnyhsia.appcore.component.BaseViewModel
 import com.jonnyhsia.appcore.okrx.attachEmptyView
-import com.jonnyhsia.appcore.okrx.attachProgressDialog
+import com.jonnyhsia.appcore.okrx.attachLoadingView
 import com.jonnyhsia.appcore.okrx.okSubscribe
 import io.reactivex.Single
 
@@ -21,7 +21,7 @@ class TimelineViewModel : BaseViewModel() {
     private fun fetchTimelineAt(page: Int) {
         storyDataSource.getTimeline(page)
                 .attachEmptyView(emptyView)
-                .attachProgressDialog(progressDialog)
+//                .attachLoadingView(loadingView)
                 .okSubscribe(this, onSuccess = {
                     timeline.value = it
                 })

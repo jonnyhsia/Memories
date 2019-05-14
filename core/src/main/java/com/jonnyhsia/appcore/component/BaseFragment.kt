@@ -52,8 +52,8 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
         })
     }
 
-    fun enableLiveProgressDialog(observer: Observer<OkNotification?>? = null) {
-        vm.progressDialog.observe(this, observer ?: Observer {
+    fun enableLoadingView(observer: Observer<OkNotification?>? = null) {
+        vm.loadingView.observe(this, observer ?: Observer {
             if (it == null) {
                 if (progressDialog?.isShowing == true) {
                     progressDialog?.dismiss()

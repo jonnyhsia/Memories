@@ -42,7 +42,8 @@ class WelcomeViewModel(
             countDownDisposable?.dispose()
             miscDataSource.letWelcomePageEntered()
             application.checkTrophy(id = 1)
-            navigate(url = "memo://Main", close = true)
+            navigate("memo://Main")
+            close()
         }
     }
 

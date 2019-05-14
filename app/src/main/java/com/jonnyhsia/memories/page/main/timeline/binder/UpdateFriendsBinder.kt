@@ -15,13 +15,12 @@ class UpdateFriendsBinder : ItemBinder<UpdateFriendsModel>() {
     override val itemViewRes: Int
         get() = R.layout.item_update_friends
 
-    override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): ExtViewHolder {
-        val holder = super.onCreateViewHolder(inflater, parent)
+    override fun onViewHolderCreated(holder: ExtViewHolder) {
+        super.onViewHolderCreated(holder)
         val adapter = XMultiAdapter()
         adapter.register(FriendBinder())
         holder.recyclerFriends.asHorizontalList()
         holder.recyclerFriends.adapter = adapter
-        return holder
     }
 
     override fun onBindViewHolder(holder: ExtViewHolder, item: UpdateFriendsModel) {

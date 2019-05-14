@@ -11,7 +11,10 @@ class AccountViewModel(
 ) : BaseViewModel() {
 
     init {
-        logd("AccountFragment")
-        LiveBus.dispatch(LoginEvent(user = null))
+        fetchUserInfo()
+    }
+
+    private fun fetchUserInfo() {
+
     }
 }

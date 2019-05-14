@@ -11,14 +11,21 @@ abstract class ItemBinder<T> : ItemViewBinder<T, ExtViewHolder>() {
 
     abstract val itemViewRes: Int
 
-    override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): ExtViewHolder {
+    final override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): ExtViewHolder {
         val view = inflater.inflate(itemViewRes, parent, false)
-        return ExtViewHolder(view)
+        val holder = ExtViewHolder(view)
+        onViewHolderCreated(holder)
+        return holder
     }
 
-    fun RecyclerView.ViewHolder.getItem(): T {
-        return adapter.items.get(adapterPosition) as T
+    open fun onViewHolderCreated(holder: ExtViewHolder) {
     }
+
+
+    val RecyclerView.ViewHolder.currentItem: T
+        get() {
+            return adapter.items[adapterPosition] as T
+        }
 }
 
 class ExtViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),

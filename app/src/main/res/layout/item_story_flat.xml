@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingStart="20dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="16dp">
+
+    <TextView
+        android:id="@+id/tvStoryTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/flat_story_cover_safe_spacing"
+        android:ellipsize="end"
+        android:letterSpacing="0.05"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="2"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="具名不知" />
+
+    <TextView
+        android:id="@+id/tvStoryContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="1dp"
+        android:maxLines="5"
+        android:minLines="3"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@id/tvStoryTitle"
+        app:layout_constraintStart_toStartOf="@id/tvStoryTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvStoryTitle"
+        tools:text="我要住个大房子." />
+
+    <ImageView
+        android:id="@+id/imgStoryCover"
+        android:layout_width="@dimen/img_flat_story_cover"
+        android:layout_height="@dimen/img_flat_story_cover"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvStoryContent"
+        tools:src="@drawable/placeholder" />
+
+    <TextView
+        android:id="@+id/tvStoryDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/product_sans"
+        android:letterSpacing="0.02"
+        android:textColor="@color/textColorCaption"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStoryContent"
+        tools:text="11:29AM, April 8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

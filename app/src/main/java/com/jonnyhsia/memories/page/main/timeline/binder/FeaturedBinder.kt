@@ -16,16 +16,13 @@ class FeaturedBinder : ItemBinder<FeaturedStoriesModel>() {
     override val itemViewRes: Int
         get() = R.layout.item_featured
 
-    override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): ExtViewHolder {
-        val holder = super.onCreateViewHolder(inflater, parent)
+    override fun onViewHolderCreated(holder: ExtViewHolder) {
+        super.onViewHolderCreated(holder)
         val adapterOfHolder = MultiTypeAdapter()
         adapterOfHolder.register(SmallStoryBinder())
         // adapterOfHolder.register(ReadMoreBinder())
         holder.recyclerFeatured.adapter = adapterOfHolder
-
-        return holder
     }
-
     override fun onBindViewHolder(holder: ExtViewHolder, item: FeaturedStoriesModel) {
         with(holder) {
             recyclerFeatured.asHorizontalList()

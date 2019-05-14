@@ -43,7 +43,8 @@ class LoginViewModel(
             is LoginType.LoginWithPassword -> {
                 passportDataSource.loginWithCode(email, password)
                         .okSubscribe(this, onSuccess = {
-                            navigate(url = "memo://Main", close = true)
+                            navigate(url = "memo://Main")
+                            close()
                         }, onError = {
                             toast(it.message)
                         })
@@ -51,7 +52,8 @@ class LoginViewModel(
             is LoginType.Register -> {
                 passportDataSource.register(email, password)
                         .okSubscribe(this, onSuccess = {
-                            navigate(url = "memo://Main", close = true)
+                            navigate(url = "memo://Main")
+                            close()
                         }, onError = {
                             toast(it.message)
                         })

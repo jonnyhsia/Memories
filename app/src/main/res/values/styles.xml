@@ -9,7 +9,7 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:windowBackground">@color/windowBackgroundColor</item>
         <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:fontFamily">@font/noto_sans</item>
+        <item name="android:fontFamily">@font/noto_sans_medium</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
@@ -29,5 +29,12 @@
     </style>
 
     <style name="CompatAppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="AccountTabText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/product_sans</item>
+    </style>
 
 </resources>

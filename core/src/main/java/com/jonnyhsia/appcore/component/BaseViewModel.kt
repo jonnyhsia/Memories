@@ -24,7 +24,7 @@ abstract class BaseViewModel : ViewModel(), Corgi, DisposableContainer {
     val refreshLayout: MutableLiveData<OkNotification?> by lazy {
         MutableLiveData<OkNotification?>()
     }
-    val progressDialog: MutableLiveData<OkNotification?> by lazy {
+    val loadingView: MutableLiveData<OkNotification?> by lazy {
         MutableLiveData<OkNotification?>()
     }
 
@@ -37,15 +37,26 @@ abstract class BaseViewModel : ViewModel(), Corgi, DisposableContainer {
         return disposables!!
     }
 
+//    protected inline fun navigate(
+//            url: String,
+//            close: Boolean = false,
+//            block: RouteIntent.() -> Unit = {}
+//    ) {
+//        if (close) {
+//            closeSignal.call()
+//        }
+//        superNavigator.value = Compass.navigate(url).apply(block)
+//    }
+
     protected inline fun navigate(
             url: String,
-            close: Boolean = false,
             block: RouteIntent.() -> Unit = {}
-    ) {
-        if (close) {
-            closeSignal.call()
-        }
-        superNavigator.value = Compass.navigate(url).apply(block)
+    ): RouteIntent {
+        return Compass.navigate(url).apply(block)
+    }
+
+    protected fun close() {
+        closeSignal.call()
     }
 
     protected fun toast(text: String?) {

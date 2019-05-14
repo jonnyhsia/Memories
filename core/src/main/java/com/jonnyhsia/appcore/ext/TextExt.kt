@@ -7,6 +7,10 @@ import android.text.*
 import android.text.style.*
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.core.text.HtmlCompat
+import androidx.core.text.parseAsHtml
+import io.reactivex.Observable
+import java.util.concurrent.Future
 
 
 inline fun CharSequence.spannable(block: Spannable.() -> Unit = {}): Spannable {
@@ -162,4 +166,8 @@ operator fun Spannable.plus(another: CharSequence): SpannableStringBuilder {
             SpannableStringBuilder(this) + another
         }
     }
+}
+
+fun String.parse(): Spanned {
+    return parseAsHtml()
 }

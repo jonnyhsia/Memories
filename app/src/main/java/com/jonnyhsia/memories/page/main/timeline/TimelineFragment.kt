@@ -33,7 +33,7 @@ class TimelineFragment : BaseFragment<TimelineViewModel>(), TabDoubleTap {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        enableLiveProgressDialog()
+        enableLoadingView()
         enableEmptyView(emptyView)
 
         // collapsingToolbar.setPadding(0, statusBarHeight, 0, 0)

@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.arch.jonnyhsia.compass.Compass
+import com.arch.jonnyhsia.compass.RouteIntent
 
 /**
  * Obtain a default view model
@@ -17,7 +19,7 @@ inline fun <reified VM : ViewModel> Fragment.obtainViewModel(): VM {
  */
 @Suppress("UNCHECKED_CAST")
 inline fun <reified VM : ViewModel> Fragment.obtainViewModelOf(
-    crossinline viewModelCreator: () -> VM
+        crossinline viewModelCreator: () -> VM
 ): VM {
     val factory = object : ViewModelProvider.NewInstanceFactory() {
         override fun <VM : ViewModel?> create(modelClass: Class<VM>): VM {
@@ -39,7 +41,7 @@ inline fun <reified VM : ViewModel> Fragment.obtainSharedViewModel(): VM {
  */
 @Suppress("UNCHECKED_CAST")
 inline fun <reified VM : ViewModel> Fragment.obtainSharedViewModelOf(
-    crossinline viewModelCreator: () -> VM
+        crossinline viewModelCreator: () -> VM
 ): VM {
     val factory = object : ViewModelProvider.NewInstanceFactory() {
         override fun <VM : ViewModel?> create(modelClass: Class<VM>): VM {

@@ -3,6 +3,7 @@ package com.jonnyhsia.memories
 import android.app.Application
 import android.os.Looper
 import com.arch.jonnyhsia.compass.Compass
+import com.arch.jonnyhsia.compass.RouteIntent
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.mirror.bugnets.Bugnets
 import com.arch.jonnyhsia.mirror.logger.Corgi

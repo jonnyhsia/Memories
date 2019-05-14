@@ -33,6 +33,6 @@
     <color name="windowBackgroundColor">@android:color/white</color>
     <color name="windowBackgroundColorNight">#18191B</color>
     <color name="navigationBarColor">@color/windowBackgroundColor</color>
-    <color name="divider">#F2F2F2</color>
+    <color name="divider">#F0F0F0</color>
 
 </resources>

@@ -8,20 +8,20 @@ import io.reactivex.Single
  * OkObserver 的临时封装信息
  */
 class OkTempPacket {
-    internal var emptyView: MutableLiveData<OkNotification?>? = null
-    internal var refreshLayout: MutableLiveData<OkNotification?>? = null
-    internal var progressDialog: MutableLiveData<OkNotification?>? = null
+    var emptyView: MutableLiveData<OkNotification?>? = null
+    var refreshLayout: MutableLiveData<OkNotification?>? = null
+    var loadingView: MutableLiveData<OkNotification?>? = null
 }
 
 /**
  * 用于临时保存封装信息的数组
  */
-internal val okTempPacketArray = SparseArrayCompat<OkTempPacket>()
+val okTempPacketArray = SparseArrayCompat<OkTempPacket>()
 
 /**
  * 根据 hash 从临时数组中找到对应的 temp packet
  */
-internal fun okPacketOf(hash: Int): OkTempPacket? {
+fun okPacketOf(hash: Int): OkTempPacket? {
     return okTempPacketArray.get(hash)
 }
 
@@ -67,14 +67,18 @@ fun <T> Single<T>.attachRefreshLayout(liveData: MutableLiveData<OkNotification?>
 /**
  * 临时保存 progress 的引用
  */
-fun <T> Single<T>.attachProgressDialog(liveData: MutableLiveData<OkNotification?>?): Single<T> {
+inline fun <T> Single<T>.attachLoadingView(liveData: MutableLiveData<OkNotification?>?, attachWhen: () -> Boolean = { true }): Single<T> {
+    if (!attachWhen()) {
+        return this
+    }
+
     val packet = okPacketOf(this.hashCode())
     if (packet == null) {
         val newPacket = OkTempPacket()
-        newPacket.progressDialog = liveData
+        newPacket.loadingView = liveData
         okTempPacketArray.put(this.hashCode(), newPacket)
     } else {
-        packet.progressDialog = liveData
+        packet.loadingView = liveData
     }
 
     return this

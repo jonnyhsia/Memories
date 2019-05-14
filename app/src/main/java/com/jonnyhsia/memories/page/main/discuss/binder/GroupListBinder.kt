@@ -15,13 +15,12 @@ class GroupListBinder : ItemBinder<GroupListModel>() {
     override val itemViewRes: Int
         get() = R.layout.item_group_list
 
-    override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): ExtViewHolder {
-        val holder = super.onCreateViewHolder(inflater, parent)
+    override fun onViewHolderCreated(holder: ExtViewHolder) {
+        super.onViewHolderCreated(holder)
         holder.recyclerGroup.asHorizontalList()
         holder.recyclerGroup.adapter = XMultiAdapter().apply {
             register(SimpleGroupBinder())
         }
-        return holder
     }
 
     override fun onBindViewHolder(holder: ExtViewHolder, item: GroupListModel) {

@@ -15,3 +15,10 @@ val Context.currentProcessName: String
 fun Context.isMainProcess(): Boolean {
     return applicationContext.packageName == currentProcessName
 }
+
+object Elvis {
+
+    inline operator fun <T> invoke(block: () -> T): T {
+        return block()
+    }
+}
