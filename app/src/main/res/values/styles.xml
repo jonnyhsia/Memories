@@ -9,7 +9,7 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:windowBackground">@color/windowBackgroundColor</item>
         <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:fontFamily">@font/noto_sans_medium</item>
+        <item name="android:fontFamily">@font/noto_sans</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
