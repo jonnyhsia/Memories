@@ -1,5 +1,7 @@
 package com.jonnyhsia.memories.page.main.account.storylist
 
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.core.view.isVisible
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
 import com.jonnyhsia.appcore.component.ExtViewHolder
@@ -14,6 +16,8 @@ interface StoryFlatBinderDelegate {
 }
 
 class StoryFlatBinder(delegate: StoryFlatBinderDelegate) : ItemBinder<StoryDisplayModel>(), StoryFlatBinderDelegate by delegate {
+
+    private var lastPosition: Int = 0
 
     override val itemViewRes: Int
         get() = R.layout.item_story_flat
@@ -49,6 +53,21 @@ class StoryFlatBinder(delegate: StoryFlatBinderDelegate) : ItemBinder<StoryDispl
             }
 
             tvStoryDate.text = "11:29AM, April 8"
+
+            setAnimation(itemView, adapterPosition)
+        }
+    }
+
+    override fun onViewDetachedFromWindow(holder: ExtViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.itemView.clearAnimation()
+    }
+
+    private fun setAnimation(view: View, position: Int) {
+        if (position > lastPosition) {
+            val anim = AnimationUtils.loadAnimation(view.context, R.anim.anim_item_fall_down)
+            view.startAnimation(anim)
+            lastPosition = position
         }
     }
 }

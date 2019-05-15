@@ -45,7 +45,8 @@ class AccountFragment : BaseFragment<AccountViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imgAvatar.load(R.drawable.placeholder_oval) {
+        imgAvatar.load("https://i.loli.net/2019/05/15/5cdc0cfd19b1182884.jpg") {
+            placeholder(R.drawable.placeholder_oval)
             asAvatar()
         }
         imgAvatar.setOnClickListener {
