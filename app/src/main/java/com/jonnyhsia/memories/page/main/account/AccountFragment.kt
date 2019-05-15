@@ -73,8 +73,9 @@ class AccountFragment : BaseFragment<AccountViewModel>() {
     }
 
     private fun setupPagerAndTabs() {
+        pagerAccount.offscreenPageLimit = 2
         pagerAccount.adapter = object : FragmentPagerAdapter(childFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-            override fun getCount(): Int = 2
+            override fun getCount(): Int = 3
 
             override fun getItem(position: Int): Fragment {
                 return createFragmentAt(position)
@@ -86,9 +87,13 @@ class AccountFragment : BaseFragment<AccountViewModel>() {
                         setSize(textSize = 18, end = 2)
                         setSize(textSize = 12, start = length - 2)
                     }
-                    1 -> "130\n收藏".spannable {
+                    1 -> "130\nFollowing".spannable {
                         setSize(textSize = 18, end = 3)
-                        setSize(textSize = 12, start = length - 2)
+                        setSize(textSize = 12, start = length - 9)
+                    }
+                    2 -> "0\nFollower".spannable {
+                        setSize(textSize = 18, end = 1)
+                        setSize(textSize = 12, start = length - 8)
                     }
                     else -> null
                 }

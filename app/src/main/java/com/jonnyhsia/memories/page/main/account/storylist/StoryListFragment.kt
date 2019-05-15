@@ -7,21 +7,17 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.arch.jonnyhsia.compass.Compass
 import com.arch.jonnyhsia.compass.navigate
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
 import com.arch.jonnyhsia.ui.ext.asVerticalList
 import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
-import com.google.android.material.appbar.AppBarLayout
 import com.jonnyhsia.appcore.component.BaseFragment
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.router.Params
-import kotlinx.android.synthetic.main.account_fragment.*
 import kotlinx.android.synthetic.main.story_list_fragment.*
-import me.drakeet.multitype.MultiTypeAdapter
 import me.drakeet.multitype.register
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.math.abs
+import kotlin.properties.Delegates
 
 class StoryListFragment : BaseFragment<StoryListViewModel>(), StoryFlatBinderDelegate {
     override val layoutRes: Int
@@ -29,10 +25,18 @@ class StoryListFragment : BaseFragment<StoryListViewModel>(), StoryFlatBinderDel
 
     override val vm: StoryListViewModel by viewModel()
 
-    private val storyListAdapter = XMultiAdapter()
+    private var storyListAdapter: XMultiAdapter by Delegates.notNull()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        storyListAdapter = XMultiAdapter()
+                .apply {
+                    register(StoryFlatBinder(this@StoryListFragment))
+                    register(LevelInfoBinder(View.OnClickListener {
+
+                    }))
+                }
 
         enableLoadingView(Observer {
             progressBar.isVisible = it != null
@@ -47,12 +51,6 @@ class StoryListFragment : BaseFragment<StoryListViewModel>(), StoryFlatBinderDel
         recyclerStory.addItemDecoration(decoration)
         recyclerStory.asVerticalList()
         recyclerStory.adapter = storyListAdapter
-                .apply {
-                    register(StoryFlatBinder(this@StoryListFragment))
-                    register(LevelInfoBinder(View.OnClickListener {
-
-                    }))
-                }
     }
 
     override fun onClickStory(story: StoryDisplayModel, position: Int) {

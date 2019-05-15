@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/discuss_small_cell_width"
     android:layout_height="match_parent"
-    android:layout_marginStart="12dp"
+    android:layout_marginStart="16dp"
     tools:layout_height="124dp">
 
     <ImageView

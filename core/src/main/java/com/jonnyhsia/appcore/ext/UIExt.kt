@@ -62,9 +62,9 @@ var TextView.displayText: CharSequence?
     }
 
 fun AppCompatTextView.setTextFuture(charSequence: CharSequence, autoHide: Boolean = true) {
-    if (charSequence.isEmpty()
-            && visibility == View.VISIBLE
-            && autoHide) {
+    if (autoHide
+            && charSequence.isEmpty()
+            && visibility == View.VISIBLE) {
         visibility = View.GONE
         return
     }

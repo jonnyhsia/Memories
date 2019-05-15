@@ -66,7 +66,7 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
         })
 
         fieldEmail.textChanges()
-                .throttleLatest(600L, TimeUnit.MILLISECONDS)
+                .debounce(500L, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .xsubscribe(vm, onNext = {
                     vm.onEmailChanges(it.toString())

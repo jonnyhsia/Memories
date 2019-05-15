@@ -51,8 +51,8 @@ abstract class BaseViewModel : ViewModel(), Corgi, DisposableContainer {
     protected inline fun navigate(
             url: String,
             block: RouteIntent.() -> Unit = {}
-    ): RouteIntent {
-        return Compass.navigate(url).apply(block)
+    ) {
+        superNavigator.value = Compass.navigate(url).apply(block)
     }
 
     protected fun close() {

@@ -53,6 +53,7 @@ class BottomNavigationBar @JvmOverloads constructor(
 
     private val selectEffectEnabled: Boolean
 
+
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.BottomNavigationBar)
         // 默认选中的 tab 索引
@@ -407,13 +408,16 @@ class BottomNavigationBar @JvmOverloads constructor(
             if (checked && _tab.animAsset != null) {
                 iconView.isVisible = false
                 animView.isVisible = true
-                animView.playAnimation()
+                handler.post {
+                    animView.playAnimation()
+                }
                 return
             }
 
             if (!checked && !iconView.isVisible) {
                 iconView.isVisible = true
                 animView.isVisible = false
+                animView.cancelAnimation()
             }
         }
     }

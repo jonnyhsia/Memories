@@ -80,6 +80,7 @@ open class XMultiAdapter @JvmOverloads constructor(
     /** 在数据设置后再显示 Empty View */
     var showEmptyViewAfterDataReady = true
 
+    private var isObserverRegistered = false
     private val adapterDataObserver = object : RecyclerView.AdapterDataObserver() {
         override fun onChanged() {
             super.onChanged()
@@ -107,7 +108,10 @@ open class XMultiAdapter @JvmOverloads constructor(
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
-        registerAdapterDataObserver(adapterDataObserver)
+        if (!isObserverRegistered) {
+            isObserverRegistered = true
+            registerAdapterDataObserver(adapterDataObserver)
+        }
         if (!showEmptyViewAfterDataReady) {
             checkDataIsEmpty()
         }

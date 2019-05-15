@@ -2,7 +2,6 @@ package com.arch.jonnyhsia.memories.model.passport
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.memories.model.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.passport.bean.LevelInfoModel
@@ -102,7 +101,7 @@ object PassportRepository : Repository(), PassportDataSource {
     }
 
     override fun getLevelInfo(): Single<LevelInfoModel> {
-        return Single.just(LevelInfoModel(levelQuote = "A memory a day, Keep the Amnesia away.",
+        return Single.just(LevelInfoModel(levelQuote = "A memory a day, Keep the\nAmnesia away.",
                 currentLevel = "LV2", nextLevel = "LV3", levelUpCondition = "再记录<font color='#FF2952'> 3 篇 </font>可升级至 LV3"))
     }
 }
