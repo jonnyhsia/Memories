@@ -15,4 +15,7 @@
     <string name="title_timeline">我的时间线</string>
     <string name="title_discuss">和这个世界谈谈</string>
     <string name="search_bar_discuss">寻找讨论与志同道合的小组</string>
+    <string name="app_name_full" >Memories - 记忆你的记忆</string>
+    <string name="text_change_log">更新日志</string>
+
 </resources>

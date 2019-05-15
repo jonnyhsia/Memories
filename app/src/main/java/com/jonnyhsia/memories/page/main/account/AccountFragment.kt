@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
+import com.arch.jonnyhsia.compass.navigate
 import com.arch.jonnyhsia.mirror.logger.logd
 import com.google.android.material.appbar.AppBarLayout
 import com.jonnyhsia.appcore.component.BaseFragment
+import com.jonnyhsia.appcore.component.click
+import com.jonnyhsia.appcore.component.xsubscribe
 import com.jonnyhsia.appcore.ext.*
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.account.storylist.StoryListFragment
@@ -55,6 +58,11 @@ class AccountFragment : BaseFragment<AccountViewModel>() {
         tvEmail.setOnClickListener {
             toast("还没做, 别点")
         }
+
+        btnSettings.click()
+                .xsubscribe(vm, onNext = {
+                    navigate("memo://About")
+                })
 
         appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, offset ->
             val percent = 1f * abs(offset) / collapsingHeight
@@ -112,3 +120,4 @@ class AccountFragment : BaseFragment<AccountViewModel>() {
         }
     }
 }
+

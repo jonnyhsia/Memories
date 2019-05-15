@@ -27,6 +27,7 @@
             android:name=".page.login.LoginActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".page.welcome.WelcomeActivity" />
+        <activity android:name=".page.about.AboutActivity" />
 
     </application>
 
