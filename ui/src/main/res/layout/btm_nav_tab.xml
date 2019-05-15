@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="#F5F5F5"
+    tools:layout_height="56dp"
+    tools:layout_width="120dp"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <CheckedTextView
+        android:id="@+id/tvTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"
+        android:letterSpacing="0.04"
+        android:textAlignment="center"
+        android:textColor="@color/selector_tab"
+        android:textSize="9sp"
+        tools:ignore="SmallSp"
+        tools:text="首页" />
+
+    <ImageView
+        android:id="@+id/iconTab"
+        android:layout_width="@dimen/btm_tab_size"
+        android:layout_height="@dimen/btm_tab_size"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="7dp"
+        tools:background="#000" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animTab"
+        android:layout_width="@dimen/btm_tab_size"
+        android:layout_height="@dimen/btm_tab_size"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="7dp" />
+
+</merge>

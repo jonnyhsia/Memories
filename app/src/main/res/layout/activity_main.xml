@@ -12,39 +12,135 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="52dp" />
 
+    <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="54dp"-->
+        <!--android:layout_gravity="bottom">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/tabHome"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:src="@drawable/ic_nav_timeline"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toStartOf="@id/tabDiscuss"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<com.airbnb.lottie.LottieAnimationView-->
+            <!--android:id="@+id/tabHomeAnim"-->
+            <!--android:layout_width="@dimen/btm_tab_size"-->
+            <!--android:layout_height="@dimen/btm_tab_size"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:visibility="gone"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="@id/tabHome"-->
+            <!--app:layout_constraintStart_toStartOf="@id/tabHome"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:lottie_fileName="tab_home.json" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/tabDiscuss"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:src="@drawable/ic_nav_discuss"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toStartOf="@id/tabInbox"-->
+            <!--app:layout_constraintStart_toEndOf="@id/tabHome"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<com.airbnb.lottie.LottieAnimationView-->
+            <!--android:id="@+id/tabDiscussAnim"-->
+            <!--android:layout_width="@dimen/btm_tab_size"-->
+            <!--android:layout_height="@dimen/btm_tab_size"-->
+            <!--android:visibility="gone"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="@id/tabDiscuss"-->
+            <!--app:layout_constraintStart_toStartOf="@id/tabDiscuss"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:lottie_fileName="tab_discuss.json" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/tabInbox"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:src="@drawable/ic_nav_msg"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toStartOf="@id/tabMine"-->
+            <!--app:layout_constraintStart_toEndOf="@id/tabDiscuss"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<com.airbnb.lottie.LottieAnimationView-->
+            <!--android:id="@+id/tabInboxAnim"-->
+            <!--android:layout_width="@dimen/btm_tab_size"-->
+            <!--android:layout_height="@dimen/btm_tab_size"-->
+            <!--android:visibility="gone"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="@id/tabInbox"-->
+            <!--app:layout_constraintStart_toStartOf="@id/tabInbox"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:lottie_fileName="tab_collect.json" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/tabMine"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:src="@drawable/ic_nav_account"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toEndOf="@id/tabInbox"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<com.airbnb.lottie.LottieAnimationView-->
+            <!--android:id="@+id/tabMineAnim"-->
+            <!--android:layout_width="@dimen/btm_tab_size"-->
+            <!--android:layout_height="@dimen/btm_tab_size"-->
+            <!--android:visibility="gone"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="@id/tabMine"-->
+            <!--app:layout_constraintStart_toStartOf="@id/tabMine"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:lottie_fileName="tab_mine.json" />-->
+
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
     <com.arch.jonnyhsia.ui.navigation.BottomNavigationBar
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="54dp"
         android:layout_gravity="bottom"
         android:background="@drawable/bg_bottom_navigation"
         android:elevation="8dp"
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
-        app:x_defaultTab="0">
+        app:x_defaultTab="0" />
 
-        <!--TODO: 图标需要修改, 不够直白-->
+    <!--&lt;!&ndash;TODO: 图标需要修改, 不够直白&ndash;&gt;-->
 
-        <com.arch.jonnyhsia.ui.navigation.BottomTab
-            style="@style/BottomTab"
-            android:text="时间线"
-            app:x_drawableTop="@drawable/ic_nav_timeline" />
+    <!--<com.arch.jonnyhsia.ui.navigation.BottomTab-->
+    <!--style="@style/BottomTab"-->
+    <!--android:text="时间线"-->
+    <!--app:x_drawableTop="@drawable/ic_nav_timeline" />-->
 
-        <com.arch.jonnyhsia.ui.navigation.BottomTab
-            style="@style/BottomTab"
-            android:text="讨论"
-            app:x_drawableTop="@drawable/ic_nav_discuss" />
+    <!--<com.arch.jonnyhsia.ui.navigation.BottomTab-->
+    <!--style="@style/BottomTab"-->
+    <!--android:text="讨论"-->
+    <!--app:x_drawableTop="@drawable/ic_nav_discuss" />-->
 
-        <com.arch.jonnyhsia.ui.navigation.BottomTab
-            style="@style/BottomTab"
-            android:text="消息"
-            app:x_drawableTop="@drawable/ic_nav_msg" />
+    <!--<com.arch.jonnyhsia.ui.navigation.BottomTab-->
+    <!--style="@style/BottomTab"-->
+    <!--android:text="消息"-->
+    <!--app:x_drawableTop="@drawable/ic_nav_msg" />-->
 
-        <com.arch.jonnyhsia.ui.navigation.BottomTab
-            style="@style/BottomTab"
-            android:text="我"
-            app:x_drawableTop="@drawable/ic_nav_account" />
+    <!--<com.arch.jonnyhsia.ui.navigation.BottomTab-->
+    <!--style="@style/BottomTab"-->
+    <!--android:text="我"-->
+    <!--app:x_drawableTop="@drawable/ic_nav_account" />-->
 
-    </com.arch.jonnyhsia.ui.navigation.BottomNavigationBar>
+    <!--</com.arch.jonnyhsia.ui.navigation.BottomNavigationBar>-->
 
 </FrameLayout>

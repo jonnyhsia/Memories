@@ -40,7 +40,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
      */
     private fun commonObserve() {
         vm.toaster.observe(this, Observer {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            toast(it)
         })
 
         vm.superNavigator.observe(this, Observer {
@@ -50,6 +50,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
         vm.closeSignal.observe(this, Observer {
             finish()
         })
+    }
+
+    protected fun toast(text: String, duration: Int = Toast.LENGTH_SHORT) {
+        Toast.makeText(requireContext(), text, duration).show()
     }
 
     fun enableLoadingView(observer: Observer<OkNotification?>? = null) {

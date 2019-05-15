@@ -28,7 +28,9 @@ object StoryRepository : Repository(), StoryDataSource {
                         "束手无策的时候，希望身边能有人一起。好懒惰，总想着别人能搭个手，拉一把。\n" +
                         "每个人的路都不尽相同，我也不知道我在强求什么。\n" +
                         "习惯了和大家一起跑，一转眼跑道上就我一个人。有点沮丧。很不恰当的比喻。…", tags = listOf(), dateText = "1:08AM, 11月22日", image = "", author = AuthorModel(id = 0, nickname = "高能的土豆", avatar = "https://i.loli.net/2019/04/09/5cacb02b09412.png"))
-        ))
+        )).delay(2000, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
 
     override fun getTimeline(page: Int): Single<List<Any>> {
@@ -74,7 +76,7 @@ object StoryRepository : Repository(), StoryDataSource {
                         "每个人的路都不尽相同，我也不知道我在强求什么。\n" +
                         "习惯了和大家一起跑，一转眼跑道上就我一个人。有点沮丧。很不恰当的比喻。…", tags = listOf(), dateText = "1:08AM, 11月22日", image = "", author = AuthorModel(id = 0, nickname = "高能的土豆", avatar = "https://i.loli.net/2019/04/09/5cacb02b09412.png"))
         ))
-                .delay(2500, TimeUnit.MILLISECONDS)
+                .delay(2000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }

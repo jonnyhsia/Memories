@@ -1,11 +1,10 @@
 package com.jonnyhsia.memories.page.main.account.storylist
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
 import com.jonnyhsia.appcore.component.ExtViewHolder
 import com.jonnyhsia.appcore.component.ItemBinder
 import com.jonnyhsia.appcore.ext.asRounded
+import com.jonnyhsia.appcore.ext.displayText
 import com.jonnyhsia.appcore.ext.dp
 import com.jonnyhsia.appcore.ext.load
 import com.jonnyhsia.memories.R
@@ -30,7 +29,7 @@ class StoryFlatBinder(delegate: StoryFlatBinderDelegate) : ItemBinder<StoryDispl
 
     override fun onBindViewHolder(holder: ExtViewHolder, item: StoryDisplayModel) {
         with(holder){
-            tvStoryTitle.text = item.title
+            tvStoryTitle.displayText = item.title
             tvStoryContent.text = item.summary
             imgStoryCover.load(item.image){
                 asRounded(10.dp)

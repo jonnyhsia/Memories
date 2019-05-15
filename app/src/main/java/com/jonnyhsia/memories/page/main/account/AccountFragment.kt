@@ -1,31 +1,19 @@
 package com.jonnyhsia.memories.page.main.account
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.arch.jonnyhsia.mirror.logger.logd
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.tabs.TabLayout
 import com.jonnyhsia.appcore.component.BaseFragment
 import com.jonnyhsia.appcore.ext.*
-import com.jonnyhsia.appcore.ui.Drawables
-import com.jonnyhsia.appcore.ui.rectangle
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.account.storylist.StoryListFragment
 import kotlinx.android.synthetic.main.account_fragment.*
-import kotlinx.android.synthetic.main.item_group_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 import kotlin.math.max
-import kotlin.properties.Delegates
 
 class AccountFragment : BaseFragment<AccountViewModel>() {
 
@@ -33,8 +21,6 @@ class AccountFragment : BaseFragment<AccountViewModel>() {
         get() = R.layout.account_fragment
 
     override val vm: AccountViewModel by viewModel()
-
-    private var pagerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> by Delegates.notNull()
 
     /** Toolbar 竖直伸缩的最大距离 */
     private var collapsingHeight: Int = 0
@@ -62,8 +48,11 @@ class AccountFragment : BaseFragment<AccountViewModel>() {
         imgAvatar.load(R.drawable.placeholder_oval) {
             asAvatar()
         }
+        imgAvatar.setOnClickListener {
+            toast("还没做, 别点")
+        }
         tvEmail.setOnClickListener {
-
+            toast("还没做, 别点")
         }
 
         appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, offset ->

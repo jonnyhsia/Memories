@@ -4,12 +4,20 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Checkable
+import android.widget.CheckedTextView
+import android.widget.FrameLayout
+import android.widget.ImageView
+import androidx.annotation.DrawableRes
 import androidx.core.view.children
+import androidx.core.view.isVisible
+import com.airbnb.lottie.LottieAnimationView
 import com.arch.jonnyhsia.ui.R
 import com.arch.jonnyhsia.ui.navigation.BottomNavigationBar.LayoutParams.Companion.ANCHOR_BOTTOM
 import com.arch.jonnyhsia.ui.navigation.BottomNavigationBar.LayoutParams.Companion.ANCHOR_LEFT
 import com.arch.jonnyhsia.ui.navigation.BottomNavigationBar.LayoutParams.Companion.ANCHOR_RIGHT
 import com.arch.jonnyhsia.ui.navigation.BottomNavigationBar.LayoutParams.Companion.ANCHOR_TOP
+import kotlin.properties.Delegates
 
 /**
  * Tab 的选中监听. 返回 true 为消费掉此次事件
@@ -31,15 +39,17 @@ class BottomNavigationBar @JvmOverloads constructor(
     private var onTabSelectedListener: OnTabSelectListener? = null
     private var onTabReselectedListener: OnTabReselectListener? = null
 
+    val bottomTabs = ArrayList<BottomTab>(5)
+
     /** 包含的 tab view 数组 */
-    private val bottomTabs = ArrayList<BottomTab>()
+    val bottomTabViews = ArrayList<BottomTabView>()
 
     /** 当前已选中的 tab 索引值 */
     private var selectedIndex: Int
 
     /** tab view 的数量 */
-    val tabCount: Int
-        get() = bottomTabs.size
+    private val tabCount: Int
+        get() = bottomTabViews.size
 
     private val selectEffectEnabled: Boolean
 
@@ -77,9 +87,9 @@ class BottomNavigationBar @JvmOverloads constructor(
      * 当 tab 被选中时, 由 [BottomTab] 主动调用
      * @param tab 选中的 tab
      */
-    internal fun selectedTab(tab: BottomTab) {
+    internal fun selectedTab(tab: BottomTabView) {
         // 选中的 tab 索引
-        val index = bottomTabs.indexOf(tab)
+        val index = bottomTabViews.indexOf(tab)
 
         if (selectedIndex != index) {
             // 如果已选中的 index 与当前选中的 index 不同
@@ -90,7 +100,7 @@ class BottomNavigationBar @JvmOverloads constructor(
                 return
             }
 
-            val lastTab = bottomTabs[selectedIndex]
+            val lastTab = bottomTabViews[selectedIndex]
             tab.isChecked = true
             lastTab.isChecked = false
 
@@ -105,18 +115,20 @@ class BottomNavigationBar @JvmOverloads constructor(
     /**
      * @return 返回对应 index 的 tab
      */
-    fun getTabAt(index: Int): BottomTab {
-        return bottomTabs[index]
+    fun getTabAt(index: Int): BottomTabView {
+        return bottomTabViews[index]
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(widthMeasureSpec, heightMeasureSpec)
         setMeasuredDimension(widthMeasureSpec, heightMeasureSpec)
+
         // 测量前先清空 tabs 数组 (onMeasure 可以被重复调用)
-        bottomTabs.clear()
+        // bottomTabs.clear()
+
         // 获取 tab 的总数, 计算 tab 的宽度与高度
         // (在 measure 时, bottomTabs 还没放入 tab, 不能直接取 this.tabCount)
-        val tabCount = children.count { it is BottomTab }
+        val tabCount = children.count { it is BottomTabView }
         // FIXME: 宽高计算还需要考虑 tab 的 margin
         val tabWidth = (measuredWidth - paddingStart - paddingEnd) / tabCount
         val tabHeight = measuredHeight - paddingTop - paddingBottom
@@ -125,9 +137,7 @@ class BottomNavigationBar @JvmOverloads constructor(
         children.forEachIndexed { index, child ->
             val params = child.layoutParams as LayoutParams
 
-            if (child is BottomTab) {
-                // 将 tab 添加到数组中
-                bottomTabs.add(child)
+            if (child is BottomTabView) {
                 // 如果 child 是 tab, 按 tab 的测量方式 measure 宽高
                 child.measure(
                         MeasureSpec.makeMeasureSpec(tabWidth - params.leftMargin - params.rightMargin, MeasureSpec.EXACTLY),
@@ -158,7 +168,7 @@ class BottomNavigationBar @JvmOverloads constructor(
         children.forEachIndexed { _, child ->
             val params = child.layoutParams as LayoutParams
 
-            if (child is BottomTab) {
+            if (child is BottomTabView) {
                 // 如果 child 是 tab, 按 tab 的布局方式排列
                 // 设置 tab 的选中状态
                 child.isChecked = tabIndex == selectedIndex
@@ -271,6 +281,31 @@ class BottomNavigationBar @JvmOverloads constructor(
         return LayoutParams(p)
     }
 
+    inline fun build(builder: BottomNavigationBar.() -> Unit) {
+        builder(this)
+        // 添加所有的 tab
+        bottomTabs.forEach {
+            if (it.parent == this) {
+                bottomTabViews.add(it.view)
+                addView(it.view)
+            }
+        }
+    }
+
+    fun newTab(text: String, @DrawableRes iconRes: Int, animAsset: String? = null): BottomTab {
+        val tab = BottomTab(text, iconRes, animAsset)
+        tab.parent = this
+        tab.view = createTabView(tab)
+        bottomTabs.add(tab)
+        return tab
+    }
+
+    private fun createTabView(tab: BottomTab): BottomTabView {
+        val bottomTabView = BottomTabView(context)
+        bottomTabView.setTab(tab)
+        return bottomTabView
+    }
+
     /**
      * BottomNavigationBar 子 View 的 LayoutParams
      */
@@ -301,6 +336,85 @@ class BottomNavigationBar @JvmOverloads constructor(
             const val ANCHOR_RIGHT = 4
             const val ANCHOR_BOTTOM = 8
             const val ANCHOR_CENTER = 15
+        }
+    }
+
+    class BottomTab(
+            val text: String,
+            val iconRes: Int,
+            val animAsset: String?
+    ) {
+
+        var parent: BottomNavigationBar? = null
+        var view: BottomTabView by Delegates.notNull()
+
+    }
+
+    class BottomTabView(context: Context) : FrameLayout(context), Checkable {
+
+        private val textView: CheckedTextView
+        private val iconView: ImageView
+        private val animView: LottieAnimationView
+
+        private var _tab: BottomTab by Delegates.notNull()
+
+        init {
+            isClickable = true
+            isFocusable = true
+            View.inflate(context, R.layout.btm_nav_tab, this)
+            textView = findViewById(R.id.tvTab)
+            iconView = findViewById(R.id.iconTab)
+            animView = findViewById(R.id.animTab)
+        }
+
+        fun setTab(tab: BottomTab) {
+            _tab = tab
+            textView.text = tab.text
+            iconView.setImageResource(tab.iconRes)
+//            val d = ContextCompat.getDrawable(context, tab.iconRes)
+//            textView.setCompoundDrawablesWithIntrinsicBounds(null, d, null, null)
+            if (tab.animAsset != null) {
+                animView.setAnimation(tab.animAsset)
+            }
+        }
+
+        override fun performClick(): Boolean {
+            val handled = super.performClick()
+            if (!handled) {
+                // 播放点击的默认音效
+                playSoundEffect(0)
+            }
+            // 设置为选中状态
+            if (!isChecked) {
+                isChecked = true
+            }
+            // 若 parent 是 Bottom Navigation Bar
+            // 调用其 selectedTab 方法触发其选中/复选回调
+            _tab.parent?.selectedTab(this)
+            return handled
+        }
+
+        override fun isChecked(): Boolean {
+            return textView.isChecked
+        }
+
+        override fun toggle() {
+            textView.toggle()
+        }
+
+        override fun setChecked(checked: Boolean) {
+            textView.isChecked = checked
+            if (checked && _tab.animAsset != null) {
+                iconView.isVisible = false
+                animView.isVisible = true
+                animView.playAnimation()
+                return
+            }
+
+            if (!checked && !iconView.isVisible) {
+                iconView.isVisible = true
+                animView.isVisible = false
+            }
         }
     }
 }

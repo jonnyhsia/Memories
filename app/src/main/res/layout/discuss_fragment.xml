@@ -104,4 +104,12 @@
         tools:listitem="@layout/item_discuss_with_image"
         tools:orientation="vertical" />
 
+    <com.arch.jonnyhsia.ui.XImageView
+        android:id="@+id/imgPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_timeline_placeholder"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:x_aspectRatio="0.6" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

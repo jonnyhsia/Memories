@@ -86,6 +86,7 @@ dependencies {
     implementation "me.drakeet.multitype:multitype-ktx:$multitype"
 
     implementation "com.github.niorgai:StatusBarCompat:$statusbar"
+    implementation 'com.airbnb.android:lottie:3.0.1'
 
     // glide
     implementation "com.github.bumptech.glide:glide:$glide"

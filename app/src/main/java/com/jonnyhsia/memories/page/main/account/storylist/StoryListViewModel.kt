@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import com.arch.jonnyhsia.memories.model.passport.PassportDataSource
 import com.arch.jonnyhsia.memories.model.story.StoryDataSource
 import com.jonnyhsia.appcore.component.BaseViewModel
-import com.jonnyhsia.appcore.ext.Elvis
 import com.jonnyhsia.appcore.okrx.attachLoadingView
 import com.jonnyhsia.appcore.okrx.okSubscribe
 
@@ -18,8 +17,8 @@ class StoryListViewModel(
     private var currentPage = 0
 
     init {
-        fetchLevelInfo()
         fetchStoryList()
+        fetchLevelInfo()
     }
 
     private fun fetchLevelInfo() {
@@ -27,7 +26,6 @@ class StoryListViewModel(
                 .okSubscribe(this, onSuccess = {
                     val list = storyList.value ?: ArrayList(16)
                     list.add(0, it)
-
                     storyList.value = list
                 })
     }

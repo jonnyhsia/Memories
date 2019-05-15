@@ -30,14 +30,30 @@ class MainActivity : AppCompatActivity() {
         // 进入首页
         setContentView(R.layout.activity_main)
 
-        bottomNavigation.setOnTabSelectListener { oldPos, pos ->
-            changeHomeFragment(oldPos, pos)
-            return@setOnTabSelectListener false
+//        tabHomeAnim.setAnimation("tab_home.json")
+
+        bottomNavigation.build {
+            newTab(text = "时间线", iconRes = R.drawable.ic_nav_timeline, animAsset = "tab_home.json")
+            newTab(text = "讨论", iconRes = R.drawable.ic_nav_discuss, animAsset = "tab_discuss.json")
+            newTab(text = "收藏", iconRes = R.drawable.ic_nav_msg, animAsset = "tab_collect.json")
+            newTab(text = "我的", iconRes = R.drawable.ic_nav_account, animAsset = "tab_mine.json")
+
+            setOnTabSelectListener { oldPos, pos ->
+                changeHomeFragment(oldPos, pos)
+                return@setOnTabSelectListener false
+            }
+
+            setOnTabReselectListener {
+                val currentFragment = supportFragmentManager.findFragmentByTag(getFragmentTagAt(index = it))
+                (currentFragment as? TabDoubleTap)?.onTabDoubleTapped()
+            }
         }
-        bottomNavigation.setOnTabReselectListener {
-            val currentFragment = supportFragmentManager.findFragmentByTag(getFragmentTagAt(index = it))
-            (currentFragment as? TabDoubleTap)?.onTabDoubleTapped()
-        }
+
+//        tabMine.setOnClickListener {
+//            tabHome.visibility = View.INVISIBLE
+//            tabHomeAnim.isVisible = true
+//            tabHomeAnim.playAnimation()
+//        }
     }
 
     private fun changeHomeFragment(oldPos: Int, pos: Int) {

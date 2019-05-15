@@ -33,6 +33,7 @@ dependencies {
     implementation "me.drakeet.multitype:multitype-ktx:$multitype"
 
     implementation "me.everything:overscroll-decor-android:1.0.4"
+    implementation 'com.airbnb.android:lottie:3.0.1'
 
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test:runner:$test_runner"

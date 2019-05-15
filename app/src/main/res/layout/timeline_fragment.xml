@@ -103,14 +103,13 @@
         tools:listitem="@layout/item_story_with_image"
         tools:orientation="vertical" />
 
-    <ImageView
-        android:id="@+id/emptyView"
+    <com.arch.jonnyhsia.ui.XImageView
+        android:id="@+id/imgPlaceholder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitEnd"
-        android:src="@drawable/img_empty"
-        android:visibility="gone"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_timeline_placeholder"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:x_aspectRatio="0.6" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabPost"

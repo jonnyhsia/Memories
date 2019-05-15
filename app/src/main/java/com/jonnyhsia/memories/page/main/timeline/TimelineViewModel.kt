@@ -20,8 +20,9 @@ class TimelineViewModel : BaseViewModel() {
 
     private fun fetchTimelineAt(page: Int) {
         storyDataSource.getTimeline(page)
-                .attachEmptyView(emptyView)
-//                .attachLoadingView(loadingView)
+                .attachLoadingView(loadingView) {
+                    timeline.value == null
+                }
                 .okSubscribe(this, onSuccess = {
                     timeline.value = it
                 })

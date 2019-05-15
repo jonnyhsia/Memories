@@ -8,6 +8,9 @@ import com.arch.jonnyhsia.memories.model.story.bean.GroupDisplayModel
 import com.arch.jonnyhsia.memories.model.story.bean.TopDiscussListModel
 import com.arch.jonnyhsia.memories.model.story.bean.TopDiscussModel
 import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 object GroupRepository : Repository(), GroupDataSource {
 
@@ -63,6 +66,8 @@ object GroupRepository : Repository(), GroupDataSource {
                 DiscussDisplayModel(id = 0, title = "🕯💔阿莫西林的钟楼没了？", description = "", image = "", group = groupEverything, comments = 1, updateTime = "1小时前更新", tint = null),
                 DiscussDisplayModel(id = 0, title = "你更喜欢五一休三天还是休四天？", description = "今年突兀地得到消息称五一长假改为四天，并且前一周周日与后一周周日调休为工作日。也就是说本可人儿下周无休，下下周也无休？？？", image = "", group = groupDc, comments = 3, updateTime = "刚刚更新", tint = null),
                 DiscussDisplayModel(id = 0, title = "剧透妇联4 你妈儿子死了 淦你妈儿子鸡掰!", description = "", image = "", group = groupBattle, comments = 3, updateTime = "1小时前更新", tint = null)
-        ))
+        )).delay(2000, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
 }

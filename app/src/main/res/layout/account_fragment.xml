@@ -83,8 +83,8 @@
 
                 <ImageButton
                     android:id="@+id/btnSettings"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="end"
                     android:layout_marginEnd="12dp"
                     android:background="?selectableItemBackgroundBorderless"
@@ -92,9 +92,10 @@
 
                 <ImageButton
                     android:id="@+id/btnInbox"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="end"
+                    android:layout_marginEnd="4dp"
                     android:background="?selectableItemBackgroundBorderless"
                     android:paddingTop="3dp"
                     android:src="@drawable/ic_nav_inbox" />

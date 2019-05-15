@@ -1,7 +1,11 @@
 package com.jonnyhsia.memories.page.main.discuss
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.memories.model.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.story.bean.DiscussDisplayModel
@@ -25,8 +29,27 @@ class DiscussFragment : BaseFragment<DiscussViewModel>() {
 
     private val adapter = XMultiAdapter()
 
+    private val placeholderAnim: Animator by lazy {
+        ObjectAnimator.ofFloat(imgPlaceholder, "alpha", 0f, 1f)
+                .apply {
+                    duration = 1200L
+                    repeatMode = ValueAnimator.REVERSE
+                    repeatCount = ValueAnimator.INFINITE
+                }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        enableLoadingView(Observer {
+            if (it == null) {
+                placeholderAnim.cancel()
+                imgPlaceholder.isVisible = false
+            } else {
+                imgPlaceholder.isVisible = true
+                placeholderAnim.start()
+            }
+        })
 
         adapter.apply {
             register(TopDiscussListBinder())

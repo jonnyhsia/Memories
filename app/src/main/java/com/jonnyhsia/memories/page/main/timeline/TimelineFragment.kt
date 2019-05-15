@@ -1,7 +1,11 @@
 package com.jonnyhsia.memories.page.main.timeline
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.memories.model.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
@@ -30,11 +34,27 @@ class TimelineFragment : BaseFragment<TimelineViewModel>(), TabDoubleTap {
     override val layoutRes: Int
         get() = R.layout.timeline_fragment
 
+    private val placeholderAnim: Animator by lazy {
+        ObjectAnimator.ofFloat(imgPlaceholder, "alpha", 0f, 1f)
+                .apply {
+                    duration = 1200L
+                    repeatMode = ValueAnimator.REVERSE
+                    repeatCount = ValueAnimator.INFINITE
+                }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        enableLoadingView()
-        enableEmptyView(emptyView)
+        enableLoadingView(Observer {
+            if (it == null) {
+                placeholderAnim.cancel()
+                imgPlaceholder.isVisible = false
+            } else {
+                imgPlaceholder.isVisible = true
+                placeholderAnim.start()
+            }
+        })
 
         // collapsingToolbar.setPadding(0, statusBarHeight, 0, 0)
         adapter = XMultiAdapter().apply {
