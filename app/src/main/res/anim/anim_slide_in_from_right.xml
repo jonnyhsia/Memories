@@ -12,13 +12,4 @@
         android:interpolator="@android:anim/decelerate_interpolator"
         android:toAlpha="1" />
 
-    <!--<scale-->
-        <!--android:fromXScale="95%"-->
-        <!--android:fromYScale="95%"-->
-        <!--android:interpolator="@android:anim/decelerate_interpolator"-->
-        <!--android:pivotX="50%"-->
-        <!--android:pivotY="50%"-->
-        <!--android:toXScale="100%"-->
-        <!--android:toYScale="100%" />-->
-
 </set>
