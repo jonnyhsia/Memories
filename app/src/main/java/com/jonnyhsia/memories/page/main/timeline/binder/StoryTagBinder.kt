@@ -10,6 +10,7 @@ import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.item_story_tag.*
 
 class StoryTagBinder : ItemBinder<TagModel>() {
+
     override val itemViewRes: Int
         get() = R.layout.item_story_tag
 

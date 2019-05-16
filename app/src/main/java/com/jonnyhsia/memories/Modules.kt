@@ -2,6 +2,7 @@ package com.jonnyhsia.memories
 
 import com.arch.jonnyhsia.memories.model.Repository
 import com.jonnyhsia.memories.page.about.AboutViewModel
+import com.jonnyhsia.memories.page.compose.ComposeViewModel
 import com.jonnyhsia.memories.page.login.LoginViewModel
 import com.jonnyhsia.memories.page.main.MainViewModel
 import com.jonnyhsia.memories.page.main.account.AccountViewModel
@@ -29,4 +30,5 @@ val mvvmModule = module {
     viewModel { AccountViewModel(get()) }
     viewModel { StoryListViewModel(get(), get()) }
     viewModel { AboutViewModel() }
+    viewModel { ComposeViewModel() }
 }

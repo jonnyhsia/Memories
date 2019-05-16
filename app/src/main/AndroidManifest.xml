@@ -28,6 +28,9 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".page.welcome.WelcomeActivity" />
         <activity android:name=".page.about.AboutActivity" />
+        <activity
+            android:name=".page.compose.ComposeActivity"
+            android:windowSoftInputMode="adjustResize" />
 
     </application>
 

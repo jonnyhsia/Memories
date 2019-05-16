@@ -1,5 +1,7 @@
 package com.arch.jonnyhsia.ui.ext
 
+import android.view.View
+import androidx.appcompat.widget.TooltipCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +12,11 @@ fun RecyclerView.asVerticalList() {
     setHasFixedSize(true)
     layoutManager = LinearLayoutManager(context)
 }
+
+//fun RecyclerView.asFlexbox() {
+//    setHasFixedSize(true)
+//    layoutManager = FlexboxLayoutManager(context)
+//}
 
 fun RecyclerView.asHorizontalList(reverseLayout: Boolean = false) {
     setHasFixedSize(true)
@@ -111,3 +118,11 @@ var AppBarLayout.isFullyExpanded: Boolean
 fun AppBarLayout.isExpanded(offset: Int): Boolean {
     return (bottom - offset) > 0
 }
+
+var View.tooltipTextCompat: CharSequence?
+    set(value) {
+        TooltipCompat.setTooltipText(this, value)
+    }
+    get() {
+        throw Exception()
+    }

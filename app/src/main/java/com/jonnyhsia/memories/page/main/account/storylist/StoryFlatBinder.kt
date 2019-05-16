@@ -65,7 +65,7 @@ class StoryFlatBinder(delegate: StoryFlatBinderDelegate) : ItemBinder<StoryDispl
 
     private fun setAnimation(view: View, position: Int) {
         if (position > lastPosition) {
-            val anim = AnimationUtils.loadAnimation(view.context, R.anim.anim_item_fall_down)
+            val anim = AnimationUtils.loadAnimation(view.context, R.anim.anim_slide_in_from_right)
             view.startAnimation(anim)
             lastPosition = position
         }

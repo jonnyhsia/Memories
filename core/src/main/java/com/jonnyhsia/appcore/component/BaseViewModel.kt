@@ -1,19 +1,15 @@
 package com.jonnyhsia.appcore.component
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.arch.jonnyhsia.compass.Compass
 import com.arch.jonnyhsia.compass.RouteIntent
 import com.arch.jonnyhsia.mirror.logger.Corgi
-import com.jakewharton.rxbinding2.view.clicks
 import com.jonnyhsia.appcore.okrx.OkNotification
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.internal.disposables.DisposableContainer
-import java.util.concurrent.TimeUnit
 
 abstract class BaseViewModel : ViewModel(), Corgi, DisposableContainer {
 
@@ -99,11 +95,4 @@ fun <T> Observable<T>.xsubscribe(
         onComplete: () -> Unit = {}
 ) {
     disposable.add(subscribe(onNext, onError, onComplete))
-}
-
-
-fun View.click(): Observable<Unit> {
-    return clicks()
-            .throttleFirst(300L, TimeUnit.MILLISECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
 }

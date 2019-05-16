@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.jonnyhsia.appcore.component.BaseFragment
 import com.jonnyhsia.memories.R
+import kotlinx.android.synthetic.main.fragment_about.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AboutFragment: BaseFragment<AboutViewModel>() {
@@ -15,5 +16,6 @@ class AboutFragment: BaseFragment<AboutViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        btnBack
     }
 }

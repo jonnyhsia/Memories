@@ -81,6 +81,7 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin"
     implementation "androidx.viewpager2:viewpager2:$viewpager2"
     implementation "com.google.android.material:material:$material"
+//    implementation 'com.google.android:flexbox:1.1.0'
 
     implementation "me.drakeet.multitype:multitype:$multitype"
     implementation "me.drakeet.multitype:multitype-ktx:$multitype"

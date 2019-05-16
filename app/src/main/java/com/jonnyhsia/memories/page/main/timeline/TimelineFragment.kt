@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import com.arch.jonnyhsia.compass.navigate
 import com.arch.jonnyhsia.memories.model.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
 import com.arch.jonnyhsia.mirror.logger.logd
@@ -77,7 +78,7 @@ class TimelineFragment : BaseFragment<TimelineViewModel>(), TabDoubleTap {
         })
 
         fabPost.setOnClickListener {
-            vm.xxxxxxxx()
+            navigate("memo://Compose")
         }
 
         LiveBus.observe<LoginEvent>(this, Observer {

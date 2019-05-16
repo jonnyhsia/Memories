@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/compose"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_nav_inbox"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/fieldTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:background="@null"
+            android:fontFamily="@font/product_sans"
+            android:hint="Main Theme"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="3dp"
+            android:maxLines="2"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnClose" />
+
+        <EditText
+            android:id="@+id/fieldContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="Memories..."
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="3dp"
+            android:minLines="10"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fieldTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:divider="@drawable/spacing_4dp"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
+        android:showDividers="middle"
+        tools:translationY="-128dp">
+
+        <com.arch.jonnyhsia.ui.XImageView
+            android:id="@+id/btnGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_editor_photo_24dp" />
+
+        <com.arch.jonnyhsia.ui.XImageView
+            android:id="@+id/btnFormat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_editor_list_0_24dp" />
+
+        <com.arch.jonnyhsia.ui.XImageView
+            android:id="@+id/btnMention"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_editor_mention_24dp" />
+
+        <com.arch.jonnyhsia.ui.XImageView
+            android:id="@+id/btnAssistant"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_editor_section_24dp" />
+
+        <com.arch.jonnyhsia.ui.XImageView
+            android:id="@+id/btnQuickText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_editor_section_24dp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/toolAreaContainer"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:translationY="128dp"
+        android:visibility="gone"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        tools:layout_height="128dp"
+        tools:translationY="0dp"
+        tools:visibility="visible" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

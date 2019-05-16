@@ -20,8 +20,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomViewTarget
 import com.bumptech.glide.request.transition.Transition
+import com.jakewharton.rxbinding2.view.clicks
 import com.jonnyhsia.appcore.application
+import com.jonnyhsia.appcore.component.xsubscribe
 import com.jonnyhsia.appcore.ui.RoundCorner
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.internal.disposables.DisposableContainer
+import java.util.concurrent.TimeUnit
 
 object Colors {
 
@@ -147,4 +152,10 @@ fun RequestOptions.asRounded(
 ) {
     transforms(CenterCrop(), RoundCorner(leftTop, rightTop, rightBottom, leftBottom))
             .diskCacheStrategy(DiskCacheStrategy.ALL)
+}
+
+fun View.click(dc: DisposableContainer, onClick: (Unit) -> Unit) {
+    this.clicks()
+            .throttleFirst(300L, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread()).xsubscribe(dc, onClick)
 }
