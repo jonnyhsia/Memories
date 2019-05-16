@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="52dp"
-    android:layout_margin="0dp"
-    android:background="@drawable/placeholder"
+    android:layout_width="46dp"
+    android:layout_height="46dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/ripple_gray_rounded"
     android:orientation="vertical"
-    android:paddingStart="16dp"
-    android:paddingEnd="20dp"
-    android:textSize="16sp"
-    android:textColor="@color/textColorSecondary"
-    android:drawableStart="@drawable/ic_editor_mention_24dp"
-    android:gravity="center"
-    tools:text="大标题">
+    android:scaleType="centerInside"
+    tools:src="@drawable/ic_editor_mention_24dp">
 
-</TextView>
+</ImageView>

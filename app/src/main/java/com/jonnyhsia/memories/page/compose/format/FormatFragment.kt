@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.arch.jonnyhsia.ui.ext.asGridList
+import com.arch.jonnyhsia.ui.ext.asHorizontalList
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.format_fragment.*
 
@@ -19,8 +19,7 @@ class FormatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        recyclerFormat.asFlexbox()
-        recyclerFormat.asGridList(2)
+        recyclerFormat.asHorizontalList()
         recyclerFormat.adapter = FormatAdapter { item, position ->
 
         }
