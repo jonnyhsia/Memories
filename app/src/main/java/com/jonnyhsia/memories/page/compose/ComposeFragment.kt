@@ -2,13 +2,15 @@ package com.jonnyhsia.memories.page.compose
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.transaction
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import com.arch.jonnyhsia.ui.ImageToggle
+import com.arch.jonnyhsia.ui.ext.asFlexbox
 import com.arch.jonnyhsia.ui.ext.tooltipTextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.jonnyhsia.appcore.component.BaseFragment
@@ -19,6 +21,7 @@ import com.jonnyhsia.appcore.ext.dp
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
 import com.jonnyhsia.memories.page.compose.format.FormatFragment
+import com.jonnyhsia.memories.page.compose.quick.QuickTextAdapter
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.compose_fragment.*
@@ -27,7 +30,7 @@ import java.util.concurrent.TimeUnit
 import kotlin.properties.Delegates
 
 private const val TOOL_AREA_ANIM_DURATION = 360L
-private val TOOL_AREA_INTERPOLATOR: Interpolator = DecelerateInterpolator(2.5f)
+private val TOOL_AREA_INTERPOLATOR: Interpolator = DecelerateInterpolator(2f)
 
 private val TOOL_AREA_TRANSLATION_Y = application.resources.getDimensionPixelSize(R.dimen.tool_area_height).toFloat()
 
@@ -38,7 +41,7 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
 
     override val vm: ComposeViewModel by viewModel()
 
-    private var toolAreaSelectedIndex = -1
+    private var quickTextAdapter: QuickTextAdapter? = null
 
     private var behavior: BottomSheetBehavior<RecyclerView> by Delegates.notNull()
 
@@ -49,57 +52,33 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
         behavior.peekHeight = 122.dp
         recyclerQuickText.setOnClickListener { }
 
-        btnBack.click(vm) {
-            back()
-        }
-
         btnGallery.tooltipTextCompat = "从相册选择图片"
         btnGallery.click(vm) {
             toast("相册选择还没做")
         }
 
         btnFormat.tooltipTextCompat = "格式化工具"
-        btnFormat.setOnCheckedChangeListener(object : ImageToggle.OnCheckedChangeListener {
-            override fun onCheckedChanged(view: ImageToggle, checked: Boolean) {
-                enableToolbarArea(checked)
-                if (checked) {
-                    btnQuickText.isChecked = false
-                    showFormatTools()
-                }
+        btnFormat.setOnCheckedChangeListener { _, checked ->
+            enableToolbarArea(checked)
+            if (checked) {
+                btnQuickText.isChecked = false
+                showFormatTools()
             }
-        })
+        }
 
         btnMention.tooltipTextCompat = "提及你的朋友"
         btnMention.click(vm) {
         }
 
         btnQuickText.tooltipTextCompat = "快捷输入"
-        btnQuickText.setOnCheckedChangeListener(object : ImageToggle.OnCheckedChangeListener {
-            override fun onCheckedChanged(view: ImageToggle, checked: Boolean) {
-                quickInputArea.isVisible = checked
-                if (checked) {
-                    btnFormat.isChecked = false
-                }
-
-                recyclerQuickText.isVisible = true
-                recyclerQuickText.animate()
-                        .translationY(if (checked) 0f else 122f.dp)
-                        .apply {
-                            if (!checked) {
-                                withEndAction { recyclerQuickText.isVisible = false }
-                            }
-                        }
-                        .start()
+        btnQuickText.setOnCheckedChangeListener { _, checked ->
+            quickInputArea.isVisible = checked
+            if (checked) {
+                btnFormat.isChecked = false
             }
-        })
-//        btnQuickText.click(vm) {
-//            // enableToolbarArea(3)
-//            quickInputArea.isVisible = true
-//            recyclerQuickText.isVisible = true
-//            recyclerQuickText.animate()
-//                    .translationY(0f)
-//                    .start()
-//        }
+
+            showQuickTextList(checked)
+        }
 
         btnAssistant.tooltipTextCompat = "Potato Assistant (Alpha)"
         btnAssistant.click(vm) {
@@ -108,7 +87,7 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
         swInformation.setFactory {
             TextView(requireContext()).apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_END
-                textSize = 13f
+                textSize = 12f
                 setTextColor(Colors(R.color.textColorCaption))
                 letterSpacing = 0.03f
             }
@@ -122,6 +101,34 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
                 .xsubscribe(vm, onNext = {
                     swInformation.setText(it)
                 })
+    }
+
+    private fun showQuickTextList(checked: Boolean) {
+        recyclerQuickText.isVisible = true
+        recyclerQuickText.animate()
+                .setInterpolator(TOOL_AREA_INTERPOLATOR)
+                .setDuration(450L)
+                .translationY(if (checked) 0f else 122f.dp)
+                .apply {
+                    if (!checked) {
+                        withEndAction { recyclerQuickText.isVisible = false }
+                    }
+                }
+                .start()
+
+        if (checked && quickTextAdapter == null) {
+            quickTextAdapter = QuickTextAdapter { item, position ->
+                fieldContent.append(item.text)
+            }
+            recyclerQuickText.asFlexbox()
+            recyclerQuickText.layoutAnimation = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_anim_slide_in_from_bottom)
+            recyclerQuickText.adapter = quickTextAdapter
+
+            vm.quickTexts.observeLatest(this, Observer {
+                quickTextAdapter?.items = it
+                quickTextAdapter?.notifyDataSetChanged()
+            })
+        }
     }
 
     private fun showFormatTools() {

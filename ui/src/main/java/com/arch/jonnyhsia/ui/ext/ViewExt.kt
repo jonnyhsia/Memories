@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 
 fun RecyclerView.asVerticalList() {
@@ -13,10 +14,10 @@ fun RecyclerView.asVerticalList() {
     layoutManager = LinearLayoutManager(context)
 }
 
-//fun RecyclerView.asFlexbox() {
-//    setHasFixedSize(true)
-//    layoutManager = FlexboxLayoutManager(context)
-//}
+fun RecyclerView.asFlexbox() {
+    setHasFixedSize(true)
+    layoutManager = FlexboxLayoutManager(context)
+}
 
 fun RecyclerView.asHorizontalList(reverseLayout: Boolean = false) {
     setHasFixedSize(true)

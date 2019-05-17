@@ -30,7 +30,7 @@
         <activity android:name=".page.about.AboutActivity" />
         <activity
             android:name=".page.compose.ComposeActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize|stateVisible" />
 
     </application>
 

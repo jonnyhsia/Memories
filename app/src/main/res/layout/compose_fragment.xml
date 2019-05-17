@@ -10,39 +10,28 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true">
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_back_20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextSwitcher
             android:id="@+id/swInformation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
             android:inAnimation="@anim/slide_in_bottom_top"
             android:outAnimation="@anim/slide_out_top"
-            app:layout_constraintBottom_toBottomOf="@id/btnBack"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnBack"
-            app:layout_constraintTop_toTopOf="@id/btnBack"
-            tools:text="文稿已自动保存 13:05" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/fieldTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:background="@null"
+            android:focusedByDefault="true"
             android:hint="标题"
             android:letterSpacing="0.04"
             android:lineSpacingExtra="3dp"
@@ -53,7 +42,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnBack" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/fieldContent"
@@ -99,8 +88,8 @@
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier"
             android:layout_width="0dp"
-            app:barrierDirection="top"
             android:layout_height="0dp"
+            app:barrierDirection="top"
             app:constraint_referenced_ids="toolAreaContainer, quickInputArea"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -175,8 +164,19 @@
         android:id="@+id/recyclerQuickText"
         android:layout_width="match_parent"
         android:layout_height="240dp"
+        android:background="@drawable/bg_top_divider"
+        android:clipToPadding="false"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
         android:translationY="122dp"
         android:visibility="gone"
-        app:layout_behavior="@string/bottom_sheet_behavior" />
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        tools:layoutManager="GridLayoutManager"
+        tools:listitem="@layout/item_quick_text"
+        tools:spanCount="4"
+        tools:translationY="122dp"
+        tools:visibility="visible" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -8,17 +8,14 @@ import androidx.appcompat.widget.AppCompatImageView
 
 private val DRAWABLE_STATE_CHECKED = intArrayOf(android.R.attr.state_checked)
 
+typealias OnCheckedChangeListener = (view: ImageToggle, checked: Boolean) -> Unit
+
 class ImageToggle @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : AppCompatImageView(context, attrs, defStyleAttr), Checkable {
 
     private var isChecked: Boolean
     private var onCheckedChangeListener: OnCheckedChangeListener? = null
-
-    interface OnCheckedChangeListener {
-
-        fun onCheckedChanged(view: ImageToggle, checked: Boolean)
-    }
 
     init {
         isClickable = true
@@ -53,7 +50,7 @@ class ImageToggle @JvmOverloads constructor(
         }
 
         isChecked = checked
-        onCheckedChangeListener?.onCheckedChanged(this, isChecked)
+        onCheckedChangeListener?.invoke(this, isChecked)
         refreshDrawableState()
     }
 

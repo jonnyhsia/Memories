@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.mirror.logger.Corgi
 import com.jonnyhsia.appcore.okrx.OkNotification
@@ -132,5 +134,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
         }
 
         return contextString.substring(start, end)
+    }
+
+    fun <T> LiveData<T>.observeLatest(owner: LifecycleOwner, observer: Observer<T>) {
+        observe(owner, observer)
+        observer.onChanged(value ?: return)
     }
 }

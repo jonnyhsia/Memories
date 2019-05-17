@@ -56,13 +56,13 @@ class FormatAdapter(
                 Format(flag = arrayOf(">"), text = "引用", description = "使用引用文本", iconRes = R.drawable.ic_editor_quote_0_24dp)
 
         class H1 :
-                Format(flag = arrayOf("#"), text = "标题1", description = "1号标题", iconRes = R.drawable.ic_editor_title_1_24dp)
+                Format(flag = arrayOf("#"), text = "标题1", description = "1号标题", iconRes = R.drawable.ic_editor_h1_24dp)
 
         class H2 :
-                Format(flag = arrayOf("##"), text = "标题2", description = "2号标题", iconRes = R.drawable.ic_editor_title_1_24dp)
+                Format(flag = arrayOf("##"), text = "标题2", description = "2号标题", iconRes = R.drawable.ic_editor_h2_24dp)
 
         class H3 :
-                Format(flag = arrayOf("###"), text = "标题3", description = "3号标题", iconRes = R.drawable.ic_editor_title_1_24dp)
+                Format(flag = arrayOf("###"), text = "标题3", description = "3号标题", iconRes = R.drawable.ic_editor_h3_24dp)
 
         class List :
                 Format(flag = arrayOf("-"), text = "列表", description = "使用无序列表", iconRes = R.drawable.ic_editor_list_0_24dp)
