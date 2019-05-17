@@ -2,13 +2,13 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/compose"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
 
         <ImageButton
             android:id="@+id/btnBack"
@@ -16,17 +16,31 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:background="?selectableItemBackground"
+            android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_back_20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextSwitcher
+            android:id="@+id/swInformation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:inAnimation="@anim/slide_in_bottom_top"
+            android:outAnimation="@anim/slide_out_top"
+            app:layout_constraintBottom_toBottomOf="@id/btnBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintTop_toTopOf="@id/btnBack"
+            tools:text="文稿已自动保存 13:05" />
 
         <EditText
             android:id="@+id/fieldTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
             android:background="@null"
             android:hint="标题"
@@ -44,90 +58,125 @@
         <EditText
             android:id="@+id/fieldContent"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@null"
+            android:fadingEdge="vertical"
+            android:fadingEdgeLength="16dp"
             android:gravity="top"
             android:hint="身在何处，当下何时，眼见何事，情系何方，所思何人。"
             android:letterSpacing="0.04"
             android:lineSpacingExtra="3dp"
             android:minLines="10"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
+            android:requiresFadingEdge="vertical"
             android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fieldTitle" />
 
+        <FrameLayout
+            android:id="@+id/toolAreaContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/tool_area_height"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/quickInputArea"
+            android:layout_width="0dp"
+            android:layout_height="122dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="0dp"
+            app:barrierDirection="top"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="toolAreaContainer, quickInputArea"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_gravity="bottom"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
+            android:showDividers="middle"
+            app:layout_constraintBottom_toTopOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.arch.jonnyhsia.ui.XImageView
+                android:id="@+id/btnGallery"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_editor_photo_24dp" />
+
+            <com.arch.jonnyhsia.ui.ImageToggle
+                android:id="@+id/btnFormat"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:background="?selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_editor_format_24dp" />
+
+            <com.arch.jonnyhsia.ui.XImageView
+                android:id="@+id/btnMention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_editor_mention_24dp" />
+
+            <com.arch.jonnyhsia.ui.ImageToggle
+                android:id="@+id/btnQuickText"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:background="?selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_editor_quick_input_24dp" />
+
+            <com.arch.jonnyhsia.ui.XImageView
+                android:id="@+id/btnAssistant"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_editor_assistant_24dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toolbar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/toolbar"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerQuickText"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_gravity="bottom"
-        android:background="@android:color/white"
-        android:elevation="4dp"
-        android:orientation="horizontal"
-        android:paddingStart="10dp"
-        android:paddingEnd="0dp"
-        android:showDividers="middle"
-        tools:translationY="@dimen/tool_area_translation_y_reverse">
-
-        <com.arch.jonnyhsia.ui.XImageView
-            android:id="@+id/btnGallery"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="?selectableItemBackground"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_editor_photo_24dp" />
-
-        <com.arch.jonnyhsia.ui.XImageView
-            android:id="@+id/btnFormat"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="?selectableItemBackground"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_editor_format_24dp" />
-
-        <com.arch.jonnyhsia.ui.XImageView
-            android:id="@+id/btnMention"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="?selectableItemBackground"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_editor_mention_24dp" />
-
-        <com.arch.jonnyhsia.ui.XImageView
-            android:id="@+id/btnQuickText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="?selectableItemBackground"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_editor_quick_input_24dp" />
-
-        <com.arch.jonnyhsia.ui.XImageView
-            android:id="@+id/btnAssistant"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="?selectableItemBackground"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_editor_assistant_24dp" />
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/toolAreaContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:elevation="5dp"
-        android:translationY="@dimen/tool_area_translation_y"
+        android:layout_height="240dp"
+        android:translationY="122dp"
         android:visibility="gone"
-        app:layout_behavior="@string/bottom_sheet_behavior"
-        tools:layout_height="@dimen/tool_area_translation_y"
-        tools:translationY="0dp"
-        tools:visibility="visible" />
+        app:layout_behavior="@string/bottom_sheet_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

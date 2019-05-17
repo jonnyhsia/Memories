@@ -1,7 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.3.31'
-    ext.version_code = 5
-    ext.version_name = '0.1.6'
+    ext.version_code = 6
+    ext.version_name = '0.1.7'
 
     repositories {
         mavenLocal()

@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recyclerFormat"
     android:layout_width="match_parent"
-    android:layout_height="78dp"
+    android:layout_height="70dp"
     android:clipToPadding="false"
-    android:padding="8dp"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="0dp"
     tools:layoutManager="LinearLayoutManager"
     tools:listitem="@layout/item_format"
     tools:orientation="horizontal">

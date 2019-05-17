@@ -6,6 +6,6 @@
     <dimen name="img_flat_story_cover">72dp</dimen>
     <dimen name="flat_story_cover_safe_spacing">84dp</dimen>
     <dimen name="btm_tab_size">24dp</dimen>
-    <dimen name="tool_area_translation_y">78dp</dimen>
+    <dimen name="tool_area_height">70dp</dimen>
     <dimen name="tool_area_translation_y_reverse">-78dp</dimen>
 </resources>
