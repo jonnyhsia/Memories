@@ -11,10 +11,12 @@
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:fontFamily">@font/noto_sans_medium</item>
         <item name="android:includeFontPadding">false</item>
+
+        <item name="android:ambientShadowAlpha">@dimen/ambientShadowAlpha</item>
+        <item name="android:spotShadowAlpha">@dimen/spotShadowAlpha</item>
     </style>
 
     <style name="CompatAppTheme.Common"></style>
-
 
     <style name="BottomTab">
         <item name="android:layout_width">0dp</item>
@@ -30,6 +32,7 @@
     </style>
 
     <style name="CompatAppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
     <style name="CompatAppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Dark" />
 
     <style name="AccountTabText" parent="TextAppearance.MaterialComponents.Headline6">

@@ -49,7 +49,10 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
         super.onViewCreated(view, savedInstanceState)
 
         behavior = BottomSheetBehavior.from(recyclerQuickText)
-        behavior.peekHeight = 122.dp
+                .apply {
+                    peekHeight = 122.dp
+                }
+
         recyclerQuickText.setOnClickListener { }
 
         btnGallery.tooltipTextCompat = "从相册选择图片"
@@ -74,6 +77,7 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
         btnQuickText.setOnCheckedChangeListener { _, checked ->
             quickInputArea.isVisible = checked
             if (checked) {
+                behavior.state = BottomSheetBehavior.STATE_COLLAPSED
                 btnFormat.isChecked = false
             }
 
@@ -118,7 +122,8 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
 
         if (checked && quickTextAdapter == null) {
             quickTextAdapter = QuickTextAdapter { item, position ->
-                fieldContent.append(item.text)
+                val focusedView = view?.findFocus() ?: fieldContent.also { it.requestFocus() }
+                (focusedView as? TextView)?.append(item.text)
             }
             recyclerQuickText.asFlexbox()
             recyclerQuickText.layoutAnimation = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_anim_slide_in_from_bottom)

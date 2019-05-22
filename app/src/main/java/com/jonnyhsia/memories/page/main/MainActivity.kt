@@ -1,10 +1,15 @@
 package com.jonnyhsia.memories.page.main
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
 import com.arch.jonnyhsia.compass.api.Route
+import com.arch.jonnyhsia.compass.navigate
+import com.arch.jonnyhsia.mirror.logger.Corgi
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.jonnyhsia.appcore.ext.Colors
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.account.AccountFragment
 import com.jonnyhsia.memories.page.main.discuss.DiscussFragment
@@ -13,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Route(name = "Main")
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Corgi {
 
     private val vm: MainViewModel by viewModel()
 
@@ -49,6 +54,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        fabPost.setOnClickListener {
+            navigate("memo://Compose")
+        }
+
 //        tabMine.setOnClickListener {
 //            tabHome.visibility = View.INVISIBLE
 //            tabHomeAnim.isVisible = true
@@ -57,6 +66,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeHomeFragment(oldPos: Int, pos: Int) {
+        if (pos == 0 || pos == 1) {
+            val colorRes = if (pos == 0) R.color.colorAccent else android.R.color.holo_green_light
+            val color = ColorStateList.valueOf(Colors(colorRes))
+            if (fabPost.isShown) {
+                fabPost.hide(object : FloatingActionButton.OnVisibilityChangedListener() {
+                    override fun onHidden(fab: FloatingActionButton?) {
+                        fabPost.supportBackgroundTintList = color
+                        fabPost.show()
+                    }
+                })
+            } else {
+                fabPost.supportBackgroundTintList = color
+                fabPost.show()
+            }
+        } else {
+            fabPost.hide()
+        }
+
         val lastFragment = supportFragmentManager.findFragmentByTag(getFragmentTagAt(index = oldPos))
         val currFragment = supportFragmentManager.findFragmentByTag(getFragmentTagAt(index = pos))
         supportFragmentManager.transaction {

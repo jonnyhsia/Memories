@@ -8,4 +8,6 @@
     <dimen name="btm_tab_size">24dp</dimen>
     <dimen name="tool_area_height">70dp</dimen>
     <dimen name="tool_area_translation_y_reverse">-78dp</dimen>
+    <dimen name="ambientShadowAlpha">0.012</dimen>
+    <dimen name="spotShadowAlpha">0.06</dimen>
 </resources>

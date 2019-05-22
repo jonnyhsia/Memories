@@ -12,99 +12,107 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="52dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="68dp" />
+
     <!--<androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="54dp"-->
-        <!--android:layout_gravity="bottom">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="54dp"-->
+    <!--android:layout_gravity="bottom">-->
 
-        <!--<ImageView-->
-            <!--android:id="@+id/tabHome"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:scaleType="centerInside"-->
-            <!--android:src="@drawable/ic_nav_timeline"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toStartOf="@id/tabDiscuss"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <!--<ImageView-->
+    <!--android:id="@+id/tabHome"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:scaleType="centerInside"-->
+    <!--android:src="@drawable/ic_nav_timeline"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toStartOf="@id/tabDiscuss"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-        <!--<com.airbnb.lottie.LottieAnimationView-->
-            <!--android:id="@+id/tabHomeAnim"-->
-            <!--android:layout_width="@dimen/btm_tab_size"-->
-            <!--android:layout_height="@dimen/btm_tab_size"-->
-            <!--android:scaleType="centerInside"-->
-            <!--android:visibility="gone"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="@id/tabHome"-->
-            <!--app:layout_constraintStart_toStartOf="@id/tabHome"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:lottie_fileName="tab_home.json" />-->
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+    <!--android:id="@+id/tabHomeAnim"-->
+    <!--android:layout_width="@dimen/btm_tab_size"-->
+    <!--android:layout_height="@dimen/btm_tab_size"-->
+    <!--android:scaleType="centerInside"-->
+    <!--android:visibility="gone"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="@id/tabHome"-->
+    <!--app:layout_constraintStart_toStartOf="@id/tabHome"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--app:lottie_fileName="tab_home.json" />-->
 
-        <!--<ImageView-->
-            <!--android:id="@+id/tabDiscuss"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:scaleType="centerInside"-->
-            <!--android:src="@drawable/ic_nav_discuss"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toStartOf="@id/tabInbox"-->
-            <!--app:layout_constraintStart_toEndOf="@id/tabHome"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <!--<ImageView-->
+    <!--android:id="@+id/tabDiscuss"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:scaleType="centerInside"-->
+    <!--android:src="@drawable/ic_nav_discuss"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toStartOf="@id/tabInbox"-->
+    <!--app:layout_constraintStart_toEndOf="@id/tabHome"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-        <!--<com.airbnb.lottie.LottieAnimationView-->
-            <!--android:id="@+id/tabDiscussAnim"-->
-            <!--android:layout_width="@dimen/btm_tab_size"-->
-            <!--android:layout_height="@dimen/btm_tab_size"-->
-            <!--android:visibility="gone"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="@id/tabDiscuss"-->
-            <!--app:layout_constraintStart_toStartOf="@id/tabDiscuss"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:lottie_fileName="tab_discuss.json" />-->
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+    <!--android:id="@+id/tabDiscussAnim"-->
+    <!--android:layout_width="@dimen/btm_tab_size"-->
+    <!--android:layout_height="@dimen/btm_tab_size"-->
+    <!--android:visibility="gone"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="@id/tabDiscuss"-->
+    <!--app:layout_constraintStart_toStartOf="@id/tabDiscuss"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--app:lottie_fileName="tab_discuss.json" />-->
 
-        <!--<ImageView-->
-            <!--android:id="@+id/tabInbox"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:scaleType="centerInside"-->
-            <!--android:src="@drawable/ic_nav_msg"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toStartOf="@id/tabMine"-->
-            <!--app:layout_constraintStart_toEndOf="@id/tabDiscuss"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <!--<ImageView-->
+    <!--android:id="@+id/tabInbox"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:scaleType="centerInside"-->
+    <!--android:src="@drawable/ic_nav_msg"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toStartOf="@id/tabMine"-->
+    <!--app:layout_constraintStart_toEndOf="@id/tabDiscuss"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-        <!--<com.airbnb.lottie.LottieAnimationView-->
-            <!--android:id="@+id/tabInboxAnim"-->
-            <!--android:layout_width="@dimen/btm_tab_size"-->
-            <!--android:layout_height="@dimen/btm_tab_size"-->
-            <!--android:visibility="gone"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="@id/tabInbox"-->
-            <!--app:layout_constraintStart_toStartOf="@id/tabInbox"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:lottie_fileName="tab_collect.json" />-->
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+    <!--android:id="@+id/tabInboxAnim"-->
+    <!--android:layout_width="@dimen/btm_tab_size"-->
+    <!--android:layout_height="@dimen/btm_tab_size"-->
+    <!--android:visibility="gone"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="@id/tabInbox"-->
+    <!--app:layout_constraintStart_toStartOf="@id/tabInbox"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--app:lottie_fileName="tab_collect.json" />-->
 
-        <!--<ImageView-->
-            <!--android:id="@+id/tabMine"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:scaleType="centerInside"-->
-            <!--android:src="@drawable/ic_nav_account"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toEndOf="@id/tabInbox"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <!--<ImageView-->
+    <!--android:id="@+id/tabMine"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:scaleType="centerInside"-->
+    <!--android:src="@drawable/ic_nav_account"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toEndOf="@id/tabInbox"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-        <!--<com.airbnb.lottie.LottieAnimationView-->
-            <!--android:id="@+id/tabMineAnim"-->
-            <!--android:layout_width="@dimen/btm_tab_size"-->
-            <!--android:layout_height="@dimen/btm_tab_size"-->
-            <!--android:visibility="gone"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="@id/tabMine"-->
-            <!--app:layout_constraintStart_toStartOf="@id/tabMine"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:lottie_fileName="tab_mine.json" />-->
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+    <!--android:id="@+id/tabMineAnim"-->
+    <!--android:layout_width="@dimen/btm_tab_size"-->
+    <!--android:layout_height="@dimen/btm_tab_size"-->
+    <!--android:visibility="gone"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="@id/tabMine"-->
+    <!--app:layout_constraintStart_toStartOf="@id/tabMine"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--app:lottie_fileName="tab_mine.json" />-->
 
     <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
 
@@ -114,7 +122,7 @@
         android:layout_height="54dp"
         android:layout_gravity="bottom"
         android:background="@drawable/bg_bottom_navigation"
-        android:elevation="8dp"
+        android:elevation="12dp"
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
         app:x_defaultTab="0" />

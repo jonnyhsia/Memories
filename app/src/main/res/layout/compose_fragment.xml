@@ -101,9 +101,8 @@
             android:layout_gravity="bottom"
             android:background="@android:color/white"
             android:orientation="horizontal"
-            android:paddingStart="10dp"
+            android:paddingStart="8dp"
             android:paddingEnd="0dp"
-            android:showDividers="middle"
             app:layout_constraintBottom_toTopOf="@id/barrier"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -112,7 +111,6 @@
                 android:id="@+id/btnGallery"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="?selectableItemBackground"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_editor_photo_24dp" />
 
@@ -120,7 +118,6 @@
                 android:id="@+id/btnFormat"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:background="?selectableItemBackground"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_editor_format_24dp" />
 
@@ -128,7 +125,6 @@
                 android:id="@+id/btnMention"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="?selectableItemBackground"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_editor_mention_24dp" />
 
@@ -136,7 +132,6 @@
                 android:id="@+id/btnQuickText"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:background="?selectableItemBackground"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_editor_quick_input_24dp" />
 
@@ -144,7 +139,6 @@
                 android:id="@+id/btnAssistant"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="?selectableItemBackground"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_editor_assistant_24dp" />
 
@@ -166,6 +160,7 @@
         android:layout_height="240dp"
         android:background="@drawable/bg_top_divider"
         android:clipToPadding="false"
+        android:nestedScrollingEnabled="false"
         android:paddingStart="10dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
