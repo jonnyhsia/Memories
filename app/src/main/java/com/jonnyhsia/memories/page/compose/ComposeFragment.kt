@@ -1,5 +1,10 @@
 package com.jonnyhsia.memories.page.compose
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -15,13 +20,14 @@ import com.arch.jonnyhsia.ui.ext.tooltipTextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.jonnyhsia.appcore.component.BaseFragment
 import com.jonnyhsia.appcore.component.xsubscribe
-import com.jonnyhsia.appcore.ext.Colors
-import com.jonnyhsia.appcore.ext.click
-import com.jonnyhsia.appcore.ext.dp
+import com.jonnyhsia.appcore.ext.*
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
 import com.jonnyhsia.memories.page.compose.format.FormatFragment
 import com.jonnyhsia.memories.page.compose.quick.QuickTextAdapter
+import com.jonnyhsia.memories.ui.GlideV4Engine
+import com.zhihu.matisse.Matisse
+import com.zhihu.matisse.MimeType
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.compose_fragment.*
@@ -33,6 +39,8 @@ private const val TOOL_AREA_ANIM_DURATION = 360L
 private val TOOL_AREA_INTERPOLATOR: Interpolator = DecelerateInterpolator(2f)
 
 private val TOOL_AREA_TRANSLATION_Y = application.resources.getDimensionPixelSize(R.dimen.tool_area_height).toFloat()
+
+private const val REQUEST_CHOOSE_IMAGE = 100
 
 class ComposeFragment : BaseFragment<ComposeViewModel>() {
 
@@ -57,7 +65,16 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
 
         btnGallery.tooltipTextCompat = "从相册选择图片"
         btnGallery.click(vm) {
-            toast("相册选择还没做")
+            Matisse.from(this)
+                    .choose(MimeType.ofImage())
+                    .theme(R.style.Matisse_Memo)
+                    .countable(false)
+                    .maxSelectable(1)
+                    .spanCount(4)
+                    .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                    .thumbnailScale(0.85f)
+                    .imageEngine(GlideV4Engine())
+                    .forResult(REQUEST_CHOOSE_IMAGE)
         }
 
         btnFormat.tooltipTextCompat = "格式化工具"
@@ -126,7 +143,7 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
                 (focusedView as? TextView)?.append(item.text)
             }
             recyclerQuickText.asFlexbox()
-            recyclerQuickText.layoutAnimation = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_anim_slide_in_from_bottom)
+            recyclerQuickText.layoutAnimation = AnimationUtils.loadLayoutAnimation(requireContext(), com.jonnyhsia.memories.R.anim.layout_anim_slide_in_from_bottom)
             recyclerQuickText.adapter = quickTextAdapter
 
             vm.quickTexts.observeLatest(this, Observer {
@@ -185,5 +202,20 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
 //                    .setDuration(TOOL_AREA_ANIM_DURATION)
 //                    .start()
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CHOOSE_IMAGE
+                && resultCode == Activity.RESULT_OK) {
+            val imageUri = Matisse.obtainResult(data).firstOrNull() ?: return
+            fieldContent.append("[]($imageUri)".spannable {
+                setImage(imageUri2Drawable(imageUri))
+            })
+        }
+    }
+
+    fun imageUri2Drawable(uri: Uri) : Drawable {
+        TODO()
     }
 }

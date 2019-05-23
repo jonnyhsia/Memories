@@ -32,6 +32,7 @@
   **[] $VALUES;
   public *;
 }
+-dontwarn com.bumptech.glide.**
 
 ##########################################
 

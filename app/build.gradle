@@ -95,6 +95,7 @@ dependencies {
     // rx
     implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding"
     implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxbinding"
+    implementation "com.zhihu.android:matisse:0.5.2-beta4"
 
     // debug
     implementation "com.tencent.bugly:crashreport:$bugly"
