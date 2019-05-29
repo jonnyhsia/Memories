@@ -2,15 +2,14 @@
 
 package com.jonnyhsia.appcore.ext
 
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.text.*
 import android.text.style.*
 import android.view.View
 import androidx.annotation.ColorInt
-import androidx.core.text.HtmlCompat
 import androidx.core.text.parseAsHtml
-import io.reactivex.Observable
-import java.util.concurrent.Future
+import com.jonnyhsia.appcore.application
 
 
 inline fun CharSequence.spannable(block: Spannable.() -> Unit = {}): Spannable {
@@ -23,7 +22,8 @@ inline fun CharSequence.spannable(block: Spannable.() -> Unit = {}): Spannable {
 
 fun CharSequence.spannableBuilder(
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): SpannableStringBuilder {
     return if (this is SpannableStringBuilder) {
         this
@@ -38,9 +38,10 @@ fun CharSequence.spannableBuilder(
 fun Spannable.setSize(
         textSize: Int,
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): Spannable {
-    setSpan(AbsoluteSizeSpan(textSize, true), start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(AbsoluteSizeSpan(textSize, true), start, end, flag)
     return this
 }
 
@@ -51,9 +52,10 @@ fun Spannable.setSize(
 fun Spannable.setTextStyle(
         style: Int,
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): Spannable {
-    setSpan(StyleSpan(style), start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(StyleSpan(style), start, end, flag)
     return this
 }
 
@@ -63,9 +65,10 @@ fun Spannable.setTextStyle(
 fun Spannable.setForeground(
         @ColorInt color: Int,
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): Spannable {
-    setSpan(ForegroundColorSpan(color), start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(ForegroundColorSpan(color), start, end, flag)
     return this
 }
 
@@ -74,9 +77,10 @@ fun Spannable.setForeground(
  */
 fun Spannable.setStrikethrough(
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): Spannable {
-    setSpan(StrikethroughSpan(), start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(StrikethroughSpan(), start, end, flag)
     return this
 }
 
@@ -85,9 +89,10 @@ fun Spannable.setStrikethrough(
  */
 fun Spannable.setUnderline(
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): Spannable {
-    setSpan(UnderlineSpan(), start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(UnderlineSpan(), start, end, flag)
     return this
 }
 
@@ -96,9 +101,10 @@ fun Spannable.setUnderline(
  */
 fun Spannable.setSuperscript(
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): Spannable {
-    setSpan(SuperscriptSpan(), start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(SuperscriptSpan(), start, end, flag)
     return this
 }
 
@@ -107,9 +113,10 @@ fun Spannable.setSuperscript(
  */
 fun Spannable.setSubscript(
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): Spannable {
-    setSpan(SubscriptSpan(), start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(SubscriptSpan(), start, end, flag)
     return this
 }
 
@@ -120,10 +127,35 @@ fun Spannable.setImage(
         drawable: Drawable,
         verticalAlignment: Int = DynamicDrawableSpan.ALIGN_BOTTOM,
         start: Int = 0,
-        end: Int = this.length
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
 ): Spannable {
-    setSpan(ImageSpan(drawable, verticalAlignment), start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(ImageSpan(drawable, verticalAlignment), start, end, flag)
     return this
+}
+
+/**
+ * 文字替换为图片
+ */
+fun Spannable.setImage(
+        bitmap: Bitmap,
+        verticalAlignment: Int = DynamicDrawableSpan.ALIGN_BOTTOM,
+        start: Int = 0,
+        end: Int = this.length,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
+): Spannable {
+    setSpan(ImageSpan(application, bitmap, verticalAlignment), start, end, flag)
+    return this
+}
+
+private fun Int.startInclusive(): Boolean {
+    return this == SpannedString.SPAN_INCLUSIVE_INCLUSIVE
+            || this == SpannedString.SPAN_INCLUSIVE_EXCLUSIVE
+}
+
+private fun Int.endInclusive(): Boolean {
+    return this == SpannedString.SPAN_INCLUSIVE_INCLUSIVE
+            || this == SpannedString.SPAN_EXCLUSIVE_INCLUSIVE
 }
 
 /**
@@ -134,6 +166,7 @@ inline fun Spannable.setClickable(
         start: Int = 0,
         end: Int = this.length,
         drawUnderline: Boolean = false,
+        flag: Int = SpannedString.SPAN_INCLUSIVE_EXCLUSIVE,
         crossinline clickable: (View) -> Unit
 ): Spannable {
     setSpan(object : ClickableSpan() {
@@ -145,7 +178,7 @@ inline fun Spannable.setClickable(
             ds.color = textColor
             ds.isUnderlineText = drawUnderline
         }
-    }, start, end, SpannedString.SPAN_INCLUSIVE_EXCLUSIVE)
+    }, start, end, flag)
     return this
 }
 

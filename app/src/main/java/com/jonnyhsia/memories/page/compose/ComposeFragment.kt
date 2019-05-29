@@ -3,9 +3,12 @@ package com.jonnyhsia.memories.page.compose
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.graphics.drawable.Drawable
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.SpannedString
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
@@ -20,7 +23,11 @@ import com.arch.jonnyhsia.ui.ext.tooltipTextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.jonnyhsia.appcore.component.BaseFragment
 import com.jonnyhsia.appcore.component.xsubscribe
-import com.jonnyhsia.appcore.ext.*
+import com.jonnyhsia.appcore.ext.Colors
+import com.jonnyhsia.appcore.ext.click
+import com.jonnyhsia.appcore.ext.dp
+import com.jonnyhsia.appcore.ext.setImage
+import com.jonnyhsia.appcore.okrx.okSubscribe
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
 import com.jonnyhsia.memories.page.compose.format.FormatFragment
@@ -29,11 +36,14 @@ import com.jonnyhsia.memories.ui.GlideV4Engine
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.compose_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
 import kotlin.properties.Delegates
+
 
 private const val TOOL_AREA_ANIM_DURATION = 360L
 private val TOOL_AREA_INTERPOLATOR: Interpolator = DecelerateInterpolator(2f)
@@ -105,6 +115,7 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
         btnAssistant.click(vm) {
         }
 
+        fieldTitle.requestFocus()
         swInformation.setFactory {
             TextView(requireContext()).apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_END
@@ -209,13 +220,27 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
         if (requestCode == REQUEST_CHOOSE_IMAGE
                 && resultCode == Activity.RESULT_OK) {
             val imageUri = Matisse.obtainResult(data).firstOrNull() ?: return
-            fieldContent.append("[]($imageUri)".spannable {
-                setImage(imageUri2Drawable(imageUri))
-            })
+            imageUri2Bitmap(imageUri)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .okSubscribe(vm, onSuccess = {
+                        fieldContent.append("\n")
+                        val image = SpannableString("[]($imageUri)")
+                        image.setImage(it, flag = SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        fieldContent.append(image)
+                        fieldContent.append("\n")
+                    })
         }
     }
 
-    fun imageUri2Drawable(uri: Uri) : Drawable {
-        TODO()
+    private fun imageUri2Bitmap(uri: Uri): Single<Bitmap> {
+        return Single.fromCallable {
+            val options = BitmapFactory.Options()
+            options.inSampleSize = 4
+            requireContext().contentResolver.openInputStream(uri)
+                    .use {
+                        BitmapFactory.decodeStream(it, null, options)
+                    }
+        }
     }
 }
