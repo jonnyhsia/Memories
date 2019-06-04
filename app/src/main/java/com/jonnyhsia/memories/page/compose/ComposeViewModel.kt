@@ -1,12 +1,17 @@
 package com.jonnyhsia.memories.page.compose
 
 import androidx.lifecycle.MutableLiveData
+import com.arch.jonnyhsia.memories.model.story.StoryDataSource
 import com.jonnyhsia.appcore.component.BaseViewModel
 import com.jonnyhsia.memories.page.compose.quick.QuickTextAdapter
 
-class ComposeViewModel : BaseViewModel() {
+class ComposeViewModel(
+        private val storyDataSource: StoryDataSource
+) : BaseViewModel() {
 
     val quickTexts = MutableLiveData<List<QuickTextAdapter.QuickText>>()
+
+    val savedDraft = storyDataSource.getLatestDraft()
 
     init {
         quickTexts.value = listOf(
@@ -27,5 +32,9 @@ class ComposeViewModel : BaseViewModel() {
                 QuickTextAdapter.QuickText("5aSP5bu66LGq"),
                 QuickTextAdapter.QuickText("Nintendo")
         )
+    }
+
+    fun saveContent(title: String, content: String) {
+        storyDataSource.save(title, content)
     }
 }

@@ -30,5 +30,5 @@ val mvvmModule = module {
     viewModel { AccountViewModel(get()) }
     viewModel { StoryListViewModel(get(), get()) }
     viewModel { AboutViewModel() }
-    viewModel { ComposeViewModel() }
+    viewModel { ComposeViewModel(get()) }
 }

@@ -1,13 +1,53 @@
 package com.arch.jonnyhsia.memories.model.story
 
+import android.annotation.SuppressLint
+import android.content.SharedPreferences
+import androidx.core.content.edit
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.memories.model.story.bean.*
+import com.jonnyhsia.appcore.livebus.LiveBus
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
+@SuppressLint("CheckResult")
 object StoryRepository : Repository(), StoryDataSource {
+
+    private val saveSubject = PublishSubject.create<EditableStory>()
+
+    private val draftPref: SharedPreferences by lazy {
+        sharedPreferenceOf("draft")
+    }
+
+    init {
+        saveSubject
+                .debounce(1000L, TimeUnit.MILLISECONDS).subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribe({
+                    draftPref.edit {
+                        putString("title", it.title)
+                        putString("content", it.content)
+                        putLong("create_time", it.time)
+                    }
+                    LiveBus.dispatch(it)
+                }, {
+                })
+    }
+
+    override fun getLatestDraft(): EditableStory? {
+        return draftPref.run {
+            EditableStory(title = getString("title", ""),
+                    content = getString("content", ""),
+                    time = getLong("create_time", -1L))
+        }
+    }
+
+    override fun save(title: String, content: String) {
+        saveSubject.onNext(EditableStory(title, content, System.currentTimeMillis()))
+    }
+
     override fun getUserStories(userId: Int, page: Int): Single<List<StoryDisplayModel>> {
         return Single.just(listOf(
                 StoryDisplayModel(id = 0, title = "不可知的未来", summary = "我要挣钱，然后换个房子，房间有阳台、飘窗。天晴时候，会有太阳照进来，空气都是橘子的颜色。可以躺在窗边惬意，睡午觉，打电玩，怎样都好。独独忘记赶跑孤独，什么事情都缺少意义。", tags = listOf(), dateText = "11:29AM, 4月8日",

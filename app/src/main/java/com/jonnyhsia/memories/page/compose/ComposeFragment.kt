@@ -22,11 +22,11 @@ import com.arch.jonnyhsia.ui.ext.asFlexbox
 import com.arch.jonnyhsia.ui.ext.tooltipTextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.jonnyhsia.appcore.component.BaseFragment
-import com.jonnyhsia.appcore.component.xsubscribe
 import com.jonnyhsia.appcore.ext.Colors
 import com.jonnyhsia.appcore.ext.click
 import com.jonnyhsia.appcore.ext.dp
 import com.jonnyhsia.appcore.ext.setImage
+import com.jonnyhsia.appcore.livebus.LiveBus
 import com.jonnyhsia.appcore.okrx.okSubscribe
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
@@ -35,13 +35,11 @@ import com.jonnyhsia.memories.page.compose.quick.QuickTextAdapter
 import com.jonnyhsia.memories.ui.GlideV4Engine
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
-import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.compose_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.concurrent.TimeUnit
 import kotlin.properties.Delegates
 
 
@@ -115,7 +113,13 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
         btnAssistant.click(vm) {
         }
 
-        fieldTitle.requestFocus()
+        with(vm.savedDraft) {
+            this ?: return@with fieldTitle.requestFocus()
+            fieldContent.requestFocus()
+            fieldTitle.setText(title)
+            fieldContent.setText(content)
+        }
+
         swInformation.setFactory {
             TextView(requireContext()).apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_END
@@ -125,14 +129,18 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
             }
         }
 
-        Observable.intervalRange(0, 10, 2000L, 3000L, TimeUnit.MILLISECONDS)
-                .map {
-                    if (it % 2 == 0L) "已成功自动保存" else ""
-                }
-                .observeOn(AndroidSchedulers.mainThread())
-                .xsubscribe(vm, onNext = {
-                    swInformation.setText(it)
-                })
+        LiveBus.observe(this, Observer {
+            swInformation.setText("自动保存成功")
+        })
+
+//        Observable.intervalRange(0, 10, 2000L, 3000L, TimeUnit.MILLISECONDS)
+//                .map {
+//                    if (it % 2 == 0L) "已成功自动保存" else ""
+//                }
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .xsubscribe(vm, onNext = {
+//                    swInformation.setText(it)
+//                })
     }
 
     private fun showQuickTextList(checked: Boolean) {
@@ -242,5 +250,10 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
                         BitmapFactory.decodeStream(it, null, options)
                     }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        vm.saveContent(fieldTitle.text.toString(), fieldContent.text.toString())
     }
 }

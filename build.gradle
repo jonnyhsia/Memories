@@ -13,7 +13,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.0'
+        classpath 'com.android.tools.build:gradle:3.4.1'
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -43,7 +43,7 @@ ext {
     compass = '1.0.0-SNAPSHOT'
 
     appcompat = '1.0.2'
-    fragment = "1.1.0-alpha08"
+    fragment = "1.1.0-alpha09"
     lifecycle = '2.0.0'
     core_ktx = '1.0.2'
     fragment_ktx = '1.0.0'
