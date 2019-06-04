@@ -1,4 +1,4 @@
-package com.jonnyhsia.memories.ui
+package com.jonnyhsia.appcore
 
 import android.content.Context
 import android.graphics.drawable.Drawable

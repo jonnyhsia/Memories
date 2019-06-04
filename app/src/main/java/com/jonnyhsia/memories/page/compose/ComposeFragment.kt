@@ -2,7 +2,6 @@ package com.jonnyhsia.memories.page.compose
 
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -27,21 +26,22 @@ import com.jonnyhsia.appcore.ext.click
 import com.jonnyhsia.appcore.ext.dp
 import com.jonnyhsia.appcore.ext.setImage
 import com.jonnyhsia.appcore.livebus.LiveBus
+import com.jonnyhsia.appcore.component.xsubscribe
+import com.jonnyhsia.appcore.ext.*
 import com.jonnyhsia.appcore.okrx.okSubscribe
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
 import com.jonnyhsia.memories.page.compose.format.FormatFragment
 import com.jonnyhsia.memories.page.compose.quick.QuickTextAdapter
-import com.jonnyhsia.memories.ui.GlideV4Engine
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
+import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.compose_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
-
 
 private const val TOOL_AREA_ANIM_DURATION = 360L
 private val TOOL_AREA_INTERPOLATOR: Interpolator = DecelerateInterpolator(2f)
@@ -73,16 +73,7 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
 
         btnGallery.tooltipTextCompat = "从相册选择图片"
         btnGallery.click(vm) {
-            Matisse.from(this)
-                    .choose(MimeType.ofImage())
-                    .theme(R.style.Matisse_Memo)
-                    .countable(false)
-                    .maxSelectable(1)
-                    .spanCount(4)
-                    .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-                    .thumbnailScale(0.85f)
-                    .imageEngine(GlideV4Engine())
-                    .forResult(REQUEST_CHOOSE_IMAGE)
+            openGallery()
         }
 
         btnFormat.tooltipTextCompat = "格式化工具"
