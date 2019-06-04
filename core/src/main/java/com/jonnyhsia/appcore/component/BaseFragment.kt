@@ -15,6 +15,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.mirror.logger.Corgi
 import com.jonnyhsia.appcore.okrx.OkNotification
+import com.tbruyelle.rxpermissions2.RxPermissions
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
 
@@ -23,6 +24,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), Corgi {
     abstract val layoutRes: Int
 
     abstract val vm: VM
+
+    val rxPermission: RxPermissions by lazy {
+        RxPermissions(this)
+    }
 
     final override fun onCreateView(
             inflater: LayoutInflater,
