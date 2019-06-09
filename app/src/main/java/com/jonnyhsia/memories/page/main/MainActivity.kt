@@ -13,6 +13,7 @@ import com.jonnyhsia.appcore.ext.Colors
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.account.AccountFragment
 import com.jonnyhsia.memories.page.main.discuss.DiscussFragment
+import com.jonnyhsia.memories.page.main.library.LibraryFragment
 import com.jonnyhsia.memories.page.main.timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,9 +39,9 @@ class MainActivity : AppCompatActivity(), Corgi {
 //        tabHomeAnim.setAnimation("tab_home.json")
 
         bottomNavigation.build {
-            newTab(text = "时间线", iconRes = R.drawable.ic_nav_timeline, animAsset = "tab_home.json")
+            newTab(text = "首页", iconRes = R.drawable.ic_nav_timeline, animAsset = "tab_home.json")
             newTab(text = "讨论", iconRes = R.drawable.ic_nav_discuss, animAsset = "tab_discuss.json")
-            newTab(text = "收藏", iconRes = R.drawable.ic_nav_msg, animAsset = "tab_collect.json")
+            newTab(text = "库", iconRes = R.drawable.ic_nav_msg, animAsset = "tab_collect.json")
             newTab(text = "我的", iconRes = R.drawable.ic_nav_account, animAsset = "tab_mine.json")
 
             setOnTabSelectListener { oldPos, pos ->
@@ -100,7 +101,7 @@ class MainActivity : AppCompatActivity(), Corgi {
         return when (index) {
             0 -> TimelineFragment()
             1 -> DiscussFragment()
-            2 -> Fragment()
+            2 -> LibraryFragment()
             3 -> {
                 // Repository.getMiscDataSource().letWelcomePageEntered(entered = false)
                 // Repository.getPassportDataSource().logout()
