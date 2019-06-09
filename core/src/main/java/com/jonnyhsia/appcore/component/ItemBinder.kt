@@ -1,5 +1,6 @@
 package com.jonnyhsia.appcore.component
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,4 +30,8 @@ abstract class ItemBinder<T> : ItemViewBinder<T, ExtViewHolder>() {
 }
 
 class ExtViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
-        LayoutContainer
+        LayoutContainer {
+
+    val context: Context
+        get() = itemView.context
+}

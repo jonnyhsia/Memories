@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        app:x_aspectRatio="1.5"
+        app:x_aspectRatio="1.777778"
         tools:src="@drawable/placeholder_dark" />
 
     <TextView

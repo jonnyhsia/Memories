@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <com.arch.jonnyhsia.ui.XImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_start_from_draft"
+        app:x_aspectRatio="2.33333" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:letterSpacing="0.05"
+        android:lineSpacingExtra="2dp"
+        android:text="继续创作，\n从未完成的稿件"
+        android:textColor="@color/black87"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+</com.google.android.material.card.MaterialCardView>

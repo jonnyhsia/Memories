@@ -24,7 +24,9 @@ class TimelineViewModel : BaseViewModel() {
                     timeline.value == null
                 }
                 .okSubscribe(this, onSuccess = {
-                    timeline.value = it
+                    val timelineVal = ArrayList(it)
+                    timelineVal.add(1, Unit)
+                    timeline.value = timelineVal
                 })
     }
 
