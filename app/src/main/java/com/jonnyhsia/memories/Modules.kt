@@ -8,6 +8,7 @@ import com.jonnyhsia.memories.page.main.MainViewModel
 import com.jonnyhsia.memories.page.main.account.AccountViewModel
 import com.jonnyhsia.memories.page.main.account.storylist.StoryListViewModel
 import com.jonnyhsia.memories.page.main.discuss.DiscussViewModel
+import com.jonnyhsia.memories.page.main.library.LibraryViewModel
 import com.jonnyhsia.memories.page.main.timeline.TimelineViewModel
 import com.jonnyhsia.memories.page.welcome.WelcomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -31,4 +32,5 @@ val mvvmModule = module {
     viewModel { StoryListViewModel(get(), get()) }
     viewModel { AboutViewModel() }
     viewModel { ComposeViewModel(get()) }
+    viewModel { LibraryViewModel() }
 }

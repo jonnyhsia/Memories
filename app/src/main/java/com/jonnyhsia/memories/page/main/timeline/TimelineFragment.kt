@@ -62,6 +62,7 @@ class TimelineFragment : BaseFragment<TimelineViewModel>(), TabDoubleTap {
             register(TopDiscussListBinder())
             register(StoryHeaderBinder())
             register(UpdateFriendsBinder())
+            register(StartFromDraftBinder())
             register(StoryDisplayModel::class)
                     .to(StoryWithoutImageBinder(), StoryWithImageBinder())
                     .withLinker { _, story ->
