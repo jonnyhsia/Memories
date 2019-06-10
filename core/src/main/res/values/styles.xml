@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Matisse_Memo" parent="Matisse.Zhihu">
+    <style name="Matisse.Memo" parent="Matisse.Zhihu">
         <item name="colorPrimary">@android:color/black</item>
         <item name="colorPrimaryDark">@android:color/black</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>

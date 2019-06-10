@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.arch.jonnyhsia.memories.model.Repository
 import com.arch.jonnyhsia.memories.model.story.bean.*
+import com.arch.jonnyhsia.mirror.logger.logd
 import com.jonnyhsia.appcore.livebus.LiveBus
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit
 @SuppressLint("CheckResult")
 object StoryRepository : Repository(), StoryDataSource {
 
-    private val saveSubject = PublishSubject.create<EditableStory>()
+    private val saveSubject = PublishSubject.create<StoryDraft>()
 
     private val draftPref: SharedPreferences by lazy {
         sharedPreferenceOf("draft")
@@ -26,6 +27,7 @@ object StoryRepository : Repository(), StoryDataSource {
                 .debounce(1000L, TimeUnit.MILLISECONDS).subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .subscribe({
+                    logd("Content Saved.")
                     draftPref.edit {
                         putString("title", it.title)
                         putString("content", it.content)
@@ -36,16 +38,16 @@ object StoryRepository : Repository(), StoryDataSource {
                 })
     }
 
-    override fun getLatestDraft(): EditableStory? {
+    override fun getLatestDraft(): StoryDraft? {
         return draftPref.run {
-            EditableStory(title = getString("title", ""),
-                    content = getString("content", ""),
+            StoryDraft(title = getString("title", "")!!,
+                    content = getString("content", "")!!,
                     time = getLong("create_time", -1L))
         }
     }
 
     override fun save(title: String, content: String) {
-        saveSubject.onNext(EditableStory(title, content, System.currentTimeMillis()))
+        saveSubject.onNext(StoryDraft(title, content, System.currentTimeMillis()))
     }
 
     override fun getUserStories(userId: Int, page: Int): Single<List<StoryDisplayModel>> {

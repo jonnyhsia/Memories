@@ -11,7 +11,7 @@
         android:id="@+id/libraryTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="14dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
         app:tabGravity="center"

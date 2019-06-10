@@ -1,5 +1,6 @@
 package com.jonnyhsia.memories.page.compose
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -17,30 +18,29 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.transaction
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.arch.jonnyhsia.memories.model.story.bean.StoryDraft
 import com.arch.jonnyhsia.ui.ext.asFlexbox
 import com.arch.jonnyhsia.ui.ext.tooltipTextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.jakewharton.rxbinding2.widget.textChanges
 import com.jonnyhsia.appcore.component.BaseFragment
-import com.jonnyhsia.appcore.ext.Colors
-import com.jonnyhsia.appcore.ext.click
-import com.jonnyhsia.appcore.ext.dp
-import com.jonnyhsia.appcore.ext.setImage
-import com.jonnyhsia.appcore.livebus.LiveBus
 import com.jonnyhsia.appcore.component.xsubscribe
 import com.jonnyhsia.appcore.ext.*
+import com.jonnyhsia.appcore.livebus.LiveBus
 import com.jonnyhsia.appcore.okrx.okSubscribe
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.application
 import com.jonnyhsia.memories.page.compose.format.FormatFragment
 import com.jonnyhsia.memories.page.compose.quick.QuickTextAdapter
 import com.zhihu.matisse.Matisse
-import com.zhihu.matisse.MimeType
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.compose_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.concurrent.TimeUnit
 import kotlin.properties.Delegates
 
 private const val TOOL_AREA_ANIM_DURATION = 360L
@@ -61,6 +61,7 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
 
     private var behavior: BottomSheetBehavior<RecyclerView> by Delegates.notNull()
 
+    @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -109,6 +110,7 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
             fieldContent.requestFocus()
             fieldTitle.setText(title)
             fieldContent.setText(content)
+            fieldContent.setSelection(content.length)
         }
 
         swInformation.setFactory {
@@ -120,9 +122,19 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
             }
         }
 
-        LiveBus.observe(this, Observer {
+        LiveBus.observe<StoryDraft>(this, Observer {
             swInformation.setText("自动保存成功")
         })
+
+        Observable.combineLatest(
+                fieldTitle.textChanges().skipInitialValue().debounce(500, TimeUnit.MILLISECONDS),
+                fieldContent.textChanges().skipInitialValue().debounce(500, TimeUnit.MILLISECONDS),
+                BiFunction<CharSequence, CharSequence, Unit> { _, _ -> }
+        )
+                .buffer(500, TimeUnit.MILLISECONDS)
+                .xsubscribe(vm, onNext = {
+                    vm.saveContent(fieldTitle.text.toString(), fieldContent.text.toString())
+                })
 
 //        Observable.intervalRange(0, 10, 2000L, 3000L, TimeUnit.MILLISECONDS)
 //                .map {

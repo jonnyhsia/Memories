@@ -14,6 +14,7 @@ import com.arch.jonnyhsia.memories.model.story.StoryDataSource
 import com.arch.jonnyhsia.memories.model.story.StoryRepository
 import com.arch.jonnyhsia.memories.model.trophy.TrophyDataSource
 import com.arch.jonnyhsia.memories.model.trophy.TrophyRepository
+import com.arch.jonnyhsia.mirror.logger.Corgi
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
@@ -26,7 +27,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.lang.ref.WeakReference
 import java.util.concurrent.TimeUnit
 
-abstract class Repository {
+abstract class Repository : Corgi {
 
     protected val context: Context
         get() = Repository.contextRef.get()!!
