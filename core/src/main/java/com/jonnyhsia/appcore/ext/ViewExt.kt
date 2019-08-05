@@ -1,4 +1,4 @@
-package com.arch.jonnyhsia.ui.ext
+package com.jonnyhsia.appcore.ext
 
 import android.view.View
 import androidx.appcompat.widget.TooltipCompat

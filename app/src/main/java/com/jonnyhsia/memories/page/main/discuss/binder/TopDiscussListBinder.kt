@@ -1,15 +1,13 @@
 package com.jonnyhsia.memories.page.main.discuss.binder
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.jonnyhsia.memories.model.story.bean.TopDiscussListModel
 import com.arch.jonnyhsia.memories.model.story.bean.TopDiscussModel
-import com.arch.jonnyhsia.ui.ext.asGridList
-import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
 import com.jonnyhsia.appcore.component.ExtViewHolder
 import com.jonnyhsia.appcore.component.ItemBinder
+import com.jonnyhsia.appcore.ext.asGridList
+import com.jonnyhsia.appcore.ui.XMultiAdapter
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.ui.recyclerview.ReadMoreBinder
 import kotlinx.android.synthetic.main.item_top_discuss_list.*

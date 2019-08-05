@@ -10,10 +10,10 @@ import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.memories.model.event.LoginEvent
 import com.arch.jonnyhsia.memories.model.story.bean.DiscussDisplayModel
 import com.arch.jonnyhsia.mirror.logger.logd
-import com.arch.jonnyhsia.ui.ext.asVerticalList
-import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
 import com.jonnyhsia.appcore.component.BaseFragment
+import com.jonnyhsia.appcore.ext.asVerticalList
 import com.jonnyhsia.appcore.livebus.LiveBus
+import com.jonnyhsia.appcore.ui.XMultiAdapter
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.page.main.discuss.binder.*
 import kotlinx.android.synthetic.main.discuss_fragment.*

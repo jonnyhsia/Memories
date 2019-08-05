@@ -1,12 +1,10 @@
 package com.jonnyhsia.memories.page.main.timeline.binder
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import com.arch.jonnyhsia.memories.model.story.bean.UpdateFriendsModel
-import com.arch.jonnyhsia.ui.ext.asHorizontalList
-import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
 import com.jonnyhsia.appcore.component.ExtViewHolder
 import com.jonnyhsia.appcore.component.ItemBinder
+import com.jonnyhsia.appcore.ext.asHorizontalList
+import com.jonnyhsia.appcore.ui.XMultiAdapter
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.item_update_friends.*
 import me.drakeet.multitype.register

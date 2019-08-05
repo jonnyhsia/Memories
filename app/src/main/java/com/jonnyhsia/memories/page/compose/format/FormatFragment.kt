@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.arch.jonnyhsia.ui.ext.asHorizontalList
+import com.jonnyhsia.appcore.ext.asHorizontalList
 import com.jonnyhsia.memories.R
 import kotlinx.android.synthetic.main.format_fragment.*
 

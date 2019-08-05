@@ -19,17 +19,14 @@ import androidx.fragment.app.transaction
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDraft
-import com.arch.jonnyhsia.ui.ext.asFlexbox
-import com.arch.jonnyhsia.ui.ext.tooltipTextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.jakewharton.rxbinding2.widget.textChanges
+import com.jakewharton.rxbinding3.widget.textChanges
 import com.jonnyhsia.appcore.component.BaseFragment
 import com.jonnyhsia.appcore.component.xsubscribe
 import com.jonnyhsia.appcore.ext.*
 import com.jonnyhsia.appcore.livebus.LiveBus
 import com.jonnyhsia.appcore.okrx.okSubscribe
 import com.jonnyhsia.memories.R
-import com.jonnyhsia.memories.application
 import com.jonnyhsia.memories.page.compose.format.FormatFragment
 import com.jonnyhsia.memories.page.compose.quick.QuickTextAdapter
 import com.zhihu.matisse.Matisse
@@ -43,11 +40,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
 import kotlin.properties.Delegates
 
-private const val TOOL_AREA_ANIM_DURATION = 360L
 private val TOOL_AREA_INTERPOLATOR: Interpolator = DecelerateInterpolator(2f)
-
-private val TOOL_AREA_TRANSLATION_Y = application.resources.getDimensionPixelSize(R.dimen.tool_area_height).toFloat()
-
 private const val REQUEST_CHOOSE_IMAGE = 100
 
 class ComposeFragment : BaseFragment<ComposeViewModel>() {
@@ -135,15 +128,6 @@ class ComposeFragment : BaseFragment<ComposeViewModel>() {
                 .xsubscribe(vm, onNext = {
                     vm.saveContent(fieldTitle.text.toString(), fieldContent.text.toString())
                 })
-
-//        Observable.intervalRange(0, 10, 2000L, 3000L, TimeUnit.MILLISECONDS)
-//                .map {
-//                    if (it % 2 == 0L) "已成功自动保存" else ""
-//                }
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .xsubscribe(vm, onNext = {
-//                    swInformation.setText(it)
-//                })
     }
 
     private fun showQuickTextList(checked: Boolean) {

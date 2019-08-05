@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.arch.jonnyhsia.memories.model.passport.bean.LoginType
-import com.jakewharton.rxbinding2.widget.textChanges
+import com.jakewharton.rxbinding3.widget.textChanges
 import com.jonnyhsia.appcore.component.BaseFragment
 import com.jonnyhsia.appcore.component.xsubscribe
 import com.jonnyhsia.appcore.ext.Colors

@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.jonnyhsia.compass.navigate
 import com.arch.jonnyhsia.memories.model.story.bean.StoryDisplayModel
-import com.arch.jonnyhsia.ui.ext.asVerticalList
-import com.arch.jonnyhsia.ui.recyclerview.XMultiAdapter
 import com.jonnyhsia.appcore.component.BaseFragment
+import com.jonnyhsia.appcore.ext.asVerticalList
+import com.jonnyhsia.appcore.ui.XMultiAdapter
 import com.jonnyhsia.memories.R
 import com.jonnyhsia.memories.router.Params
 import kotlinx.android.synthetic.main.story_list_fragment.*
@@ -51,6 +51,19 @@ class StoryListFragment : BaseFragment<StoryListViewModel>(), StoryFlatBinderDel
         recyclerStory.addItemDecoration(decoration)
         recyclerStory.asVerticalList()
         recyclerStory.adapter = storyListAdapter
+
+//        recyclerStory.pagination<StoryDisplayModel> {
+//            preloadOffset = 3
+//            endView = view
+//            mapper = { page ->
+//                val dso = StoryRepository.getUserStories(0, page)
+//                if (dso is Pageable<*>) {
+//
+//                }
+//                TODO()
+//                // 根据 page 请求接口
+//            }
+//        }
     }
 
     override fun onClickStory(story: StoryDisplayModel, position: Int) {
@@ -59,3 +72,24 @@ class StoryListFragment : BaseFragment<StoryListViewModel>(), StoryFlatBinderDel
         }
     }
 }
+
+
+/*
+
+Fragment:
+
+pagination.getCurrentPage()
+pagination = adapter.buildPagination(livedata) {
+    preloadOffset = 5
+    loadingView = null
+    endView = null
+    nextPageMapper { page ->
+        ArticleRepository.getArticleList(page)
+    }
+}
+
+
+
+
+
+ */

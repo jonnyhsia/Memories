@@ -1,4 +1,6 @@
-package com.arch.jonnyhsia.ui.recyclerview
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
+
+package com.jonnyhsia.appcore.ui
 
 import android.os.Handler
 import androidx.recyclerview.widget.DiffUtil
@@ -6,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arch.jonnyhsia.mirror.logger.Corgi
 import com.arch.jonnyhsia.mirror.logger.logd
 import com.arch.jonnyhsia.mirror.logger.loge
-import com.arch.jonnyhsia.ui.ext.lastVisibleItemPosition
+import com.jonnyhsia.appcore.ext.lastVisibleItemPosition
+import io.reactivex.Observable
 import me.drakeet.multitype.*
 
 
@@ -20,7 +23,7 @@ typealias OnPrefetchListener = () -> Unit
  * TODO: 同理 (Pre)Fetching, NoMore, Error 等状态, 注册相应类型的 ViewBinder
  *
  * 2. 预加载
- * [prefetchNumber] > 0 且 [onPrefetch] 非空时生效
+ * prefetchNumber] > 0 且 onPrefetch] 非空时生效
  *
  * 3. 更多 feature
  */
@@ -252,7 +255,7 @@ open class XMultiAdapter @JvmOverloads constructor(
     /**
      * 更新对应位置的 Item
      *
-     * @param models   需要传入完整的列表数据
+     * @param model  需要传入完整的列表数据
      * @param position 更新的位置
      */
     fun updateModel(model: Any, position: Int) {
@@ -307,16 +310,15 @@ open class XMultiAdapter @JvmOverloads constructor(
         return typePool.firstIndexOf(T::class.java) != -1
     }
 
-    /**
-     * 添加数据到已有的数据源中
-     *
-     * @param index 添加的位置 (默认-1, 在最后添加)
-     */
-    fun addModels(models: List<*>) {
+    fun addModels(models: List<Any>) {
         addModels(models, -1)
     }
 
-    fun addModels(models: List<*>, index: Int) {
+    /**
+     * 添加数据到已有的数据源中
+     * @param index 添加的位置 (默认-1, 在最后添加)
+     */
+    fun addModels(models: List<Any>, index: Int) {
         if (models.isEmpty()) return
 
         val adapterData = ArrayList(items)
@@ -371,6 +373,10 @@ open class XMultiAdapter @JvmOverloads constructor(
             items = adapterData
             notifyItemInserted(realIndex)
         }
+    }
+
+    fun preload(): Observable<State> {
+        TODO()
     }
 
     sealed class State {

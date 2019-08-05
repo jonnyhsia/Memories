@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.arch.jonnyhsia.ui.ext.tooltipTextCompat
 import com.jonnyhsia.appcore.ext.load
+import com.jonnyhsia.appcore.ext.tooltipTextCompat
 import com.jonnyhsia.memories.R
 import kotlinx.android.extensions.LayoutContainer
 

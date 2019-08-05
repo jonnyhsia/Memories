@@ -1,4 +1,4 @@
-package com.arch.jonnyhsia.ui.recyclerview
+package com.jonnyhsia.appcore.ui
 
 import androidx.recyclerview.widget.DiffUtil
 
